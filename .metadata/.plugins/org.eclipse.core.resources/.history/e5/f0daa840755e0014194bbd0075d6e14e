@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- define angular app -->
+<html ng-app="scotchApp">
+
+<head>
+	  <meta charset="UTF-8" />
+	  
+	  <!-- SCROLLS -->
+	  <link rel="stylesheet" href="css/bootstrap.min.css" />
+	  <link href="css/font-awesome.min.css" rel="stylesheet">
+	  <link href="css/animate.css" rel="stylesheet">
+	    
+	  <link rel="stylesheet" href="css/header.css" />
+	  <link rel="stylesheet" href="css/login.css" />
+	  <link rel="stylesheet" href="css/menus.css" />
+	  
+	  <!-- SPELLS -->
+	  <script src="js/angular.min.js"></script>
+	  <script src="js/angular-route.js"></script>
+	  <script src="js/script.js"></script>
+	  
+	  <title>RenTech</title>
+</head>
+
+<!-- HEADER AND NAVBAR -->
+<body ng-controller="mainController">
+
+	<header id="header"><!--header-->
+		<div class="header-middle"><!--header-middle-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="logo pull-left">
+								<a href="#"><img src="img/logo-medium.png" alt="" /></a>
+							</div>
+						</div>
+						
+						<div class="col-sm-8">
+							<div class="shop-menu pull-right">
+								<ul class="nav navbar-nav">
+									<li><a href="#cart"><i class="fa fa-shopping-cart"></i> Panier</a></li>
+									<li><a href="#login" class="active"><i class="fa fa-lock"></i> Connexion</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/header-middle-->
+		
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="index.html">Home</a></li>
+								<li class="dropdown"><a href="#">Particuliers<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="#categ1">Section 1</a></li>
+										<li><a href="#categ2">Section 2</a></li> 
+										<li><a href="#categ3">Section 3</a></li> 
+                                    </ul>
+                                </li> 
+								<li class="dropdown"><a href="#">Groupe d'utilisateurs<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="#categ1">Section 1</a></li>
+										<li><a href="#categ2">Section 2</a></li> 
+										<li><a href="#categ3">Section 3</a></li>
+                                    </ul>
+                                </li> 
+								<li class="dropdown"><a href="#">Entreprises<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="#categ1">Section 1</a></li>
+										<li><a href="#categ2">Section 2</a></li> 
+										<li><a href="#categ3">Section 3</a></li>
+                                    </ul>
+                                </li> 
+								<li><a href="#about">About</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+	
+  <!-- MAIN CONTENT AND INJECTED VIEWS -->
+  <div id="main">
+  
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ng-view></div>
+    
+  </div>
+  
+  <footer class="text-center">
+    <p>View the tutorial on <a href="http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating">Scotch.io</a></p>
+  
+    <p>View a tutorial on <a href="http://scotch.io/tutorials/javascript/animating-angularjs-apps-ngview">Animating Your Angular Single Page App</a></p>
+  </footer>
+  
+</body>
+
+</html>

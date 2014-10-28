@@ -3,3 +3,5 @@ D:\COURS\5A\ECOM\RenTech\RenTech\.metadata\.plugins\org.eclipse.jst.jsp.core\jsp
 \RenTech\src
 D:\COURS\5A\ECOM\RenTech\RenTech\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4215743160.index
 \RenTech\src
+D:\COURS\5A\ECOM\RenTech\RenTech\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4019590012.index
+\RenTech\src

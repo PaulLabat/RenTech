@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!-- define angular app -->
+<html ng-app="scotchApp">
+
+<head>
+  <!-- SCROLLS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <!-- SPELLS -->
+  <script src="js/angular.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/angular-route.js"></script>
+</head>
+
+<!-- HEADER AND NAVBAR -->
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+      	<a class="navbar-brand" href="#"><img src="img/top-logo.png"/></a>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        
+        
+
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#web">Web</a></li>
+            <li><a href="#dedie">Dédié</a></li>
+			<li><a href="#service">Services</a></li>
+            <li>
+				<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search" id="query" name="query" value="">
+							<div class="input-group-btn">
+						    	<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+						    </div>
+					</div>
+				</form>
+			</li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Votre compte <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Panier</a></li>
+                  <li><a href="#">Suivi commande</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Paramètres</a></li>
+                  <li><a href="#">Déconnexion</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+  <!-- MAIN CONTENT AND INJECTED VIEWS -->
+  <div id="main">
+  
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ng-view></div>
+    
+  </div>
+  
+  <footer class="text-center">
+    <p>View the tutorial on <a href="http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating">Scotch.io</a></p>
+  
+    <p>View a tutorial on <a href="http://scotch.io/tutorials/javascript/animating-angularjs-apps-ngview">Animating Your Angular Single Page App</a></p>
+  </footer>
+  
+</body>
+
+</html>
