@@ -6,19 +6,16 @@
 	scotchApp.config(function($routeProvider) {
 		$routeProvider
 
-			// route for the home page
 			.when('/', {
 				templateUrl : 'views/home.jsp',
 				controller  : 'mainController'
 			})
 
-			// route for the about page
 			.when('/about', {
 				templateUrl : 'views/about.jsp',
 				controller  : 'aboutController'
 			})
 
-			// route for the contact page
 			.when('/categ', {
 				templateUrl : 'views/categ.jsp',
 				controller  : 'categController'
@@ -26,6 +23,10 @@
 		
 			.when('/login', {
 				templateUrl : 'views/login.jsp',
+			})
+		
+			.when('/panier', {
+				templateUrl : 'views/panier.jsp',
 			});
 	});
 
@@ -40,5 +41,9 @@
 	});
 
 	scotchApp.controller('categController', function($scope) {
+		$scope.message = 'Hey! This is a section!';
+	});
+	
+	scotchApp.controller('panierController', function($scope) {
 		$scope.message = 'Hey! This is a section!';
 	});

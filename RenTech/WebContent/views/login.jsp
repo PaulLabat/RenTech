@@ -3,28 +3,42 @@
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
-						<h2>Login to your account</h2>
+						<h2>Se connecter</h2>
 						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
+							<div class="input-group margin-bottom-sm">
+							  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+							  <input class="form-control" type="text" placeholder="Email address">
+							</div>
+							<div class="input-group">
+							  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							  <input class="form-control" type="password" placeholder="Password">
+							</div>
+
 							<span>
 								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
+								Se souvenir de moi
 							</span>
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->
 				</div>
-				<div class="col-sm-1">
-					<h2 class="or">OR</h2>
-				</div>
+
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
-						<h2>Register</h2>
+						<h2>Pas encore membre?</h2>
 						<form action="#">
-							<input type="text" placeholder="Name"/>
-							<input type="email" placeholder="Email Address"/>
-							<input type="password" placeholder="Password"/>
+							<div class="input-group margin-bottom-sm">
+							  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+							  <input class="form-control" type="text" placeholder="Name">
+							</div>
+							<div class="input-group margin-bottom-sm">
+							  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+							  <input class="form-control" type="text" placeholder="Email address">
+							</div>
+							<div class="input-group">
+							  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							  <input class="form-control" type="password" placeholder="Password">
+							</div>
 							<button type="submit" class="btn btn-default">Signup</button>
 						</form>
 					</div><!--/sign up form-->

@@ -13,6 +13,7 @@
 	  <link rel="stylesheet" href="css/header.css" />
 	  <link rel="stylesheet" href="css/login.css" />
 	  <link rel="stylesheet" href="css/menus.css" />
+	  <link rel="stylesheet" href="css/panier.css" />
 	  
 	  <!-- SPELLS -->
 	  <script src="js/angular.min.js"></script>
@@ -38,7 +39,7 @@
 						<div class="col-sm-8">
 							<div class="shop-menu pull-right">
 								<ul class="nav navbar-nav">
-									<li><a href="#cart"><i class="fa fa-shopping-cart"></i> Panier</a></li>
+									<li><a href="#panier"><i class="fa fa-shopping-cart"></i> Panier</a></li>
 									<li><a href="#login" class="active"><i class="fa fa-lock"></i> Connexion</a></li>
 								</ul>
 							</div>
@@ -97,12 +98,6 @@
     <div ng-view></div>
     
   </div>
-  
-  <footer class="text-center">
-    <p>View the tutorial on <a href="http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating">Scotch.io</a></p>
-  
-    <p>View a tutorial on <a href="http://scotch.io/tutorials/javascript/animating-angularjs-apps-ngview">Animating Your Angular Single Page App</a></p>
-  </footer>
   
 </body>
 
