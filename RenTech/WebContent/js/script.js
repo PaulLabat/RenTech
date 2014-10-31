@@ -47,9 +47,9 @@
 			.when('/compte/historique', {
 				templateUrl : 'views/compteClientHistorique.jsp',
 			})
-			
-			;
-			
+			.otherwise({
+				templateUrl : 'views/Error404.jsp'
+			})
 			;
 	});
 
