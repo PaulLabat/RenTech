@@ -104,17 +104,21 @@
 }
 
 .search_box input {
-  background: #F0F0E9;
-  border: medium none;
-  color: #B2B2B2;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border:1px solid #cccccc;
+  color: #B5B5B5;
   font-family: 'roboto';
   font-size: 12px;
   font-weight: 300;
-  height: 35px;
-  outline: medium none;
+  height: 30px;
   padding-left: 10px;
-  width: 155px;
+  width: 175px;
   background-image: url(../img/searchicon.png);
   background-repeat: no-repeat;
-  background-position: 130px;
+  background-position: 150px;
+}
+
+.search_box input:hover {
+	border:1px solid #0066CC;
 }

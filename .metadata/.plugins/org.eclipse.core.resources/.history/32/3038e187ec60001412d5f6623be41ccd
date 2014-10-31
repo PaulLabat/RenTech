@@ -1,0 +1,13 @@
+.thumbnail button {
+  margin-top: 23px;
+}
+
+.login-form form button, .signup-form form button {
+  background: #0055CC;
+  border: medium none;
+  border-radius: 0;
+  color: #FFFFFF;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  padding: 6px 25px;
+}

@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
+
+#cart_items tbody {
+	margin-top=50px;
+}
+
+#cart_items .cart_info .table.table-condensed thead tr {
+  height: 51px;
+}
+
+
+#cart_items .cart_info .table.table-condensed tr {
+  border-bottom: 1px solid#F7F7F0
+}
+
+#cart_items .cart_info .table.table-condensed tr:last-child {
+  border-bottom: 0
+}
+
+.cart_info table tr td {
+  border-top: 0 none;
+  vertical-align: inherit;
+}
+
+.cart_menu td {
+	color: #0055AA;
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	font-weight: 300;
+}
+
+.cross a {
+  background:#F0F0E9;
+  color: #FFFFFF;
+  padding: 5px 7px;
+  font-size: 16px
+}
+
+.cross a:hover {
+  background:#0055AA
+}
+
+#cart_items .cart_info .cart_description:hover {
+  color:#0055AA;
+}
+
+#cart_items .cart_info .cart_description {
+  color: #363432;
+  font-family: 'Roboto',sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+
+}
+
+#cart_items .cart_info .cart_description p {
+  color:#696763
+}
+
+#cart_items .cart_info .cart_price p {
+  color:#0055AA;
+  font-size: 18px
+}
+
+
+#cart_items .cart_info .cart_total_price {
+  color: #0055AA;
+  font-size: 24px;
+}

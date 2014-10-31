@@ -14,6 +14,7 @@
 	  <link rel="stylesheet" href="css/login.css" />
 	  <link rel="stylesheet" href="css/menus.css" />
 	  <link rel="stylesheet" href="css/panier.css" />
+	  <link rel="stylesheet" href="css/pageProduit.css" />
 	  
 	  <!-- SPELLS -->
 	  <script src="js/angular.min.js"></script>
@@ -57,7 +58,7 @@
 								<li><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">Particuliers<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="#categ">Section 1</a></li>
+                                        <li><a href="#pageProduit">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
 										<li><a href="#categ">Section 3</a></li> 
                                     </ul>

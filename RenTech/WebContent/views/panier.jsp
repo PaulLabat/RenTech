@@ -18,7 +18,7 @@
 							<a href=""><img src="images/cart/one.png" alt=""></a>
 						</td>
 						<td class="cart_description">
-							<h4>Serveur 1</h4>
+							Serveur 1
 						</td>
 						<td class="cart_price">
 							<p>$59</p>

@@ -27,6 +27,10 @@
 		
 			.when('/panier', {
 				templateUrl : 'views/panier.jsp',
+			})
+		
+			.when('/pageProduit', {
+				templateUrl : 'views/pageProduit.jsp',
 			});
 	});
 
@@ -47,3 +51,8 @@
 	scotchApp.controller('panierController', function($scope) {
 		$scope.message = 'Hey! This is a section!';
 	});
+	
+	scotchApp.controller('pageProduitController', function($scope) {
+		$scope.message = 'Hey! This is a section!';
+	});
+	
