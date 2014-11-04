@@ -9,6 +9,7 @@
 	  <link rel="stylesheet" href="css/bootstrap.min.css" />
 	  <link rel="stylesheet" href="css/font-awesome.min.css">
 	  <link rel="stylesheet" href="css/animate.css">
+	  <link rel="stylesheet" href="css/responsive.css">
 	    
 	  <link rel="stylesheet" href="css/header.css" />
 	  <link rel="stylesheet" href="css/login.css" />
@@ -19,6 +20,7 @@
 	  <!-- SPELLS -->
 	  <script src="js/angular.min.js"></script>
 	  <script src="js/angular-route.js"></script>
+	  <script src="js/angular-translate.js"></script>
 	  <script src="js/script.js"></script>
 	  
 	  <title>RenTech</title>
@@ -39,9 +41,16 @@
 						
 						<div class="col-sm-8">
 							<div class="shop-menu pull-right">
+
 								<ul class="nav navbar-nav">
-									<li><a href="#panier"><i class="fa fa-shopping-cart"></i> Panier</a></li>
-									<li><a href="#login" class="active"><i class="fa fa-lock"></i> Connexion</a></li>
+									<li>
+										<div class="languages" ng-controller="Ctrl">
+											<button ng-click="changeLanguage('en')" class="ng-scope"><img src="img/United-Kingdom.png" alt="" /></button>
+											<button ng-click="changeLanguage('fr')" class="ng-scope"><img src="img/France.png" alt="" /></button>
+										</div>
+									</li>
+									<li><a href="#panier"><i class="fa fa-shopping-cart"></i> <span translate="PANIER">Panier</span></a></li>
+									<li><a href="#login"><i class="fa fa-lock"></i> <span translate="CONNEXION">Connexion</span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -55,29 +64,29 @@
 					<div class="col-sm-9">
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="#">Home</a></li>
-								<li class="dropdown"><a href="#">Particuliers<i class="fa fa-angle-down"></i></a>
+								<li><a href="#"><span translate="HOME">Accueil</span></a></li>
+								<li class="dropdown"><a href="#"><span translate="PARTICULIERS">Particuliers</span><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#pageProduit">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
 										<li><a href="#categ">Section 3</a></li> 
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Groupe d'utilisateurs<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#"><span translate="G_UTILISATEURS">Groupe d'utilisateurs</span><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#categ">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
 										<li><a href="#categ">Section 3</a></li>
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Entreprises<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#"><span translate="ENTREPRISES">Entreprises</span><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#categ">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
 										<li><a href="#categ">Section 3</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="#about">About</a></li>
+								<li><a href="#about"><span translate="A_PROPOS">About</span></a></li>
 							</ul>
 						</div>
 					</div>

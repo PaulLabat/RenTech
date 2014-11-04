@@ -1,7 +1,39 @@
 	// create the module and name it scotchApp
     // also include ngRoute for all our routing needs
-	var scotchApp = angular.module('scotchApp', ['ngRoute']);
+	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate']);
 
+	// Traductions
+	scotchApp.config(function ($translateProvider) {
+	  $translateProvider.translations('en', {
+		  HOME : 'Home',
+		  PANIER : 'Card',
+		  CONNEXION : 'Login',
+		  PARTICULIERS : 'Private individuals',
+		  G_UTILISATEURS : 'Group of users',
+		  ENTREPRISES : 'Companies',
+		  A_PROPOS : 'About'
+	  });
+	  
+	  
+	  $translateProvider.translations('fr', {
+		  HOME : 'Accueil',
+		  PANIER : 'Panier',
+		  CONNEXION : 'Connexion',
+		  PARTICULIERS : 'Particuliers',
+		  G_UTILISATEURS : 'Groupe d\'utilisateurs',
+		  ENTREPRISES : 'Entreprises',
+		  A_PROPOS : 'À propos'
+	  });
+	  
+	  $translateProvider.preferredLanguage('fr');
+	});
+	
+	scotchApp.controller('Ctrl', function ($scope, $translate) {
+		  $scope.changeLanguage = function (key) {
+		    $translate.use(key);
+		  };
+	});
+	
 	// configure our routes
 	scotchApp.config(function($routeProvider) {
 		$routeProvider
