@@ -16,6 +16,9 @@
 	  <link rel="stylesheet" href="css/menus.css" />
 	  <link rel="stylesheet" href="css/panier.css" />
 	  <link rel="stylesheet" href="css/pageProduit.css" />
+	  <link rel="stylesheet" href="css/responsive.css" />
+	  <link rel="stylesheet" href="css/main.css" />
+	  <link rel="stylesheet" href="css/footer.css" />
 	  
 	  <!-- SPELLS -->
 	  <script src="js/angular.min.js"></script>
@@ -108,7 +111,6 @@
     <div ng-view></div>
     
   </div>
-  
 </body>
 
 </html>

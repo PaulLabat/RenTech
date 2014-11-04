@@ -40,7 +40,6 @@
 
 			.when('/', {
 				templateUrl : 'views/home.jsp',
-				controller  : 'mainController'
 			})
 
 			.when('/about', {
@@ -63,7 +62,26 @@
 		
 			.when('/pageProduit', {
 				templateUrl : 'views/pageProduit.jsp',
-			});
+			})
+			.when('/compte',{
+				templateUrl : 'views/compteClient.jsp',
+			})
+			.when('/compte/password', {
+				templateUrl : 'views/compteClientPassword.jsp',
+			})
+			.when('/compte/adresse', {
+				templateUrl : 'views/compteClientAdresse.jsp',
+			})
+			.when('/compte/commandes', {
+				templateUrl : 'views/compteClientCommandes.jsp',
+			})
+			.when('/compte/historique', {
+				templateUrl : 'views/compteClientHistorique.jsp',
+			})
+			.otherwise({
+				templateUrl : 'views/Error404.jsp'
+			})
+			;
 	});
 
 	// create the controller and inject Angular's $scope
