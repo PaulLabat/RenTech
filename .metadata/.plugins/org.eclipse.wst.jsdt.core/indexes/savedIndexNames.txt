@@ -1,7 +1,0 @@
-INDEX VERSION 1.122+D:\COURS\5A\ECOM\RenTech\RenTech\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4215743160.index
-3750373607.index
-3544342006.index
-3065128311.index
-2019007489.index
-4215743160.index
