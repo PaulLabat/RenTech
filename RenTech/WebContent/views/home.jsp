@@ -8,7 +8,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading"
-					style="background-color: #FF3520; color: white; text-align: center;">Particuliers</div>
+					style="background-color: #FF3520; color: white; text-align: center; font-size:1.5em;"><span translate="PARTICULIERS">Particuliers</span></div>
 				<div class="panel-body">
 
 					<div class="thumbnail">
@@ -17,7 +17,7 @@
 							<h3>
 								<a href="#pageProduit">Git</a>
 							</h3>
-							À partir de <b>4,99&#128;</b> HTT/mois
+							<span translate="A_PARTIR_DE">À partir de</span>  <b>4,99&#128;</b> <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
 
@@ -27,7 +27,7 @@
 							<h3>
 								<a href="#pageProduit">WordPress</a>
 							</h3>
-							À partir de <b>4,99&#128;</b> HTT/mois
+							<span translate="A_PARTIR_DE">À partir de</span> <b>4,99&#128;</b>  <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
 
@@ -40,8 +40,7 @@
 		<div class=".col-xs-6 col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading"
-					style="background-color: #0675FF; color: white; text-align: center;">Groupe
-					d'utilisateurs</div>
+					style="background-color: #5E087F; color: white; text-align: center;font-size:1.5em;"><span translate="G_UTILISATEURS">Groupe d'utilisateurs</span></div>
 				<div class="panel-body">
 					<div class="thumbnail">
 						<img src="img/mumble.svg" alt="..." class="img-rounded">
@@ -49,7 +48,7 @@
 							<h3>
 								<a href="#pageProduit">Serveur Mumble</a>
 							</h3>
-							À partir de <b>9,99&#128;</b> HTT/mois
+							<span translate="A_PARTIR_DE">À partir de</span> <b>9,99&#128;</b>  <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
 
@@ -61,7 +60,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading"
-					style="background-color: #ACCC19; color: white; text-align: center;">Entreprises</div>
+					style="background-color: #ACCC19; color: white; text-align: center;font-size:1.5em;"><span translate="ENTREPRISES">Entreprises</span></div>
 
 				<div class="panel-body">
 
@@ -70,7 +69,7 @@
 						<h3>
 							<a href="#pageProduit">Serveur dédié Big Data</a>
 						</h3>
-						À partir de <b>299,9&#128;</b> HTT/mois
+						<span translate="A_PARTIR_DE">À partir de</span> <b>299,9&#128;</b>  <span translate="TAXES">HT/mois</span>
 					</div>
 				</div>
 

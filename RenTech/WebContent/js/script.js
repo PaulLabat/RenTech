@@ -11,7 +11,12 @@
 		  PARTICULIERS : 'Private individuals',
 		  G_UTILISATEURS : 'Group of users',
 		  ENTREPRISES : 'Companies',
-		  A_PROPOS : 'About'
+		  A_PROPOS : 'About',
+		  A_PARTIR_DE : 'Starting from',
+		  TAXES : 'excl. VAT/month',
+		  SIGNUP : 'Signup',
+		  REMEMBER_ME : 'Remember me',
+		  NOT_A_MEMBER : 'Not a member ?'
 	  });
 	  
 	  
@@ -22,7 +27,12 @@
 		  PARTICULIERS : 'Particuliers',
 		  G_UTILISATEURS : 'Groupe d\'utilisateurs',
 		  ENTREPRISES : 'Entreprises',
-		  A_PROPOS : 'À propos'
+		  A_PROPOS : '&Agrave; propos',
+		  A_PARTIR_DE : '&Agrave; partir de',
+		  TAXES : 'HT/mois',
+		  SIGNUP : 'S\'inscrire',
+		  REMEMBER_ME : 'Se souvenir de moi',
+		  NOT_A_MEMBER : 'Pas encore membre ?'
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');

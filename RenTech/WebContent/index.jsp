@@ -68,21 +68,21 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="#"><span translate="HOME">Accueil</span></a></li>
-								<li class="dropdown"><a href="#"><span translate="PARTICULIERS">Particuliers</span><i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#"><span translate="PARTICULIERS">Particuliers</span></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#pageProduit">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
 										<li><a href="#categ">Section 3</a></li> 
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#"><span translate="G_UTILISATEURS">Groupe d'utilisateurs</span><i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#"><span translate="G_UTILISATEURS">Groupe d'utilisateurs</span></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#categ">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
 										<li><a href="#categ">Section 3</a></li>
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#"><span translate="ENTREPRISES">Entreprises</span><i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#"><span translate="ENTREPRISES">Entreprises</span></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#categ">Section 1</a></li>
 										<li><a href="#categ">Section 2</a></li> 
