@@ -17,7 +17,7 @@
 							<h3>
 								<a href="#pageProduit">Git</a>
 							</h3>
-							<span translate="A_PARTIR_DE">À partir de</span>  <b>4,99&#128;</b> <span translate="TAXES">HT/mois</span>
+							<span translate="A_PARTIR_DE">Ã  partir de</span>  <b>4,99&#128;</b> <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
 
@@ -27,7 +27,7 @@
 							<h3>
 								<a href="#pageProduit">WordPress</a>
 							</h3>
-							<span translate="A_PARTIR_DE">À partir de</span> <b>4,99&#128;</b>  <span translate="TAXES">HT/mois</span>
+							<span translate="A_PARTIR_DE">Ã  partir de</span> <b>4,99&#128;</b>  <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
 
@@ -48,7 +48,7 @@
 							<h3>
 								<a href="#pageProduit">Serveur Mumble</a>
 							</h3>
-							<span translate="A_PARTIR_DE">À partir de</span> <b>9,99&#128;</b>  <span translate="TAXES">HT/mois</span>
+							<span translate="A_PARTIR_DE">Ã  partir de</span> <b>9,99&#128;</b>  <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
 
@@ -67,9 +67,9 @@
 					<img src="img/big-data.png" alt="..." class="img-rounded">
 					<div class="caption">
 						<h3>
-							<a href="#pageProduit">Serveur dédié Big Data</a>
+							<a href="#pageProduit">Serveur dÃ©diÃ© Big Data</a>
 						</h3>
-						<span translate="A_PARTIR_DE">À partir de</span> <b>299,9&#128;</b>  <span translate="TAXES">HT/mois</span>
+						<span translate="A_PARTIR_DE">Ã  partir de</span> <b>299,9&#128;</b>  <span translate="TAXES">HT/mois</span>
 					</div>
 				</div>
 
