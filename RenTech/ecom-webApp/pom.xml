@@ -80,9 +80,10 @@
                 <artifactId>maven-glassfish-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
-                    <glassfishDirectory>${local.glassfish.domain}</glassfishDirectory>
-                    <user>$(domain.username)</user>
-                    <passwordFile>$(local.glassfish.passfile)</passwordFile>
+                    <glassfishDirectory>/opt/glassfish4/glassfish/</glassfishDirectory>
+                    <user>admin</user>
+                    <adminPassword>admin</adminPassword>
+                    <passwordFile>admin</passwordFile>
                     <domain>
                         <name>domain1</name>
                         <httpPort>8080</httpPort>
