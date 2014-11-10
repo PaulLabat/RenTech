@@ -5,22 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
- * Created by augustin on 10/11/14.
+ * Created by Cirie on 10/11/2014.
  */
-
 @Entity
-@Table(name="OFFRE")
-public class Offre implements Serializable{
+@Table(name = "COMMANDE")
+public class Commande implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
-    private BigDecimal price;
+    private Calendar beginDate;
 
-    public Offre(){
-
+    public Commande(){
+        beginDate = Calendar.getInstance();
     }
 
     public Integer getId() {
@@ -31,11 +31,7 @@ public class Offre implements Serializable{
         this.id = id;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public Date getDate(){
+        return this.beginDate.getTime();
     }
 }

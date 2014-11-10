@@ -4,22 +4,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serializable;
-import java.math.BigDecimal;
+import javax.validation.constraints.NotNull;
 
 /**
- * Created by augustin on 10/11/14.
+ * Created by Cirie on 10/11/2014.
  */
-
 @Entity
-@Table(name="OFFRE")
-public class Offre implements Serializable{
+@Table(name = "ASSOCIATION")
+public class Association {
+
     @Id
     @GeneratedValue
     private Integer id;
-    private BigDecimal price;
+    @NotNull
+    private String nom;
 
-    public Offre(){
+    public Association(){
 
     }
 
@@ -31,11 +31,11 @@ public class Offre implements Serializable{
         this.id = id;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public String getNom() {
+        return nom;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }
