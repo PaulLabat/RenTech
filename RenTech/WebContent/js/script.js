@@ -16,7 +16,22 @@
 		  TAXES : 'excl. VAT/month',
 		  SIGNUP : 'Signup',
 		  REMEMBER_ME : 'Remember me',
-		  NOT_A_MEMBER : 'Not a member ?'
+		  NOT_A_MEMBER : 'Not a member ?',
+		  SAVE : "Save",
+		  PASSWORD : "Password",
+		  OLD : "Old",
+		  NEW : "New",
+		  CHECK : "Check",
+		  ADDRESS : "Address",
+		  COMPLETED_ORDERS : "Completed orders",
+		  CURRENT_ORDERS : "Current orders",
+		  FIRST_NAME : "First name",
+		  LAST_NAME : "Last name",
+		  CITY : "City",
+		  POSTAL_CODE : "Postal code",
+		  PRODUCT : "Product",
+		  PRICE : "Price",
+		  QUANTITY : "Quantity"
 	  });
 	  
 	  
@@ -32,7 +47,22 @@
 		  TAXES : 'HT/mois',
 		  SIGNUP : 'S\'inscrire',
 		  REMEMBER_ME : 'Se souvenir de moi',
-		  NOT_A_MEMBER : 'Pas encore membre ?'
+		  NOT_A_MEMBER : 'Pas encore membre ?',
+		  SAVE : "Sauvegarde",
+		  PASSWORD : "Mot de passe",
+		  OLD : "Vieux",
+		  NEW : "Nouveau",
+		  CHECK : "V&eacute;rifier",
+		  ADDRESS : "Adresse",
+		  COMPLETED_ORDERS : "Commandes termin&eacute;es",
+		  CURRENT_ORDERS : "Commandes en cours",
+		  FIRST_NAME : "Pr&eacute;nom",
+		  LAST_NAME : "Nom",
+		  CITY : "Ville",
+		  POSTAL_CODE : "Code postal",
+		  PRODUCT : "Produit",
+		  PRICE : "Prix",
+		  QUANTITY : "Quantit&eacute;"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');

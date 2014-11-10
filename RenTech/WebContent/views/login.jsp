@@ -24,7 +24,7 @@
 						<span> <input type="checkbox" class="checkbox"> <span
 							translate="REMEMBER_ME"> Se souvenir de moi</span>
 						</span>
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-primary pull-right">
 							<span translate="CONNEXION"> Se connecter</span>
 						</button>
 					</form>
@@ -51,7 +51,7 @@
 							<input class="form-control" type="password"
 								placeholder="Password">
 						</div>
-						<button type="submit" class="btn btn-default"><span translate="SIGNUP">S'inscrire</span></button>
+						<button type="submit" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
 					</form>
 				</div>
 				<!--/sign up form-->

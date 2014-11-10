@@ -2,23 +2,21 @@
 
 	<ul class="nav nav-pills" role="tablist">
 		<li role="presentation"><a href="#compte">Profile</a></li>
-		<li role="presentation"><a href="#compte/password">Mot de
-				passe</a></li>
-		<li role="presentation"><a href="#compte/adresse">Adresse</a></li>
-		<li role="presentation"><a href="#compte/commandes">Commandes
-				en cours</a></li>
-		<li role="presentation" class="active"><a
-			href="#compte/historique">Historique des commandes</a></li>
+		<li role="presentation"><a href="#compte/password"><span translate="PASSWORD">Mot de passe</span></a></li>
+		<li role="presentation"><a href="#compte/adresse"><span translate="ADDRESS">Adresse</span></a></li>
+		<li role="presentation"><a href="#compte/commandes"><span translate="CURRENT_ORDERS">Commandes
+				en cours</span></a></li>
+		<li role="presentation" class="active"><a href="#compte/historique"><span translate="COMPLETED_ORDERS">Commandes termin&eacute;es</span></a></li>
 	</ul>
 
 	<div class="table-responsive cart_info">
 		<table class="table table-condensed">
 			<thead>
 				<tr class="cart_menu">
-					<td class="image">Produit</td>
+					<td class="image"><span translate="PRODUCT">Produit</span></td>
 					<td class="description">Description</td>
-					<td class="price">Prix</td>
-					<td class="quantity">Quantité</td>
+					<td class="price"><span translate="PRICE">Prix</span></td>
+					<td class="quantity"><span translate="QUANTITY">Quantité</span></td>
 					<td class="total">Total</td>
 				</tr>
 			</thead>
