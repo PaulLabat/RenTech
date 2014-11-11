@@ -1,18 +1,17 @@
 package ejb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * Created by Cirie on 10/11/2014.
  */
 @Entity
 @Table(name = "USER")
-public class Utilisateur {
+public class Utilisateur implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -24,8 +23,24 @@ public class Utilisateur {
     private String mail;
     @NotNull
     private String mdp;
+    @NotNull
     private String nom;
+    @NotNull
     private String prenom;
+    @ManyToOne
+    private Entreprise entreprise;
+    @ManyToOne
+    private Association association;
+    @OneToMany
+    private Collection<Commande> commandes ;
+    @OneToMany
+    private Collection<ServeurPhysique> serveurPhysiques;
+    @OneToMany
+    private Collection<Git> gits;
+    @OneToMany
+    private Collection<SiteWeb> siteWebs;
+    @OneToMany
+    private Collection<Forum> forums;
 
     public Utilisateur(){
 

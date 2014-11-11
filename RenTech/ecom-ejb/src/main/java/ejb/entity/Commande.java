@@ -1,12 +1,10 @@
 package ejb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -20,6 +18,8 @@ public class Commande implements Serializable{
     private Integer id;
     @NotNull
     private Calendar beginDate;
+    @OneToMany
+    private Collection<Offre> offres ;
 
     public Commande(){
         beginDate = Calendar.getInstance();

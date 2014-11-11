@@ -1,11 +1,9 @@
 package ejb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * Created by Cirie on 10/11/2014.
@@ -18,6 +16,8 @@ public class Entreprise implements Serializable{
     private Integer id;
     @NotNull
     private String nom;
+    @OneToMany(mappedBy="utilisateur")
+    private Collection<Utilisateur> utilisateurs ;
 
     public Entreprise(){
 

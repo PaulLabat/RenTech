@@ -5,13 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by Cirie on 10/11/2014.
  */
 @Entity
 @Table(name = "GIT")
-public class Git {
+public class Git implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;

@@ -1,23 +1,24 @@
 package ejb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * Created by Cirie on 10/11/2014.
  */
 @Entity
 @Table(name = "ASSOCIATION")
-public class Association {
+public class Association implements Serializable{
 
     @Id
     @GeneratedValue
     private Integer id;
     @NotNull
     private String nom;
+    @OneToMany(mappedBy="utilisateur")
+    private Collection<Utilisateur> utilisateurs ;
 
     public Association(){
 
