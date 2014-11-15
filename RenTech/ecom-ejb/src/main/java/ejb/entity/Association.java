@@ -39,4 +39,12 @@ public class Association implements Serializable{
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public Collection<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
 }

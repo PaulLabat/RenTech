@@ -59,4 +59,12 @@ public class ServeurPhysique implements Serializable{
     public void setNbreCoeur(Integer nbreCoeur) {
         this.nbreCoeur = nbreCoeur;
     }
+
+    public Collection<ServeurVirtuel> getServeurVirtuels() {
+        return serveurVirtuels;
+    }
+
+    public void setServeurVirtuels(Collection<ServeurVirtuel> serveurVirtuels) {
+        this.serveurVirtuels = serveurVirtuels;
+    }
 }

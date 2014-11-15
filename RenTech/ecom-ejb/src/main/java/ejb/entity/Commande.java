@@ -36,4 +36,12 @@ public class Commande implements Serializable{
     public Date getDate(){
         return this.beginDate.getTime();
     }
+
+    public Collection<Offre> getOffres() {
+        return offres;
+    }
+
+    public void setOffres(Collection<Offre> offres) {
+        this.offres = offres;
+    }
 }

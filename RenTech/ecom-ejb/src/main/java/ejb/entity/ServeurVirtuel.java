@@ -62,4 +62,28 @@ public class ServeurVirtuel implements Serializable{
     public void setNbreCoeur(Integer nbreCoeur) {
         this.nbreCoeur = nbreCoeur;
     }
+
+    public Collection<Git> getGits() {
+        return gits;
+    }
+
+    public void setGits(Collection<Git> gits) {
+        this.gits = gits;
+    }
+
+    public Collection<SiteWeb> getSiteWebs() {
+        return siteWebs;
+    }
+
+    public void setSiteWebs(Collection<SiteWeb> siteWebs) {
+        this.siteWebs = siteWebs;
+    }
+
+    public Collection<Forum> getForums() {
+        return forums;
+    }
+
+    public void setForums(Collection<Forum> forums) {
+        this.forums = forums;
+    }
 }

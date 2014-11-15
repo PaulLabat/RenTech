@@ -85,4 +85,60 @@ public class Utilisateur implements Serializable{
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
+    }
+
+    public Association getAssociation() {
+        return association;
+    }
+
+    public void setAssociation(Association association) {
+        this.association = association;
+    }
+
+    public Collection<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(Collection<Commande> commandes) {
+        this.commandes = commandes;
+    }
+
+    public Collection<ServeurPhysique> getServeurPhysiques() {
+        return serveurPhysiques;
+    }
+
+    public void setServeurPhysiques(Collection<ServeurPhysique> serveurPhysiques) {
+        this.serveurPhysiques = serveurPhysiques;
+    }
+
+    public Collection<Git> getGits() {
+        return gits;
+    }
+
+    public void setGits(Collection<Git> gits) {
+        this.gits = gits;
+    }
+
+    public Collection<SiteWeb> getSiteWebs() {
+        return siteWebs;
+    }
+
+    public void setSiteWebs(Collection<SiteWeb> siteWebs) {
+        this.siteWebs = siteWebs;
+    }
+
+    public Collection<Forum> getForums() {
+        return forums;
+    }
+
+    public void setForums(Collection<Forum> forums) {
+        this.forums = forums;
+    }
 }
