@@ -10,7 +10,9 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>ecom-webApp</artifactId>
+    <artifactId>ecomweb</artifactId>
+    <packaging>war</packaging>
+    <name>ecomweb</name>
     <version>0.1.0</version>
 
     <properties>
@@ -65,36 +67,36 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.glassfish.maven.plugin</groupId>
                 <artifactId>maven-glassfish-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
-                    <glassfishDirectory>/opt/glassfish4/glassfish/</glassfishDirectory>
-                    <user>admin</user>
-                    <adminPassword>admin</adminPassword>
-                    <passwordFile>admin</passwordFile>
+                    <glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
+                    <user>${local.glassfish.user}</user>
+                    <adminPassword>${local.glassfish.adminPassword}</adminPassword>
+                    <autoCreate>true</autoCreate>
+                    <terse>true</terse>
+                    <echo>true</echo>
+                    <debug>true</debug>
                     <domain>
-                        <name>domain1</name>
+                        <name>${local.glassfish.domain.name}</name>
+                        <host>${local.glassfish.domain.host}</host>
+                        <adminPort>${local.glassfish.domain.adminPort}</adminPort>
                         <httpPort>8080</httpPort>
-                        <adminPort>4848</adminPort>
+                        <httpsPort>8181</httpsPort>
+                        <iiopPort>3700</iiopPort>
+                        <jmsPort>7676</jmsPort>
+                        <reuse>false</reuse>
                     </domain>
                     <components>
                         <component>
                             <name>${project.artifactId}</name>
-                            <artifact>target/${project.build.finalName}.war</artifact>
+                            <artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
                         </component>
                     </components>
-                    <debug>true</debug>
-                    <terse>false</terse>
-                    <echo>true</echo>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
-
-    
 </project>
