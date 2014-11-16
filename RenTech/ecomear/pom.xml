@@ -20,6 +20,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ecomejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ecomweb</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+
     <build>
         <plugins>
             <plugin>
@@ -38,6 +54,24 @@
                 <configuration>
                     <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
+
+                    <displayName>EAR for ${project.artifactId}</displayName>
+                    <description>EAR for ${project.artifactId}</description>
+
+                    <modules>
+                        <ejbModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>ecomejb</artifactId>
+                            <bundleFileName>${project.artifactId}ejb-${project.version}.jar</bundleFileName>
+                        </ejbModule>
+
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>ecomweb</artifactId>
+                            <contextRoot>/${project.artifactId}</contextRoot>
+                            <bundleFileName>${project.artifactId}web-${project.version}.war</bundleFileName>
+                        </webModule>
+                    </modules>
                 </configuration>
             </plugin>
         </plugins>
