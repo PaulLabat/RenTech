@@ -8,7 +8,9 @@
     <version>0.1.0</version>
     <modules>
         <module>ecomweb</module>
+        <module>ecomeapp</module>
         <module>ecomejb</module>
+        <module>ecomear</module>
     </modules>
     <packaging>pom</packaging>
 
