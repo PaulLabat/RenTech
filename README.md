@@ -15,6 +15,7 @@ Pour pouvoir déployer le projet en ligne de commande il y a quelques étapes à
 Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne de commande. Concernant la première étape je ne m'attarderai que sur l'installation de Glassfish.
 
 1: Installation de Glassfish
+-----------------------------
 ##### Sur Windows
 
    * Télécharger glassfish
@@ -30,7 +31,7 @@ Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne 
    Voilà maintenant votre glassfish est correctement paramétré.
 
 2: Rédaction du fichier settings.xml de Maven
-
+---------------------------------
  Ce fichier configure Maven selon votre configuration local. Ce fichier doit se mettre dans le dossier .m2/ . Ceci est vrai pour tous les OS.
  Sur windows, voilà le path où mettre ce fichier : **C:\Users\Nom_Utilisateur\\.m2**
  Sur linux : **home/Nom_Utilisateur/.m2/**
@@ -57,12 +58,13 @@ Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne 
  Vous remplirez bien évidemment les champs manquants et remplacerez le path de glassfish qui correspondra à votre configuration.
 
 3: Compilation du projet
-
+-------------------------
  Placez vous (en ligne de commande) à la racine du projet (i.e. là où se trouve le premier fichier pom.xml) et exécutez la commande suivante :
      `mvn clean package`
  Il ne devrait pas y avoir de problème à ce niveau là. S'il y en a un, c'est que peut être votre maven est mal installé.
 
 4: Lancement de Glassfish
+-------------------------
 Cette dernière étape est amenée à être modifiée dans les prochains jours pour qu'on n'est moins à naviguer dans les dossiers.
 
  Placez vous dans le dossier (en ligne de commande) ecomapp et faites la commande suivante :
@@ -71,7 +73,7 @@ Cette dernière étape est amenée à être modifiée dans les prochains jours p
  Dans le cas où vous obtenez un **BUILD SUCCESS**, vous n'avez plus qu'à cliquer sur le lien suivant : [http://localhost:8080/ecomweb-0.1.0/index.jsp](http://localhost:8080/ecomweb-0.1.0/index.jsp)
 
 5: Quelques commandes utiles :
-
+---------------------------
  * `mvn glassfish:deploy` : déploie l'application
  * `mvn glassfish:undeploy` : stop l'application
  * `mvn glassfish:redeploy` : Après modification du code, plutôt que de stopper l'application pour la relancer avec les deux commandes précédentes, celle-ci va les condenser.
