@@ -37,23 +37,28 @@ Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne 
  Sur linux : **home/Nom_Utilisateur/.m2/**
 
  Dans ce fichier vous copierez/collerez les balises suivantes :
-
-    <profiles>
-       <profile>
-    	 <id>glassfish-context</id>
-       	    <properties>
-            	<local.glassfish.home>C:\glassfish4\glassfish</local.glassfish.home>
-            	<local.glassfish.user>admin</local.glassfish.user>
-            	<local.glassfish.adminPassword></local.glassfish.adminPassword>
-            	<local.glassfish.domain.name>domain1</local.glassfish.domain.name>
-            	<local.glassfish.domain.host>localhost</local.glassfish.domain.host>
-            	<local.glassfish.domain.adminPort>4848</local.glassfish.domain.adminPort>
-            </properties>
-       </profile>
-    </profiles>
-    <activeProfiles>
-        <activeProfile>glassfish-context</activeProfile>
-    </activeProfiles>
+ 
+     <?xml version="1.0" encoding="UTF-8"?>
+     <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+        <profiles>
+            <profile>
+    	        <id>glassfish-context</id>
+       	            <properties>
+            	        <local.glassfish.home>C:\glassfish4\glassfish</local.glassfish.home>
+            	        <local.glassfish.user>admin</local.glassfish.user>
+            	        <local.glassfish.adminPassword></local.glassfish.adminPassword>
+            	        <local.glassfish.domain.name>domain1</local.glassfish.domain.name>
+            	        <local.glassfish.domain.host>localhost</local.glassfish.domain.host>
+            	        <local.glassfish.domain.adminPort>4848</local.glassfish.domain.adminPort>
+                    </properties>
+            </profile>
+        </profiles>
+        <activeProfiles>
+            <activeProfile>glassfish-context</activeProfile>
+        </activeProfiles>
+     </settings>
 
  Vous remplirez bien évidemment les champs manquants et remplacerez le path de glassfish qui correspondra à votre configuration.
 
