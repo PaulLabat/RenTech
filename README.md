@@ -32,8 +32,8 @@ Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne 
 2: Rédaction du fichier settings.xml de Maven
 
  Ce fichier configure Maven selon votre configuration local. Ce fichier doit se mettre dans le dossier .m2/ . Ceci est vrai pour tous les OS.
- Sur windows, voilà le path où mettre ce fichier : **C:\Users\Nom_Utilisateur\.m2**
- Sur linux : **home/Nom_Utilisateur**
+ Sur windows, voilà le path où mettre ce fichier : **C:\Users\Nom_Utilisateur\\.m2**
+ Sur linux : **home/Nom_Utilisateur/.m2/**
 
  Dans ce fichier vous copierez/collerez les balises suivantes :
 
