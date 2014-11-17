@@ -62,14 +62,14 @@
                         <ejbModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>ecomejb</artifactId>
-                            <bundleFileName>${project.artifactId}ejb-${project.version}.jar</bundleFileName>
+                            <bundleFileName>ecomejb-${project.version}.jar</bundleFileName>
                         </ejbModule>
 
                         <webModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>ecomweb</artifactId>
-                            <contextRoot>/${project.artifactId}</contextRoot>
-                            <bundleFileName>${project.artifactId}web-${project.version}.war</bundleFileName>
+                            <contextRoot>/${project.parent.artifactId}</contextRoot>
+                            <bundleFileName>ecomweb-${project.version}.war</bundleFileName>
                         </webModule>
                     </modules>
                 </configuration>
