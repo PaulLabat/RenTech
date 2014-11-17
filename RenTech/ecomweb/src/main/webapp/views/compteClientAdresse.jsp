@@ -2,13 +2,11 @@
 
 	<ul class="nav nav-pills" role="tablist">
 		<li role="presentation"><a href="#compte">Profile</a></li>
-		<li role="presentation"><a href="#compte/password">Mot de
-				passe</a></li>
-		<li role="presentation" class="active"><a href="#compte/adresse">Adresse</a></li>
-		<li role="presentation"><a href="#compte/commandes">Commandes
-				en cours</a></li>
-		<li role="presentation"><a href="#compte/historique">Historique
-				des commandes</a></li>
+		<li role="presentation"><a href="#compte/password"><span translate="PASSWORD">Mot de passe</span></a></li>
+		<li role="presentation" class="active"><a href="#compte/adresse"><span translate="ADDRESS">Adresse</span></a></li>
+		<li role="presentation"><a href="#compte/commandes"><span translate="CURRENT_ORDERS">Commandes
+				en cours</span></a></li>
+		<li role="presentation"><a href="#compte/historique"><span translate="COMPLETED_ORDERS">Commandes termin&eacute;es</span></a></li>
 	</ul>
 
 
@@ -22,35 +20,34 @@
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-sm-3 control-label" for="textinput">Addresse
+						<label class="col-sm-3 control-label" for="textinput"><span translate="ADDRESS">Adresse</span>
 							1</label>
 						<div class="col-sm-8">
-							<input type="text" placeholder="Addresse 1" class="form-control">
+							<input type="text" placeholder="" class="form-control">
 						</div>
 					</div>
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-sm-3 control-label" for="textinput">Addresse
+						<label class="col-sm-3 control-label" for="textinput"><span translate="ADDRESS">Adresse</span>
 							2</label>
 						<div class="col-sm-8">
-							<input type="text" placeholder="Addresse 2" class="form-control">
+							<input type="text" placeholder="" class="form-control">
 						</div>
 					</div>
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-sm-3 control-label" for="textinput">Ville</label>
+						<label class="col-sm-3 control-label" for="textinput"><span translate="CITY">Ville</span></label>
 						<div class="col-sm-8">
-							<input type="text" placeholder="Ville" class="form-control">
+							<input type="text" placeholder="" class="form-control">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-sm-3 control-label" for="textinput">Code
-							postal</label>
+						<label class="col-sm-3 control-label" for="textinput"><span translate="POSTAL_CODE">Code postal</span></label>
 						<div class="col-sm-4">
-							<input type="text" placeholder="Code postal" class="form-control">
+							<input type="text" placeholder="" class="form-control">
 						</div>
 					</div>
 
@@ -59,7 +56,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<div class="pull-right">
-								<button type="submit" class="btn btn-primary">Sauvegarde</button>
+								<button type="submit" class="btn btn-primary"><span translate="SAVE">Sauvegarde</span></button>
 							</div>
 						</div>
 					</div>

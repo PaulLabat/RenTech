@@ -67,7 +67,7 @@
 					<img src="img/big-data.png" alt="..." class="img-rounded">
 					<div class="caption">
 						<h3>
-							<a href="#pageProduit">Serveur dÃ©diÃ© Big Data</a>
+							<a href="#pageProduit">Serveur dédié Big Data</a>
 						</h3>
 						<span translate="A_PARTIR_DE">Ã  partir de</span> <b>299,9&#128;</b>  <span translate="TAXES">HT/mois</span>
 					</div>
