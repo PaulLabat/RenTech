@@ -72,7 +72,7 @@ Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne 
 -------------------------
 Cette dernière étape est amenée à être modifiée dans les prochains jours pour qu'on n'est moins à naviguer dans les dossiers.
 
- Placez vous dans le dossier (en ligne de commande) ecomapp et faites la commande suivante :
+ Placez vous dans le dossier (en ligne de commande) ecomweb et faites la commande suivante :
      `mvn glassfish:deploy`
  Là également si vous avez correctement suivi toutes les étapes précédentes, vous ne devriez pas avoir d'erreur.
  Dans le cas où vous obtenez un **BUILD SUCCESS**, vous n'avez plus qu'à cliquer sur le lien suivant : [http://localhost:8080/ecomweb-0.1.0/index.jsp](http://localhost:8080/ecomweb-0.1.0/index.jsp)
