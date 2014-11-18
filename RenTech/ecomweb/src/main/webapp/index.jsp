@@ -13,6 +13,7 @@
 	    
 	  <link rel="stylesheet" href="css/header.css" />
 	  <link rel="stylesheet" href="css/login.css" />
+	  <link rel="stylesheet" href="css/home.css" />
 	  <link rel="stylesheet" href="css/menus.css" />
 	  <link rel="stylesheet" href="css/panier.css" />
 	  <link rel="stylesheet" href="css/pageProduit.css" />
