@@ -1,3 +1,14 @@
+<script>$(document).ready(function(){
+			$('#buttonregister').click(function(){
+
+							$('#somediv').text("salut");
+							$.get('ConnexionServlet',function(responseText){
+
+													$('#somediv').text(responseText);
+
+																	})
+									})
+			}); </script>
 
 <section id="form">
 	<!--form-->
@@ -9,24 +20,22 @@
 					<h2>
 						<span translate="CONNEXION"> Se connecter</span>
 					</h2>
-					<form action="#">
+					<form action="ConnexionServlet" method="POST">
 						<div class="input-group margin-bottom-sm">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
-								type="text" placeholder="Email address">
+								type="text" placeholder="Email address" name="email">
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-							<input class="form-control" type="password"
-								placeholder="Password">
+							<input class="form-control" type="password" placeholder="Password" name="password">
 						</div>
-
 						<span> <input type="checkbox" class="checkbox"> <span
 							translate="REMEMBER_ME"> Se souvenir de moi</span>
 						</span>
 						<button type="submit" class="btn btn-primary pull-right">
-							<span translate="CONNEXION"> Se connecter</span>
-						</button>
+							<span translate="CONNEXION">Se connecter</span>
+						</button>						
 					</form>
 				</div>
 				<!--/login form-->
@@ -36,20 +45,19 @@
 				<div class="signup-form">
 					<!--sign up form-->
 					<h2><span translate="NOT_A_MEMBER"> Pas encore membre ?</span></h2>
-					<form action="#">
+					<form action="RegisterServlet" method="POST">
 						<div class="input-group margin-bottom-sm">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input class="form-control" type="text" placeholder="Name">
+							<input class="form-control" type="text" placeholder="Name" name="name">
 						</div>
 						<div class="input-group margin-bottom-sm">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
-								type="text" placeholder="Email address">
+								type="text" placeholder="Email address" name="email">
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-							<input class="form-control" type="password"
-								placeholder="Password">
+							<input class="form-control" type="password"	placeholder="Password" name="password">
 						</div>
 						<button type="submit" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
 					</form>

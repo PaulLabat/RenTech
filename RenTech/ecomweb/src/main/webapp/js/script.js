@@ -11,6 +11,8 @@
 		  PARTICULIERS : 'Private individuals',
 		  G_UTILISATEURS : 'Group of users',
 		  ENTREPRISES : 'Companies',
+		  CONNECTED : 'Connected as',
+		  DECONNEXION : 'Logout',
 		  A_PROPOS : 'About',
 		  A_PARTIR_DE : 'Starting from',
 		  TAXES : 'excl. VAT/month',
@@ -42,6 +44,8 @@
 		  PARTICULIERS : 'Particuliers',
 		  G_UTILISATEURS : 'Groupe d\'utilisateurs',
 		  ENTREPRISES : 'Entreprises',
+		  CONNECTED : 'Connect&eacute; en tant que',
+		  DECONNEXION : 'Deconnexion',
 		  A_PROPOS : '&Agrave; propos',
 		  A_PARTIR_DE : '&Agrave; partir de',
 		  TAXES : 'HT/mois',
@@ -73,6 +77,7 @@
 		    $translate.use(key);
 		  };
 	});
+
 	
 	// configure our routes
 	scotchApp.config(function($routeProvider) {
