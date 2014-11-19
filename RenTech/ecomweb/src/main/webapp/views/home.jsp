@@ -5,10 +5,10 @@
 
 	<div class="row">
 		<div class=".col-xs-6 col-md-4">
-
+			<div translate="PARTICULIERS" class="particuliers-title">Particuliers</div>
+			
 			<div class="panel panel-default">
-				<div class="panel-heading"
-					style="background-color: #FF3520; color: white; text-align: center; font-size:1.5em;"><span translate="PARTICULIERS">Particuliers</span></div>
+				
 				<div class="panel-body">
 
 					<div class="thumbnail">
@@ -34,13 +34,12 @@
 
 				</div>
 			</div>
-
-
 		</div>
+		
 		<div class=".col-xs-6 col-md-4">
+			<div translate="G_UTILISATEURS" class="groupe-title">Groupe d'utilisateurs</div>
+			
 			<div class="panel panel-default">
-				<div class="panel-heading"
-					style="background-color: #5E087F; color: white; text-align: center;font-size:1.5em;"><span translate="G_UTILISATEURS">Groupe d'utilisateurs</span></div>
 				<div class="panel-body">
 					<div class="thumbnail">
 						<img src="img/mumble.svg" alt="..." class="img-rounded">
@@ -57,11 +56,9 @@
 
 		</div>
 		<div class=".col-xs-6 col-md-4">
-
+			<div translate="ENTREPRISES" class="entreprise-title">Entreprises</div>
+	
 			<div class="panel panel-default">
-				<div class="panel-heading"
-					style="background-color: #ACCC19; color: white; text-align: center;font-size:1.5em;"><span translate="ENTREPRISES">Entreprises</span></div>
-
 				<div class="panel-body">
 
 					<img src="img/big-data.png" alt="..." class="img-rounded">

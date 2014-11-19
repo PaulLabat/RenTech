@@ -1,0 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=Abel);
+@font-face {
+	font-family:"Roboto";
+	src: url("fonts/Roboto-Regular.ttf") format('ttf');
+}
+
+.particuliers-title, .groupe-title, .entreprise-title {
+	color: #B4B1AB;
+	font-family: abel;
+
+	font-size: 20px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	letter-spacing: 5px;
+	
+	border-bottom: 1px solid #fafafaf;
+	margin-bottom: 5px;
+}
+.particuliers-title {
+  	color: #AA0000;
+}
+
+.groupe-title {
+	color: #0000CC;
+}
+
+.entreprise-title {
+	color: #008800;
+}
+
+.panel-body {
+	height:460px;
+}
