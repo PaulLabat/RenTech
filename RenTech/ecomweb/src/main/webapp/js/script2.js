@@ -9,7 +9,7 @@ var webSocket;
                     return;
                 }
                 // Create a new instance of the websocket
-                webSocket = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/CreationUserService");
+                webSocket = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/Services");
                 console.log("WebSocket Cree");
                  
                 /**
@@ -73,5 +73,6 @@ var webSocket;
             }
  
             function writeResponse(text){
-                console.log("Message recu par le client: "+text);
+            	var montext = JSON.parse(text);
+                console.log(montext);
             }

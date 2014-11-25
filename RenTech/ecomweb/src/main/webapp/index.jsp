@@ -130,18 +130,14 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!--/header-bottom-->
-	</header>
-	<!--/header-->
-
+		</div><!--/header-bottom-->
+	</header><!--/header-->
 	<!-- MAIN CONTENT AND INJECTED VIEWS -->
 	<div id="main">
 
 		<!-- angular templating -->
 		<!-- this is where content will be injected -->
 		<div ng-view></div>
-
 	</div>
 	
 	<footer class="footer">
