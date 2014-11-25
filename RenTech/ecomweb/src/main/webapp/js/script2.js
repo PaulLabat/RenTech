@@ -82,6 +82,7 @@ var webSocket;
             }
  
             function writeResponse(text){
-            	//var montext = JSON.parse(text);
-                console.log(text);
+            	var aParser = text;
+            	var montext = JSON.parse(aParser);
+                console.log(montext);
             }
