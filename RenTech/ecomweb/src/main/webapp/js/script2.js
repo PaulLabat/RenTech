@@ -68,12 +68,21 @@
                 
                 webSocket.send(JSON.stringify(utilisateur));
             }
+            
+            function addCart(item){            
+                
+                console.log("element à ajouter : "+item);
+                var aAjouter = {fonct : "addCart", idObjet : item};
+                console.log(aAjouter);
+                
+                webSocket.send(JSON.stringify(aAjouter));
+            }
            
             function closeSocket(){
                 webSocket.close();
             }
  
             function writeResponse(text){
-            	var montext = JSON.parse(text);
-                console.log(montext);
+            	//var montext = JSON.parse(text);
+                console.log(text);
             }

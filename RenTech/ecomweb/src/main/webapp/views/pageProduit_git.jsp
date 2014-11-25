@@ -42,7 +42,7 @@
 				<h3>9.99&#128; HT/mois</h3>
 				<hr>
 				<p>
-					<a class="btn btn-success btn-lg" href="#"><i class="icon-ok"></i>
+					<a onclick="addCart('smallGit');" class="btn btn-success btn-lg" href="#"><i class="icon-ok"></i>
 						<i class="fa fa-shopping-cart"></i> Ajouter au panier</a>
 				</p>
 			</div>
