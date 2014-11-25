@@ -1,15 +1,3 @@
-<script>$(document).ready(function(){
-			$('#buttonregister').click(function(){
-
-							$('#somediv').text("salut");
-							$.get('ConnexionServlet',function(responseText){
-
-													$('#somediv').text(responseText);
-
-																	})
-									})
-			}); </script>
-
 <section id="form">
 	<!--form-->
 	<div class="container">
@@ -20,22 +8,26 @@
 					<h2>
 						<span translate="CONNEXION"> Se connecter</span>
 					</h2>
-					<form action="ConnexionServlet" method="POST">
+					<form ng-controller="Cntrl" ng-submit="changeView('connected')">
 						<div class="input-group margin-bottom-sm">
-							<span class="input-group-addon"><i
-								class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
-								type="text" placeholder="Email address" name="email">
+							<span class="input-group-addon">
+								<i class="fa fa-envelope-o fa-fw"></i>
+							</span> 
+							<input ng-model="username" class="form-control"	type="text" placeholder="Email address" name="email">
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-							<input class="form-control" type="password" placeholder="Password" name="password">
+							<input ng-model="userpwd" class="form-control" type="password" placeholder="Password" name="password">
 						</div>
-						<span> <input type="checkbox" class="checkbox"> <span
-							translate="REMEMBER_ME"> Se souvenir de moi</span>
+						<span> 
+							<input type="checkbox" class="checkbox"> 
+							<span translate="REMEMBER_ME"> Se souvenir de moi</span>
 						</span>
+						
 						<button type="submit" class="btn btn-primary pull-right">
 							<span translate="CONNEXION">Se connecter</span>
-						</button>						
+						</button>		
+				
 					</form>
 				</div>
 				<!--/login form-->

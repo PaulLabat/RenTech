@@ -103,6 +103,11 @@
 				templateUrl : 'views/login.jsp',
 			})
 		
+			.when('/connected', {
+				templateUrl : 'views/connected.jsp',
+				controller  : 'connectedController'
+			})
+			
 			.when('/panier', {
 				templateUrl : 'views/panier.jsp',
 			})
@@ -141,6 +146,10 @@
 		$scope.message = 'Look! I am an about page.';
 	});
 
+	scotchApp.controller('connectedController', function($scope) {
+		$scope.message = 'test';
+	});
+	
 	scotchApp.controller('categController', function($scope) {
 		$scope.message = 'Hey! This is a section!';
 	});

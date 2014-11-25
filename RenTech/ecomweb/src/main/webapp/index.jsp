@@ -25,7 +25,8 @@
 	  <script src="js/angular-route.js"></script>
 	  <script src="js/angular-translate.js"></script>
 	  <script src="js/script.js"></script>
-
+	  <script src="js/forms.js"></script>
+	  
 	  <script src="js/bootstrap.min.js"></script>
 	  <script src="js/jquery.min.js"></script>
 	  <title>RenTech</title>
@@ -40,7 +41,7 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="logo pull-left">
-								<a href="#"><img src="img/logo-small.png" alt="" /></a>
+								<img src="img/logo-small.png" alt="" /></a>
 							</div>
 						</div>
 						
