@@ -17,7 +17,7 @@ public class Association implements Serializable{
     private Integer id;
     @NotNull
     private String nom;
-    @OneToMany(mappedBy="utilisateur")
+    @OneToMany(mappedBy = "association")
     private Collection<Utilisateur> utilisateurs ;
 
     public Association(){
@@ -26,10 +26,6 @@ public class Association implements Serializable{
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNom() {

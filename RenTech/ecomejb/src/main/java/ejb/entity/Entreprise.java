@@ -16,7 +16,7 @@ public class Entreprise implements Serializable{
     private Integer id;
     @NotNull
     private String nom;
-    @OneToMany(mappedBy="utilisateur")
+    @OneToMany(mappedBy = "entreprise")
     private Collection<Utilisateur> utilisateurs ;
 
     public Entreprise(){
@@ -25,10 +25,6 @@ public class Entreprise implements Serializable{
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNom() {

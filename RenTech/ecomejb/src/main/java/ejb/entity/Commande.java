@@ -30,10 +30,6 @@ public class Commande implements Serializable{
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Date getDate(){
         return this.beginDate.getTime();
     }

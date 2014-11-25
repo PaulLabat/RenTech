@@ -28,10 +28,6 @@ public class Support implements Serializable{
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Collection<Git> getGits() {
         return gits;
     }
