@@ -25,7 +25,7 @@ import beans.Utilisateur;
  * "EchoChamber" is the name of the package
  * and "echo" is the address to access this class from the server
  */
-@ServerEndpoint("/CreationUserService") 
+@ServerEndpoint("/Services") 
 public class Services {
     /**
      * @OnOpen allows us to intercept the creation of a new session.
@@ -55,6 +55,7 @@ public class Services {
         
         if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
         else if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
+        else if (fonct.compareTo("addCart")==0) onAddCart(session,jsonObject);
 
         
     }
@@ -78,6 +79,9 @@ public class Services {
         
         Utilisateur utilisateur = new Utilisateur(nom,email,password);
         
+       // UtilisateurFacadeImpl UFI = new UtilisateurFacadeImpl();
+        
+        //UFI.create(utilisateur);
         //Test si l'utilisateur existe dans la base de donnée
         
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
@@ -113,6 +117,32 @@ public class Services {
       
         try {
             session.getBasicRemote().sendText(writer.toString());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void onAddCart(Session session, JsonObject jsonObject)
+    {
+    	String ID = jsonObject.getString("idObjet");
+        
+    	System.out.println("On ajoute au panier :"+ID);
+        
+        //Test si l'utilisateur existe dans la base de donnée
+        
+        //Si oui -> renvoi à l'utilisateur qu'il existe déja
+        
+        //Si non -> insertion dans la base de donnée
+        /*StringWriter writer = new StringWriter();
+        JsonGenerator generator = Json.createGenerator(writer);
+        generator.writeStartObject()
+            .write("status", "OK")
+            .write("email", email)
+            .writeEnd();
+        generator.close();
+      	*/
+        try {
+            session.getBasicRemote().sendText(ID+" ajouté au panier");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
