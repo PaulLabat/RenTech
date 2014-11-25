@@ -17,6 +17,7 @@ public class Commande implements Serializable{
     @GeneratedValue
     private Integer id;
     @NotNull
+    @Temporal(TemporalType.DATE)
     private Calendar beginDate;
     @OneToMany
     private Collection<Offre> offres ;
