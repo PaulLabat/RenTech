@@ -25,19 +25,9 @@
 	  <script src="js/angular-route.js"></script>
 	  <script src="js/angular-translate.js"></script>
 	  <script src="js/script.js"></script>
-	  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	  <script>$(document).ready(function(){
-			$('#buttonregister').click(function(){
 
-							$('#somediv').text("salut");
-							$.get('ConnexionServlet',function(responseText){
-
-													$('#somediv').text(responseText);
-
-																	})
-									})
-			}); </script>
-	  
+	  <script src="js/bootstrap.min.js"></script>
+	  <script src="js/jquery.min.js"></script>
 	  <title>RenTech</title>
 </head>
 <!-- HEADER AND NAVBAR -->

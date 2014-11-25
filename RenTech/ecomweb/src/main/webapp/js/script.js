@@ -33,7 +33,8 @@
 		  POSTAL_CODE : "Postal code",
 		  PRODUCT : "Product",
 		  PRICE : "Price",
-		  QUANTITY : "Quantity"
+		  QUANTITY : "Quantity",
+		  VOIR_PLUS: "See more >"
 	  });
 	  
 	  
@@ -66,7 +67,8 @@
 		  POSTAL_CODE : "Code postal",
 		  PRODUCT : "Produit",
 		  PRICE : "Prix",
-		  QUANTITY : "Quantit&eacute;"
+		  QUANTITY : "Quantit&eacute;",
+		  VOIR_PLUS: "En voir plus >"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
