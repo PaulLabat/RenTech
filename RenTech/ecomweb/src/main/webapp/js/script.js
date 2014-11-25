@@ -112,8 +112,14 @@
 				templateUrl : 'views/panier.jsp',
 			})
 		
-			.when('/pageProduit', {
-				templateUrl : 'views/pageProduit.jsp',
+			.when('/git', {
+				templateUrl : 'views/pageProduit_git.jsp',
+			})
+			.when('/web', {
+				templateUrl : 'views/pageProduit_web.jsp',
+			})
+			.when('/mail', {
+				templateUrl : 'views/pageProduit_mail.jsp',
 			})
 			.when('/compte',{
 				templateUrl : 'views/compteClient.jsp',
