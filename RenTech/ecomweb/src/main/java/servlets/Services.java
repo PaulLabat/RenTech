@@ -26,7 +26,7 @@ import beans.Utilisateur;
  * and "echo" is the address to access this class from the server
  */
 @ServerEndpoint("/CreationUserService") 
-public class CreationUserService {
+public class Services {
     /**
      * @OnOpen allows us to intercept the creation of a new session.
      * The session class allows us to send data to the user.
