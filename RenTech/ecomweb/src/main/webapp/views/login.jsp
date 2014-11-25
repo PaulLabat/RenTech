@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'master' of https://github.com/PaulLabat/RenTech.git
 <section id="form">
 	<!--form-->
 	<div class="container">
@@ -20,7 +15,7 @@
 								type="text" placeholder="Email address" id="emailConnect">
 						</div>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span><<<<<<< HEAD
+							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 							<input class="form-control" type="password" placeholder="Password" id="passwordConnect">
 
 						</div>
@@ -57,8 +52,6 @@
 					
 				</div>
 				<!--/sign up form-->
-				
-				
 				
 			</div>
 		</div>
