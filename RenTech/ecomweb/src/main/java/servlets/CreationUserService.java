@@ -5,9 +5,11 @@ import java.io.IOException;
 
 
 import java.io.StringReader;
+import java.io.StringWriter;
 
 import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.stream.JsonGenerator;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -101,10 +103,17 @@ public class CreationUserService {
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
         
         //Si non -> insertion dans la base de donnée
-        
+        StringWriter writer = new StringWriter();
+        JsonGenerator generator = Json.createGenerator(writer);
+        generator.writeStartObject()
+            .write("status", "OK")
+            .write("email", email)
+            .writeEnd();
+        generator.close();
+      
         try {
-            session.getBasicRemote().sendText("Connexion OK avec l'email "+email);
-        } catch (IOException ex) {
+            session.getBasicRemote().sendText(writer.toString());
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

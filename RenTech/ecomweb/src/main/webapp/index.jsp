@@ -129,7 +129,6 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 	
@@ -138,28 +137,12 @@
   <div id="main">
   
     <!-- angular templating -->
-=======
-		</div>
-		<!--/header-bottom-->
-	</header>
-	<!--/header-->
+<!-- this is where content will be injected -->
 
-	<!-- MAIN CONTENT AND INJECTED VIEWS -->
-	<div id="main">
-
-		<!-- angular templating -->
->>>>>>> branch 'master' of https://github.com/PaulLabat/RenTech.git
-		<!-- this is where content will be injected -->
-<<<<<<< HEAD
     <div ng-view></div>
    
   </div>
-  
-=======
-		<div ng-view></div>
 
-	</div>
->>>>>>> branch 'master' of https://github.com/PaulLabat/RenTech.git
 </body>
 
 </html>

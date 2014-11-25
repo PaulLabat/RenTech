@@ -73,5 +73,6 @@ var webSocket;
             }
  
             function writeResponse(text){
-                console.log("Message recu par le client: "+text);
+            	var montext = JSON.parse(text);
+                console.log(montext);
             }
