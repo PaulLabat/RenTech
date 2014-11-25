@@ -53,8 +53,6 @@
 				</div>
 				<!--/sign up form-->
 				
-				
-				
 			</div>
 		</div>
 	</div>
