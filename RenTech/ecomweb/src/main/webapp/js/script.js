@@ -113,6 +113,9 @@
 			.when('/web', {
 				templateUrl : 'views/pageProduit_web.jsp',
 			})
+			.when('/mail', {
+				templateUrl : 'views/pageProduit_mail.jsp',
+			})
 			.when('/compte',{
 				templateUrl : 'views/compteClient.jsp',
 			})

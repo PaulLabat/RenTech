@@ -98,21 +98,21 @@
 									<ul role="menu" class="sub-menu">
 										<li><a href="#git">Serveur Git</a></li>
 										<li><a href="#web">Hébergement web</a></li>
-										<li><a href="#categ">Section 3</a></li>
+										<li><a href="#mail">Serveur Mail</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#"><span
 										translate="G_UTILISATEURS">Groupe d'utilisateurs</span></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="#categ">Mumble</a></li>
-										<li><a href="#categ">Section 2</a></li>
-										<li><a href="#categ">Section 3</a></li>
+										<li><a href="#mumble">Mumble</a></li>
+										<li><a href="#serveurDedie">Serveur dédié</a></li>
+										<li><a href="#partageFichier">Serveur de partage</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#"><span
 										translate="ENTREPRISES">Entreprises</span></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="#categ">Big data</a></li>
-										<li><a href="#categ">Section 2</a></li>
-										<li><a href="#categ">Section 3</a></li>
+										<li><a href="#cloudDedie">Cloud dédié</a></li>
+										<li><a href="#cloudPublic">Cloud public</a></li>
+										<li><a href="#stockage">Stockage</a></li>
 									</ul></li>
 								<li><a href="#about"><span translate="A_PROPOS">About</span></a></li>
 							</ul>
