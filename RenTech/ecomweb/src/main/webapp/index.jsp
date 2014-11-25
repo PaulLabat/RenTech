@@ -2,35 +2,38 @@
 <!-- define angular app -->
 <html ng-app="scotchApp">
 <head>
-<meta charset="UTF-8" />
+	  <meta charset="UTF-8" />
+	  
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	
+	<link rel="stylesheet" href="css/header.css" />
+	<link rel="stylesheet" href="css/login.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	<link rel="stylesheet" href="css/menus.css" />
+	<link rel="stylesheet" href="css/panier.css" />
+	<link rel="stylesheet" href="css/pageProduit.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	
+	<!-- SPELLS -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="js/angular-translate.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/script2.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/forms.js"></script>
+	<title>RenTech</title>
 
-<!-- SCROLLS -->
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/responsive.css">
-
-<link rel="stylesheet" href="css/header.css" />
-<link rel="stylesheet" href="css/login.css" />
-<link rel="stylesheet" href="css/home.css" />
-<link rel="stylesheet" href="css/menus.css" />
-<link rel="stylesheet" href="css/panier.css" />
-<link rel="stylesheet" href="css/pageProduit.css" />
-<link rel="stylesheet" href="css/responsive.css" />
-
-<!-- SPELLS -->
-<script src="js/angular.min.js"></script>
-<script src="js/angular-route.js"></script>
-<script src="js/angular-translate.js"></script>
-<script src="js/script.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<title>RenTech</title>
 </head>
 <!-- HEADER AND NAVBAR -->
-<body ng-controller="mainController">
-	<%@page import="beans.Utilisateur"%>
 
+<body ng-controller="mainController" onload="openSocket();">
+<%@page import="beans.Utilisateur" %>
 	<header id="header">
 		<!--header-->
 		<div class="header-middle">
@@ -40,6 +43,7 @@
 					<div class="col-sm-4">
 						<div class="logo pull-left">
 							<a href="#"><img src="img/logo-small.png" alt="" /></a>
+
 						</div>
 					</div>
 
@@ -125,6 +129,16 @@
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+	
+	
+  <!-- MAIN CONTENT AND INJECTED VIEWS -->
+  <div id="main">
+  
+    <!-- angular templating -->
+=======
 		</div>
 		<!--/header-bottom-->
 	</header>
@@ -134,10 +148,18 @@
 	<div id="main">
 
 		<!-- angular templating -->
+>>>>>>> branch 'master' of https://github.com/PaulLabat/RenTech.git
 		<!-- this is where content will be injected -->
+<<<<<<< HEAD
+    <div ng-view></div>
+   
+  </div>
+  
+=======
 		<div ng-view></div>
 
 	</div>
+>>>>>>> branch 'master' of https://github.com/PaulLabat/RenTech.git
 </body>
 
 </html>

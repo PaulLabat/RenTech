@@ -40,8 +40,10 @@ public class RegisterServlet extends HttpServlet {
 
 		Utilisateur utilisateur = new Utilisateur(request.getParameter("email"),request.getParameter("password"),request.getParameter("name"));;
 
+		
+		
 		request.getSession().setAttribute("user", utilisateur);
-		request.getRequestDispatcher("/index.jsp").forward(request,response);
+		//request.getRequestDispatcher("/index.jsp").forward(request,response);
 
 		
 	}
