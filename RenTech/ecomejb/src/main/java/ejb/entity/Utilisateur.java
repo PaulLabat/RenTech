@@ -1,4 +1,4 @@
-package ejb;
+package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

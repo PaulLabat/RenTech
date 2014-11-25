@@ -1,16 +1,18 @@
-package ejb;
+package ejb.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Collection;
 
 /**
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "SERVEURVIRTUEL")
-public class ServeurVirtuel implements Serializable{
+@Table(name = "FORUM")
+public class Forum implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -20,14 +22,8 @@ public class ServeurVirtuel implements Serializable{
     private Integer ram;
     @NotNull
     private Integer nbreCoeur;
-    @OneToMany
-    private Collection<Git> gits;
-    @OneToMany
-    private Collection<SiteWeb> siteWebs;
-    @OneToMany
-    private Collection<Forum> forums;
 
-    public ServeurVirtuel(){
+    public Forum(){
 
     }
 
@@ -61,29 +57,5 @@ public class ServeurVirtuel implements Serializable{
 
     public void setNbreCoeur(Integer nbreCoeur) {
         this.nbreCoeur = nbreCoeur;
-    }
-
-    public Collection<Git> getGits() {
-        return gits;
-    }
-
-    public void setGits(Collection<Git> gits) {
-        this.gits = gits;
-    }
-
-    public Collection<SiteWeb> getSiteWebs() {
-        return siteWebs;
-    }
-
-    public void setSiteWebs(Collection<SiteWeb> siteWebs) {
-        this.siteWebs = siteWebs;
-    }
-
-    public Collection<Forum> getForums() {
-        return forums;
-    }
-
-    public void setForums(Collection<Forum> forums) {
-        this.forums = forums;
     }
 }

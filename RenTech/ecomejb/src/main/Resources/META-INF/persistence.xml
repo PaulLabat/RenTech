@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="1.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+    <persistence-unit name="myManager" transaction-type="JTA">
+        <provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
+        <!-- All persistence classes must be listed -->
+        <class>ejb.entity.Utilisateur</class>
+        <class>ejb.entity.Association</class>
+        <class>ejb.entity.Commande</class>
+        <class>ejb.entity.Entreprise</class>
+        <class>ejb.entity.Forum</class>
+        <jta-data-source>jdbc/__default</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -1,16 +1,18 @@
-package ejb;
+package ejb.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Collection;
 
 /**
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "SERVEURPHYSIQUE")
-public class ServeurPhysique implements Serializable{
+@Table(name = "SITEWEB")
+public class SiteWeb implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -20,11 +22,8 @@ public class ServeurPhysique implements Serializable{
     private Integer ram;
     @NotNull
     private Integer nbreCoeur;
-    //supprimer un serveur physique entrainera la suppression des serveurs virtuels
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
-    private Collection<ServeurVirtuel> serveurVirtuels;
 
-    public ServeurPhysique(){
+    public SiteWeb(){
 
     }
 
@@ -58,13 +57,5 @@ public class ServeurPhysique implements Serializable{
 
     public void setNbreCoeur(Integer nbreCoeur) {
         this.nbreCoeur = nbreCoeur;
-    }
-
-    public Collection<ServeurVirtuel> getServeurVirtuels() {
-        return serveurVirtuels;
-    }
-
-    public void setServeurVirtuels(Collection<ServeurVirtuel> serveurVirtuels) {
-        this.serveurVirtuels = serveurVirtuels;
     }
 }
