@@ -25,8 +25,8 @@ public class Utilisateur implements Serializable{
     private String mdp;
     @NotNull
     private String nom;
-    @NotNull
     private String prenom;
+    private String adresseFactu;
     @ManyToOne
     private Entreprise entreprise;
     @ManyToOne
@@ -80,6 +80,14 @@ public class Utilisateur implements Serializable{
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public String getAdresseFactu() {
+        return adresseFactu;
+    }
+
+    public void setAdresseFactu(String adresseFactu) {
+        this.adresseFactu = adresseFactu;
     }
 
     public Entreprise getEntreprise() {

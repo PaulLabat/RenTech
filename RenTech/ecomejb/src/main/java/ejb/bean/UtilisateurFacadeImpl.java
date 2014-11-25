@@ -4,7 +4,7 @@ import ejb.entity.Utilisateur;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import java.io.Serializable;
 
 /**
@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 @Stateless
 public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote, Serializable{
-    @PersistenceContext(unitName = "myManager")
+    @PersistenceUnit(unitName="MyFactory")
     private EntityManager entityManager;
 
     @Override

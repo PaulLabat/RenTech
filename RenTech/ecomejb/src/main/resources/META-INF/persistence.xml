@@ -5,21 +5,9 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
                         http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-    <persistence-unit name="myManager" transaction-type="JTA">
+    <persistence-unit name="MyFactory" transaction-type="JTA">
         <jta-data-source>jdbc/__default</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <!-- All persistence classes must be listed -->
-        <!--<class>ejb.entity.Association</class>-->
-        <!--<class>ejb.entity.Commande</class>-->
-        <!--<class>ejb.entity.Entreprise</class>-->
-        <!--<class>ejb.entity.Forum</class>-->
-        <!--<class>ejb.entity.Git</class>-->
-        <!--<class>ejb.entity.Offre</class>-->
-        <!--<class>ejb.entity.ServeurPhysique</class>-->
-        <!--<class>ejb.entity.ServeurVirtuel</class>-->
-        <!--<class>ejb.entity.SiteWeb</class>-->
-        <!--<class>ejb.entity.Support</class>-->
-        <!--<class>ejb.entity.Utilisateur</class>-->
         <properties>
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
         </properties>

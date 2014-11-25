@@ -17,6 +17,8 @@ public class Commande implements Serializable{
     @GeneratedValue
     private Integer id;
     @NotNull
+    private String adresseFactu;
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Calendar beginDate;
     @OneToMany
@@ -28,6 +30,14 @@ public class Commande implements Serializable{
 
     public Integer getId() {
         return id;
+    }
+
+    public String getAdresseFactu() {
+        return adresseFactu;
+    }
+
+    public void setAdresseFactu(String adresseFactu) {
+        this.adresseFactu = adresseFactu;
     }
 
     public Date getDate(){
