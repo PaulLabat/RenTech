@@ -14,7 +14,7 @@ import beans.Utilisateur;
 /**
  * Servlet implementation class ConnectionServlet
  */
-@WebServlet("/ConnexionServlet/*")
+@WebServlet("/Connexion")
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

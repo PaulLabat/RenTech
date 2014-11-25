@@ -33,7 +33,8 @@
 		  POSTAL_CODE : "Postal code",
 		  PRODUCT : "Product",
 		  PRICE : "Price",
-		  QUANTITY : "Quantity"
+		  QUANTITY : "Quantity",
+		  VOIR_PLUS: "See more >"
 	  });
 	  
 	  
@@ -66,7 +67,8 @@
 		  POSTAL_CODE : "Code postal",
 		  PRODUCT : "Produit",
 		  PRICE : "Prix",
-		  QUANTITY : "Quantit&eacute;"
+		  QUANTITY : "Quantit&eacute;",
+		  VOIR_PLUS: "En voir plus >"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
@@ -101,12 +103,23 @@
 				templateUrl : 'views/login.jsp',
 			})
 		
+			.when('/connected', {
+				templateUrl : 'views/connected.jsp',
+				controller  : 'connectedController'
+			})
+			
 			.when('/panier', {
 				templateUrl : 'views/panier.jsp',
 			})
 		
-			.when('/pageProduit', {
-				templateUrl : 'views/pageProduit.jsp',
+			.when('/git', {
+				templateUrl : 'views/pageProduit_git.jsp',
+			})
+			.when('/web', {
+				templateUrl : 'views/pageProduit_web.jsp',
+			})
+			.when('/mail', {
+				templateUrl : 'views/pageProduit_mail.jsp',
 			})
 			.when('/compte',{
 				templateUrl : 'views/compteClient.jsp',
@@ -139,6 +152,10 @@
 		$scope.message = 'Look! I am an about page.';
 	});
 
+	scotchApp.controller('connectedController', function($scope) {
+		$scope.message = 'test';
+	});
+	
 	scotchApp.controller('categController', function($scope) {
 		$scope.message = 'Hey! This is a section!';
 	});

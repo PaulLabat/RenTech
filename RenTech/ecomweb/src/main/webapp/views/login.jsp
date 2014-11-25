@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/PaulLabat/RenTech.git
 <section id="form">
 	<!--form-->
 	<div class="container">
@@ -10,21 +13,25 @@
 					<h2>
 						<span translate="CONNEXION"> Se connecter</span>
 					</h2>
+
 					<div class="input-group margin-bottom-sm">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
 								type="text" placeholder="Email address" id="emailConnect">
 						</div>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span><<<<<<< HEAD
 							<input class="form-control" type="password" placeholder="Password" id="passwordConnect">
+
 						</div>
-						<span> <input type="checkbox" class="checkbox"> <span
-							translate="REMEMBER_ME"> Se souvenir de moi</span>
+						<span> 
+							<input type="checkbox" class="checkbox"> 
+							<span translate="REMEMBER_ME"> Se souvenir de moi</span>
 						</span>
 						<button onclick="connectUser();" type="submit" class="btn btn-primary pull-right">
+
 							<span translate="CONNEXION">Se connecter</span>
-						</button>						
+						</button>		
 				</div>
 				<!--/login form-->
 			</div>

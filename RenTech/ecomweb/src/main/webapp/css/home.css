@@ -4,6 +4,10 @@
 	src: url("fonts/Roboto-Regular.ttf") format('ttf');
 }
 
+.panel a {
+	position: absolute; bottom: 0; left: 0; 
+}
+
 .particuliers-title, .groupe-title, .entreprise-title {
 	color: #B4B1AB;
 	font-family: abel;
@@ -31,5 +35,5 @@
 }
 
 .panel-body {
-	height:460px;
+	height:520px;
 }
