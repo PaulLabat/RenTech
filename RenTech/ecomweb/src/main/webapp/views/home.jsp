@@ -12,7 +12,7 @@
 				<div class="panel-body">
 
 					<div class="thumbnail">
-						<img src="img/git.svg" alt="..." class="img-rounded">
+						<img src="img/git_glossy.png" alt="..." class="img-rounded">
 
 						<h3>
 							Git
@@ -41,7 +41,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="thumbnail">
-						<img src="img/mumble.svg" alt="..." class="img-rounded">
+						<img src="img/mumble_glossy.png" alt="..." class="img-rounded">
 						<h3>
 							Serveur Mumble
 						</h3>
