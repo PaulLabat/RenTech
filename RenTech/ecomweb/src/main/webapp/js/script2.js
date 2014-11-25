@@ -1,4 +1,4 @@
-var webSocket;
+			var webSocket;
             var messages = document.getElementById("messages");
            //console.log(document);
            
@@ -27,6 +27,7 @@ var webSocket;
  
                 webSocket.onmessage = function(event){
                     writeResponse(event.data);
+                    angular.element(document.querySelector('#login-div')).scope().changeView('/connected');
                 };
  
                 webSocket.onclose = function(event){

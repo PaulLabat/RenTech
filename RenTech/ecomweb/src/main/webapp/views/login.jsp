@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-1">
-				<div class="login-form">
+				<div id="login-div" ng-controller="Cntrl" class="login-form">
 					<!--login form-->
 					<h2>
 						<span translate="CONNEXION"> Se connecter</span>
