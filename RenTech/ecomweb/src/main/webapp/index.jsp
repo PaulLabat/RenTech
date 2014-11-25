@@ -2,9 +2,8 @@
 <!-- define angular app -->
 <html ng-app="scotchApp">
 <head>
-
-	<meta charset="UTF-8" />
-	
+	  <meta charset="UTF-8" />
+	  
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -25,6 +24,7 @@
 	<script src="js/angular-route.js"></script>
 	<script src="js/angular-translate.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/script2.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/forms.js"></script>
@@ -32,9 +32,9 @@
 
 </head>
 <!-- HEADER AND NAVBAR -->
-<body ng-controller="mainController">
-	<%@page import="beans.Utilisateur"%>
 
+<body ng-controller="mainController" onload="openSocket();">
+<%@page import="beans.Utilisateur" %>
 	<header id="header">
 		<!--header-->
 		<div class="header-middle">
