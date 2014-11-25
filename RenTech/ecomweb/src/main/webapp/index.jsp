@@ -25,6 +25,8 @@
 	  <script src="js/angular-route.js"></script>
 	  <script src="js/angular-translate.js"></script>
 	  <script src="js/script.js"></script>
+	 	<script src="js/script2.js"></script>
+	  
 	  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	  <script>$(document).ready(function(){
 			$('#buttonregister').click(function(){
@@ -41,7 +43,7 @@
 	  <title>RenTech</title>
 </head>
 <!-- HEADER AND NAVBAR -->
-<body ng-controller="mainController">
+<body ng-controller="mainController" onload="openSocket();">
 <%@page import="beans.Utilisateur" %>
 
 	<header id="header"><!--header-->
@@ -129,6 +131,7 @@
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 	
+	
   <!-- MAIN CONTENT AND INJECTED VIEWS -->
   <div id="main">
   
@@ -137,6 +140,7 @@
     <div ng-view></div>
    
   </div>
+  
 </body>
 
 </html>
