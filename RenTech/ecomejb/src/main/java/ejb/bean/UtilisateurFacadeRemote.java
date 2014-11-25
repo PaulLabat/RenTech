@@ -16,4 +16,5 @@ public interface UtilisateurFacadeRemote {
 
     void remove(Utilisateur utilisateur);
 
+    boolean contains(Utilisateur utilisateur);
 }
