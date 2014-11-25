@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- define angular app -->
 <html ng-app="scotchApp">
-
 <head>
 	  <meta charset="UTF-8" />
 	  
@@ -26,13 +25,14 @@
 	  <script src="js/angular-route.js"></script>
 	  <script src="js/angular-translate.js"></script>
 	  <script src="js/script.js"></script>
+
 	  <script src="js/bootstrap.min.js"></script>
 	  <script src="js/jquery.min.js"></script>
 	  <title>RenTech</title>
 </head>
-
 <!-- HEADER AND NAVBAR -->
 <body ng-controller="mainController">
+<%@page import="beans.Utilisateur" %>
 
 	<header id="header"><!--header-->
 		<div class="header-middle"><!--header-middle-->
@@ -55,7 +55,21 @@
 										</div>
 									</li>
 									<li><a href="#panier"><i class="fa fa-shopping-cart"></i> <span translate="PANIER">Panier</span></a></li>
-									<li><a href="#login"><i class="fa fa-lock"></i> <span translate="CONNEXION">Connexion</span></a></li>
+									
+									<%if (request.getSession().getAttribute("user")==null){ %>
+									<li>
+									<a href="#login"><i class="fa fa-lock"></i> <span translate="CONNEXION">Connexion</span></a></li>
+									</li>
+									<%} else {
+									Utilisateur utilisateur = (Utilisateur)request.getSession().getAttribute("user");
+									
+									%>
+									<li><a href="#compte"><i class="fa fa-lock"></i> <span translate="CONNECTED">Connecté en tant que</span> <%=utilisateur.getMail() %></a>
+									</li>
+									<li><a href="<%=request.getContextPath()+"/LogoutServlet"%>"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <span translate="DECONNEXION">Deconnexion</span></a>
+									</li>
+									<%} %>
+									
 								</ul>
 							</div>
 						</div>
@@ -111,7 +125,7 @@
     <!-- angular templating -->
 		<!-- this is where content will be injected -->
     <div ng-view></div>
-    
+   
   </div>
 </body>
 
