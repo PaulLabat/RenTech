@@ -26,7 +26,8 @@
 	  <script src="js/angular-route.js"></script>
 	  <script src="js/angular-translate.js"></script>
 	  <script src="js/script.js"></script>
-	  
+	  <script src="js/bootstrap.min.js"></script>
+	  <script src="js/jquery.min.js"></script>
 	  <title>RenTech</title>
 </head>
 

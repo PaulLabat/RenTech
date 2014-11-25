@@ -11,7 +11,7 @@
 				
 				<div class="panel-body">
 
-					<div class="thumbnail">
+ 					<div class="thumbnail"> 
 						<img src="img/git.svg" alt="..." class="img-rounded">
 						<div class="caption">
 							<h3>
@@ -31,7 +31,7 @@
 						</div>
 					</div>
 
-
+					<a href="#" class="btn btn-primary" role="button" translate="VOIR_PLUS">En voir plus ></a>
 				</div>
 			</div>
 		</div>
@@ -50,7 +50,8 @@
 							<span translate="A_PARTIR_DE">à partir de</span> <b>9,99&#128;</b>  <span translate="TAXES">HT/mois</span>
 						</div>
 					</div>
-
+					
+					<a href="#" class="btn btn-primary" role="button" translate="VOIR_PLUS">En voir plus ></a>
 				</div>
 			</div>
 
@@ -68,11 +69,11 @@
 						</h3>
 						<span translate="A_PARTIR_DE">à partir de</span> <b>299,9&#128;</b>  <span translate="TAXES">HT/mois</span>
 					</div>
+					
+					<a href="#" class="btn btn-primary" role="button" translate="VOIR_PLUS">En voir plus ></a>
 				</div>
-
 			</div>
+			
 		</div>
-
-
 	</div>
 </div>
