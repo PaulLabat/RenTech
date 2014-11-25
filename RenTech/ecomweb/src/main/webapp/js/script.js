@@ -34,7 +34,8 @@
 		  PRODUCT : "Product",
 		  PRICE : "Price",
 		  QUANTITY : "Quantity",
-		  VOIR_PLUS: "See more >"
+		  VOIR_PLUS: "See more >",
+		  PAYEMENT : "Checkout"
 	  });
 	  
 	  
@@ -68,7 +69,8 @@
 		  PRODUCT : "Produit",
 		  PRICE : "Prix",
 		  QUANTITY : "Quantit&eacute;",
-		  VOIR_PLUS: "En voir plus >"
+		  VOIR_PLUS: "En voir plus >",
+		  PAYEMENT: "Payement"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
