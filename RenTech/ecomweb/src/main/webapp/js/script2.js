@@ -27,7 +27,7 @@
  
                 webSocket.onmessage = function(event){
                     writeResponse(event.data);
-                    angular.element(document.querySelector('#login-div')).scope().changeView('/connected');
+                   // angular.element(document.querySelector('#login-div')).scope().changeView('/connected');
                 };
  
                 webSocket.onclose = function(event){
@@ -67,6 +67,10 @@
                 console.log(utilisateur);
                 
                 webSocket.send(JSON.stringify(utilisateur));
+                
+                var appElement = document.querySelector('[ng-app=scotchApp]');
+                var $scope = angular.element(appElement).scope();
+                $scope.changeView('/connected');
             }
             
             function addCart(item){            

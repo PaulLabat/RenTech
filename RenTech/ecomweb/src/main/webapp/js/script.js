@@ -2,6 +2,32 @@
     // also include ngRoute for all our routing needs
 	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate']);
 
+	scotchApp.factory('MyService', ['$q', '$rootScope', function($q, $rootScope) {
+		console.log("Debut"); 
+	    // We return this object to anything injecting our service
+	    var Service = {};
+	    // Keep all pending requests here until they get responses
+	    var callbacks = {};
+	    // Create a unique callback ID to map requests to responses
+	    var currentCallbackId = 0;
+	    // Create our websocket object with the address to the websocket
+	    var ws = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/Test");
+	    	    
+	    ws.onopen = function(){  
+	        console.log("Socket has been opened!");  
+	    };
+	    
+	    ws.onmessage = function(message) {
+	    	console.log(message.data);
+	    };
+
+	    Service.send = function() {
+	    	ws.send("Alex");
+	      }
+        
+	    return Service;
+	}]);
+	
 	// Traductions
 	scotchApp.config(function ($translateProvider) {
 	  $translateProvider.translations('en', {
@@ -145,16 +171,20 @@
 	});
 
 	// create the controller and inject Angular's $scope
-	scotchApp.controller('mainController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
-	});
+	scotchApp.controller('mainController', ['MyService', function(MyService){
+	    
+	  }]);
 
 	scotchApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});
 
-	scotchApp.controller('connectedController', function($scope) {
+	scotchApp.controller('connectedController', function(MyService,$scope) {
+		
+		$scope.createUser = function() {
+			MyService.send();
+		}
+		
 		$scope.message = 'test';
 	});
 	

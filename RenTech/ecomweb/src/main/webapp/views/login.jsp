@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-1">
-				<div id="login-div" ng-controller="Cntrl" class="login-form">
+				<div id="login-div" class="login-form">
 					<!--login form-->
 					<h2>
 						<span translate="CONNEXION"> Se connecter</span>
@@ -23,7 +23,7 @@
 							<input type="checkbox" class="checkbox"> 
 							<span translate="REMEMBER_ME"> Se souvenir de moi</span>
 						</span>
-						<button onclick="connectUser();" type="submit" class="btn btn-primary pull-right">
+						<button ng-controller="connectedController" ng-click="createUser()" type="submit" class="btn btn-primary pull-right">
 
 							<span translate="CONNEXION">Se connecter</span>
 						</button>		
