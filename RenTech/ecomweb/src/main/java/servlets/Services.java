@@ -27,6 +27,8 @@ import beans.Utilisateur;
  */
 @ServerEndpoint("/Services") 
 public class Services {
+	
+
     /**
      * @OnOpen allows us to intercept the creation of a new session.
      * The session class allows us to send data to the user.
@@ -36,8 +38,14 @@ public class Services {
     @OnOpen
     public void onOpen(Session session){
         System.out.println(session.getId() + " has opened a connection"); 
+    	StringWriter writer = new StringWriter();
+        JsonGenerator generator = Json.createGenerator(writer);
+        generator.writeStartObject()
+            .write("status", "Connexion Established")
+            .writeEnd();
+        generator.close();
         try {
-            session.getBasicRemote().sendText("Connection Established");
+            session.getBasicRemote().sendText(writer.toString());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -87,9 +95,18 @@ public class Services {
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
         
         //Si non -> insertion dans la base de donnée
+    	StringWriter writer = new StringWriter();
+        JsonGenerator generator = Json.createGenerator(writer);
+        generator.writeStartObject()
+            .write("status", "OK")
+            .write("nom", nom)
+            .write("email", email)
+            .write("password", password)
+            .writeEnd();
+        generator.close();
         
         try {
-            session.getBasicRemote().sendText("Utilisateur "+nom+" crée");
+            session.getBasicRemote().sendText(writer.toString());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -107,7 +124,7 @@ public class Services {
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
         
         //Si non -> insertion dans la base de donnée
-        StringWriter writer = new StringWriter();
+    	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject()
             .write("status", "OK")
@@ -133,16 +150,17 @@ public class Services {
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
         
         //Si non -> insertion dans la base de donnée
-        /*StringWriter writer = new StringWriter();
+    	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject()
             .write("status", "OK")
-            .write("email", email)
+            .write("idObjet",ID)
             .writeEnd();
         generator.close();
-      	*/
+      	
         try {
-            session.getBasicRemote().sendText(ID+" ajouté au panier");
+        	
+            session.getBasicRemote().sendText(writer.toString());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
