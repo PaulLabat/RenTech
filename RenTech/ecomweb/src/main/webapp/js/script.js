@@ -2,7 +2,19 @@
     // also include ngRoute for all our routing needs
 	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate']);
 
-	scotchApp.factory('MyService', ['$q', '$rootScope', function($q, $rootScope) {
+	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
+	
+	scotchApp.factory('MySharedService', ['$rootScope', function($rootScope) {
+		var sharedService = {};
+		
+		// Donnees communes aux differentes vues
+		var user;
+
+	    return sharedService;
+	}]);
+	
+	// ----------------------------- WEBSOCKETS ------------------------------ //
+	scotchApp.factory('MyService', ['$rootScope', function($rootScope) {
 		console.log("Debut"); 
 	    // We return this object to anything injecting our service
 	    var Service = {};
@@ -11,24 +23,29 @@
 	    // Create a unique callback ID to map requests to responses
 	    var currentCallbackId = 0;
 	    // Create our websocket object with the address to the websocket
-	    var ws = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/Test");
-	    	    
+	    var ws = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/Services");
+	    
 	    ws.onopen = function(){  
 	        console.log("Socket has been opened!");  
 	    };
 	    
 	    ws.onmessage = function(message) {
-	    	console.log(message.data);
-	    };
+	    	console.log(JSON.parse(message.data));
+	    	var msg_received = JSON.parse(message.data);
+	    	    	
+	    	$rootScope.$broadcast('msgReceived',JSON.stringify(msg_received["email"]));
+	    };	    
 
-	    Service.send = function() {
-	    	ws.send("Alex");
-	      }
-        
+	    Service.send = function(data) {
+	    	ws.send(JSON.stringify(data));
+	    }
+	    
 	    return Service;
 	}]);
 	
-	// Traductions
+	
+	// ---------------------- TRADUCTIONS -------------------------- //
+
 	scotchApp.config(function ($translateProvider) {
 	  $translateProvider.translations('en', {
 		  HOME : 'Home',
@@ -107,9 +124,9 @@
 		    $translate.use(key);
 		  };
 	});
-
 	
-	// configure our routes
+	// --------------------------------- URLS -------------------------------- //
+
 	scotchApp.config(function($routeProvider) {
 		$routeProvider
 
@@ -170,22 +187,44 @@
 			;
 	});
 
-	// create the controller and inject Angular's $scope
-	scotchApp.controller('mainController', ['MyService', function(MyService){
-	    
-	  }]);
+	
+	// ------------------------------- CONTROLEURS --------------------------------- //
+	
+	scotchApp.controller('mainController', ['MyService', 'MySharedService', function(MyService,MySharedService){
+		// Creation automatique de la Websocket lors du passage de 'MyService' en parametre
+	}]);
 
 	scotchApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});
 
-	scotchApp.controller('connectedController', function(MyService,$scope) {
+	scotchApp.controller('connectingController', function(MySharedService,$scope,$location) {
 		
-		$scope.createUser = function() {
-			MyService.send();
+		$scope.connectUser = function() {
+            var emailUser = document.getElementById("emailConnect").value;
+            var passwordUser = document.getElementById("passwordConnect").value;
+            var utilisateur = {fonct : "connectUser", email : emailUser, password : passwordUser};
+            
+            console.log("Email : " + emailUser + " Password : " + passwordUser);
+      
+            MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
+	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
 		}
+
+        $scope.changeView = function(view){
+            $location.url(view); // path not hash
+	    	console.log("View changed");            
+        }        
+	});
+	
+	scotchApp.controller('connectedController', function(MyService,MySharedService,$scope) {
+
+		MyService.send(MySharedService.user);		
 		
-		$scope.message = 'test';
+		$scope.$on('msgReceived', function(event, data) {
+			$scope.$apply($scope.msg=data);			
+			console.log("msgReceivedCallback");
+        });
 	});
 	
 	scotchApp.controller('categController', function($scope) {

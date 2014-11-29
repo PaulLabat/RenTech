@@ -23,7 +23,7 @@
 							<input type="checkbox" class="checkbox"> 
 							<span translate="REMEMBER_ME"> Se souvenir de moi</span>
 						</span>
-						<button ng-controller="connectedController" ng-click="createUser()" type="submit" class="btn btn-primary pull-right">
+						<button id="connect" ng-controller="connectingController" ng-click="connectUser()" type="submit" class="btn btn-primary pull-right">
 
 							<span translate="CONNEXION">Se connecter</span>
 						</button>		
