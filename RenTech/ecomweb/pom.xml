@@ -25,6 +25,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>ecomejb</artifactId>
             <version>${project.version}</version>
+            <type>ejb</type>
         </dependency>
     </dependencies>
 
@@ -74,36 +75,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.glassfish.maven.plugin</groupId>
-                <artifactId>maven-glassfish-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
-                    <user>${local.glassfish.user}</user>
-                    <adminPassword>${local.glassfish.adminPassword}</adminPassword>
-                    <autoCreate>true</autoCreate>
-                    <terse>true</terse>
-                    <echo>true</echo>
-                    <debug>true</debug>
-                    <domain>
-                        <name>${local.glassfish.domain.name}</name>
-                        <host>${local.glassfish.domain.host}</host>
-                        <adminPort>${local.glassfish.domain.adminPort}</adminPort>
-                        <httpPort>8080</httpPort>
-                        <httpsPort>8181</httpsPort>
-                        <iiopPort>3700</iiopPort>
-                        <jmsPort>7676</jmsPort>
-                        <reuse>false</reuse>
-                    </domain>
-                    <components>
-                        <component>
-                            <name>${project.artifactId}</name>
-                            <artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
-                        </component>
-                    </components>
-                </configuration>
             </plugin>
         </plugins>
     </build>

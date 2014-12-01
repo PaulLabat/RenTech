@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar>
+    <data-source>
+        <name>derby</name>
+        <class-name>org.apache.derby.jdbc.ClientXADataSource</class-name>
+        <server-name>localhost</server-name>
+        <port-number>1527</port-number>
+        <database-name>ecomBdd</database-name>
+        <user>ecom</user>
+        <password>ecom</password>
+        <property>
+            <name>connectionAttributes</name>
+            <value>;create=true</value>
+        </property>
+    </data-source>
+</ejb-jar>
