@@ -2,7 +2,50 @@
     // also include ngRoute for all our routing needs
 	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate']);
 
-	// Traductions
+	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
+	
+	scotchApp.factory('MySharedService', ['$rootScope', function($rootScope) {
+		var sharedService = {};
+		
+		// Donnees communes aux differentes vues
+		var user;
+
+	    return sharedService;
+	}]);
+	
+	// ----------------------------- WEBSOCKETS ------------------------------ //
+	scotchApp.factory('MyService', ['$rootScope', function($rootScope) {
+		console.log("Debut"); 
+	    // We return this object to anything injecting our service
+	    var Service = {};
+	    // Keep all pending requests here until they get responses
+	    var callbacks = {};
+	    // Create a unique callback ID to map requests to responses
+	    var currentCallbackId = 0;
+	    // Create our websocket object with the address to the websocket
+	    var ws = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/Services");
+	    
+	    ws.onopen = function(){  
+	        console.log("Socket has been opened!");  
+	    };
+	    
+	    ws.onmessage = function(message) {
+	    	console.log(JSON.parse(message.data));
+	    	var msg_received = JSON.parse(message.data);
+	    	    	
+	    	$rootScope.$broadcast('msgReceived',JSON.stringify(msg_received["email"]));
+	    };	    
+
+	    Service.send = function(data) {
+	    	ws.send(JSON.stringify(data));
+	    }
+	    
+	    return Service;
+	}]);
+	
+	
+	// ---------------------- TRADUCTIONS -------------------------- //
+
 	scotchApp.config(function ($translateProvider) {
 	  $translateProvider.translations('en', {
 		  HOME : 'Home',
@@ -34,7 +77,8 @@
 		  PRODUCT : "Product",
 		  PRICE : "Price",
 		  QUANTITY : "Quantity",
-		  VOIR_PLUS: "See more >"
+		  VOIR_PLUS: "See more >",
+		  PAYEMENT : "Checkout"
 	  });
 	  
 	  
@@ -68,7 +112,8 @@
 		  PRODUCT : "Produit",
 		  PRICE : "Prix",
 		  QUANTITY : "Quantit&eacute;",
-		  VOIR_PLUS: "En voir plus >"
+		  VOIR_PLUS: "En voir plus >",
+		  PAYEMENT: "Payement"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
@@ -79,9 +124,9 @@
 		    $translate.use(key);
 		  };
 	});
-
 	
-	// configure our routes
+	// --------------------------------- URLS -------------------------------- //
+
 	scotchApp.config(function($routeProvider) {
 		$routeProvider
 
@@ -103,12 +148,23 @@
 				templateUrl : 'views/login.jsp',
 			})
 		
+			.when('/connected', {
+				templateUrl : 'views/connected.jsp',
+				controller  : 'connectedController'
+			})
+			
 			.when('/panier', {
 				templateUrl : 'views/panier.jsp',
 			})
 		
-			.when('/pageProduit', {
-				templateUrl : 'views/pageProduit.jsp',
+			.when('/git', {
+				templateUrl : 'views/pageProduit_git.jsp',
+			})
+			.when('/web', {
+				templateUrl : 'views/pageProduit_web.jsp',
+			})
+			.when('/mail', {
+				templateUrl : 'views/pageProduit_mail.jsp',
 			})
 			.when('/compte',{
 				templateUrl : 'views/compteClient.jsp',
@@ -131,16 +187,46 @@
 			;
 	});
 
-	// create the controller and inject Angular's $scope
-	scotchApp.controller('mainController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
-	});
+	
+	// ------------------------------- CONTROLEURS --------------------------------- //
+	
+	scotchApp.controller('mainController', ['MyService', 'MySharedService', function(MyService,MySharedService){
+		// Creation automatique de la Websocket lors du passage de 'MyService' en parametre
+	}]);
 
 	scotchApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});
 
+	scotchApp.controller('connectingController', function(MySharedService,$scope,$location) {
+		
+		$scope.connectUser = function() {
+            var emailUser = document.getElementById("emailConnect").value;
+            var passwordUser = document.getElementById("passwordConnect").value;
+            var utilisateur = {fonct : "connectUser", email : emailUser, password : passwordUser};
+            
+            console.log("Email : " + emailUser + " Password : " + passwordUser);
+      
+            MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
+	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
+		}
+
+        $scope.changeView = function(view){
+            $location.url(view); // path not hash
+	    	console.log("View changed");            
+        }        
+	});
+	
+	scotchApp.controller('connectedController', function(MyService,MySharedService,$scope) {
+
+		MyService.send(MySharedService.user);		
+		
+		$scope.$on('msgReceived', function(event, data) {
+			$scope.$apply($scope.msg=data);			
+			console.log("msgReceivedCallback");
+        });
+	});
+	
 	scotchApp.controller('categController', function($scope) {
 		$scope.message = 'Hey! This is a section!';
 	});
