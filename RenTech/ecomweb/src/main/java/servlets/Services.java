@@ -1,13 +1,16 @@
 package servlets;
 
+import java.awt.List;
 import java.io.IOException;
  
 
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 import javax.websocket.OnClose;
@@ -16,6 +19,14 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import ejb.entity.Commande;
+import ejb.entity.Forum;
+import ejb.entity.Git;
+import ejb.entity.Offre;
+import ejb.entity.ServeurPhysique;
+import ejb.entity.ServeurVirtuel;
+import ejb.entity.SiteWeb;
+import ejb.entity.Support;
 import ejb.entity.Utilisateur;
  
 /** 
@@ -63,12 +74,13 @@ public class Services {
         
         if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
         else if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
-        else if (fonct.compareTo("addCart")==0) onAddCart(session,jsonObject);
-
+        else if (fonct.compareTo("pushCommande")==0) onPushCommande(session,jsonObject);
+        else if (fonct.compareTo("changeInfos")==0) onChangeInfos(session,jsonObject);
+        else if (fonct.compareTo("deleteAccount")==0) onDeleteAccount(session,jsonObject);
         
     }
- 
-    /**
+
+	/**
      * The user closes the connection.
      * 
      * Note: you can't send messages to the client from this method
@@ -149,12 +161,7 @@ public class Services {
     	String ID = jsonObject.getString("idObjet");
         
     	System.out.println("On ajoute au panier :"+ID);
-        
-        //Test si l'utilisateur existe dans la base de donnée
-        
-        //Si oui -> renvoi à l'utilisateur qu'il existe déja
-        
-        //Si non -> insertion dans la base de donnée
+    	
     	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject()
@@ -171,4 +178,87 @@ public class Services {
         }
     }
     
+    private void onDeleteAccount(Session session, JsonObject jsonObject) {
+    	String email = jsonObject.getString("email");
+    	
+    	System.out.println("On supprime le compte ayant l'email : "+email);
+    	
+    	//Suppression du compte sur la bdd
+    	
+    	
+		
+	}
+
+	private void onChangeInfos(Session session, JsonObject jsonObject) {
+		String oldEmail = jsonObject.getString("oldEmail");
+		String newEmail = jsonObject.getString("newEmail");
+		String newName = jsonObject.getString("newName");
+		String newFirstName = jsonObject.getString("newFirstName");
+		
+		//On push les infos sur l'utilisateur ayant pour email oldEmail et on remplace les infos par newEmail, newName
+		
+		
+		//Renvoi des nouvelles infos au site 
+		StringWriter writer = new StringWriter();
+        JsonGenerator generator = Json.createGenerator(writer);
+        generator.writeStartObject().write("status", "OK");
+        generator.writeStartObject().write("newEmail", newEmail);
+        generator.writeStartObject().write("newName", newName);
+        generator.writeStartObject().write("newFirstName", newFirstName);
+        generator.writeStartObject().writeEnd();
+        generator.close();
+      	
+        try {
+            session.getBasicRemote().sendText(writer.toString());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+		
+		
+	}
+	
+	private void onPushCommande(Session session, JsonObject jsonObject) {
+		String emailUser =  jsonObject.getString("emailUser");
+		
+		//On crée la commande 
+		Commande commande = new Commande();
+				
+		//on ajoute les nouvelles offres
+		JsonArray OffreList = jsonObject.getJsonArray("OffreList");
+		ArrayList<Offre> listOffre = new ArrayList<Offre>();
+		int offreID;
+		for (int i=0; i<OffreList.size(); i++) {
+			offreID = OffreList.getJsonObject(i).getInt("offreID");
+			//Récupération de l'offre correspondante sur la bdd;
+			Offre offre = new Offre();
+			offre = find(id);
+			listOffre.add(offre);
+		}
+		
+		String adresseFactu = jsonObject.getString("adresseFactu");
+		commande.setAdresseFactu(adresseFactu);
+		commande.setOffres(listOffre);
+		
+		//On renvoi la commande sur la bdd
+		boolean error = false; //Boolean disant si tout s'est bien passé
+        
+		//Envoi de la réponse au client 
+		StringWriter writer = new StringWriter();
+        JsonGenerator generator = Json.createGenerator(writer);
+        
+		// Si ok 
+        if (!error) generator.writeStartObject().write("status", "OK");
+        else generator.writeStartObject().write("status", "ERROR");
+		//Renvoi des nouvelles infos au site 
+        generator.writeStartObject().writeEnd();
+        generator.close();
+      	
+        try {
+            session.getBasicRemote().sendText(writer.toString());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+		
+	}
+
 }
