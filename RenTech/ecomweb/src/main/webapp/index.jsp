@@ -35,7 +35,7 @@
 <!-- HEADER AND NAVBAR -->
 
 <body ng-controller="mainController" >
-<%@page import="beans.Utilisateur" %>
+<%@page import="ejb.entity.Utilisateur" %>
 	<header id="header">
 		<!--header-->
 		<div class="header-middle">
@@ -75,7 +75,7 @@
 									
 									%>
 								<li><a href="#compte"><i class="fa fa-lock"></i> <span
-										translate="CONNECTED">Connecté en tant que</span> <%=utilisateur.getMail() %></a>
+										translate="CONNECTED">Connectï¿½ en tant que</span> <%=utilisateur.getMail() %></a>
 								</li>
 								<li><a
 									href="<%=request.getContextPath()+"/LogoutServlet"%>"><span
@@ -103,20 +103,20 @@
 										translate="PARTICULIERS">Particuliers</span></a>
 									<ul role="menu" class="sub-menu">
 										<li><a href="#git">Serveur Git</a></li>
-										<li><a href="#web">Hébergement web</a></li>
+										<li><a href="#web">Hï¿½bergement web</a></li>
 										<li><a href="#mail">Serveur Mail</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#"><span
 										translate="G_UTILISATEURS">Groupe d'utilisateurs</span></a>
 									<ul role="menu" class="sub-menu">
 										<li><a href="#mumble">Mumble</a></li>
-										<li><a href="#serveurDedie">Serveur dédié</a></li>
+										<li><a href="#serveurDedie">Serveur dï¿½diï¿½</a></li>
 										<li><a href="#partageFichier">Serveur de partage</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#"><span
 										translate="ENTREPRISES">Entreprises</span></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="#cloudDedie">Cloud dédié</a></li>
+										<li><a href="#cloudDedie">Cloud dï¿½diï¿½</a></li>
 										<li><a href="#cloudPublic">Cloud public</a></li>
 										<li><a href="#stockage">Stockage</a></li>
 									</ul></li>
@@ -143,7 +143,7 @@
 	
 	<footer class="footer">
 	      <div class="container">
-	        <p class="text-muted">Copyright RenTech 2014 © - Augustin HUSSON - Paul LABAT - Paul MARIAGE - Patrick PEREA</p>
+	        <p class="text-muted">Copyright RenTech 2014 ï¿½ - Augustin HUSSON - Paul LABAT - Paul MARIAGE - Patrick PEREA</p>
 	      </div>
     </footer>
 </body>

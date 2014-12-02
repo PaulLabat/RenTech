@@ -38,11 +38,11 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Utilisateur utilisateur = new Utilisateur(request.getParameter("email"),request.getParameter("password"),request.getParameter("name"));;
-
-		
-		
-		request.getSession().setAttribute("user", utilisateur);
+//		Utilisateur utilisateur = new Utilisateur(request.getParameter("email"),request.getParameter("password"),request.getParameter("name"));
+//
+//
+//
+//		request.getSession().setAttribute("user", utilisateur);
 		//request.getRequestDispatcher("/index.jsp").forward(request,response);
 
 		
