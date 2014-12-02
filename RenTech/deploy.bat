@@ -1,3 +1,4 @@
+echo off
 hostname > tmp
 set /p host=<tmp
 del tmp
@@ -5,9 +6,9 @@ del tmp
 asadmin undeploy ecom
 asadmin stop-database
 asadmin stop-domain
-echo " ########################################"
-echo " ####### Restarting glassfish ... #######"
-echo " ########################################\n"
+echo ########################################
+echo ####### Restarting glassfish ... #######
+echo ########################################
 asadmin start-domain
 asadmin start-database
 mvn clean install
