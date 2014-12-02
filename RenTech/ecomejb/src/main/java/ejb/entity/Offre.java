@@ -21,6 +21,8 @@ public class Offre implements Serializable{
     @OneToMany
     private Collection<ServeurPhysique> serveurPhysiques;
     @OneToMany
+    private Collection<ServeurVirtuel> serveurVirtuels;
+    @OneToMany
     private Collection<Git> gits;
     @OneToMany
     private Collection<SiteWeb> siteWebs;
@@ -46,4 +48,46 @@ public class Offre implements Serializable{
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+	public Collection<ServeurPhysique> getServeurPhysiques() {
+		return serveurPhysiques;
+	}
+
+	public void setServeurPhysiques(Collection<ServeurPhysique> serveurPhysiques) {
+		this.serveurPhysiques = serveurPhysiques;
+	}
+
+	public Collection<Git> getGits() {
+		return gits;
+	}
+
+	public void setGits(Collection<Git> gits) {
+		this.gits = gits;
+	}
+
+	public Collection<SiteWeb> getSiteWebs() {
+		return siteWebs;
+	}
+
+	public void setSiteWebs(Collection<SiteWeb> siteWebs) {
+		this.siteWebs = siteWebs;
+	}
+
+	public Collection<Forum> getForums() {
+		return forums;
+	}
+
+	public void setForums(Collection<Forum> forums) {
+		this.forums = forums;
+	}
+
+	public Collection<ServeurVirtuel> getServeurVirtuels() {
+		return serveurVirtuels;
+	}
+
+	public void setServeurVirtuels(Collection<ServeurVirtuel> serveurVirtuels) {
+		this.serveurVirtuels = serveurVirtuels;
+	}
+    
+    
 }
