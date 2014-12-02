@@ -16,7 +16,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import beans.Utilisateur;
+import ejb.entity.Utilisateur;
  
 /** 
  * @ServerEndpoint gives the relative name for the end point
@@ -88,7 +88,10 @@ public class Services {
         String email = jsonObject.getString("email");
         String password = jsonObject.getString("password");
         
-        Utilisateur utilisateur = new Utilisateur(nom,email,password);
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setNom(nom);
+        utilisateur.setMail(email);
+        utilisateur.setMdp(password);
         
        // UtilisateurFacadeImpl UFI = new UtilisateurFacadeImpl();
         
@@ -120,7 +123,9 @@ public class Services {
     	String email = jsonObject.getString("email");
         String password = jsonObject.getString("password");
         
-        Utilisateur utilisateur = new Utilisateur("",email,password);
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setMail(email);
+        utilisateur.setMdp(password);
         
         //Test si l'utilisateur existe dans la base de donnée
         
