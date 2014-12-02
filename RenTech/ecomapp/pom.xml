@@ -52,7 +52,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addCLassPath>true</addCLassPath>
+                            <addClasspath>true</addClasspath>
                             <mainClass>client.Main</mainClass>
                         </manifest>
                     </archive>
