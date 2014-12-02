@@ -43,8 +43,6 @@ then
     echo "##### fichier settings.xml trouvé #####"
     password=`sed -n -r 's%<local.glassfish.adminPassword>(.*)<\/local.glassfish.adminPassword>%\1%p' $settingsXML`
     admin=`sed -n -r 's%<local.glassfish.user>(.*)<\/local.glassfish.user>%\1%p' $settingsXML`
-    echo $password
-    echo $admin
     DeployementWithXML
 else
     echo "##### le fichier settings.xml n'a pas été trouvé #####"
