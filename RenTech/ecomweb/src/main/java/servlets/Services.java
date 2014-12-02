@@ -231,7 +231,7 @@ public class Services {
 			offreID = OffreList.getJsonObject(i).getInt("offreID");
 			//Récupération de l'offre correspondante sur la bdd;
 			Offre offre = new Offre();
-			offre = find(id);
+			//offre = find(id);
 			listOffre.add(offre);
 		}
 		
