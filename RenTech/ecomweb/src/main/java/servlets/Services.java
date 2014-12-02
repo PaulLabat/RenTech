@@ -64,11 +64,14 @@ public class Services {
         if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
         else if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
         else if (fonct.compareTo("addCart")==0) onAddCart(session,jsonObject);
-
+        else if (fonct.compareTo("deleteCart")==0) onDeleteCart(session,jsonObject);
+        else if (fonct.compareTo("getCart")==0) onGetCart(session,jsonObject);
+        else if (fonct.compareTo("changeInfos")==0) onChangeInfos(session,jsonObject);
+        else if (fonct.compareTo("deleteAccount")==0) onDeleteAccount(session,jsonObject);
         
     }
  
-    /**
+	/**
      * The user closes the connection.
      * 
      * Note: you can't send messages to the client from this method
@@ -150,6 +153,7 @@ public class Services {
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
         
         //Si non -> insertion dans la base de donnée
+    	
     	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject()
@@ -166,4 +170,30 @@ public class Services {
         }
     }
     
+    private void onDeleteAccount(Session session, JsonObject jsonObject) {
+    	String email = jsonObject.getString("email");
+    	
+    	System.out.println("On supprime le compte ayant l'email : "+email);
+    	
+    	//
+    	
+    	
+		
+	}
+
+	private void onChangeInfos(Session session, JsonObject jsonObject) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void onGetCart(Session session, JsonObject jsonObject) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void onDeleteCart(Session session, JsonObject jsonObject) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
