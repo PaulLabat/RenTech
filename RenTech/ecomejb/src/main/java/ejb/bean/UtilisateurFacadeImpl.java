@@ -4,16 +4,19 @@ import ejb.entity.Utilisateur;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import java.io.Serializable;
 
 /**
  * Created by augustin on 25/11/14.
  */
 
 @Stateless
-public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote, UtilisateurFacadeLocal{
-    @PersistenceContext(unitName = "myManager")
-    private EntityManager entityManager;
+public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote, Serializable{
+    @PersistenceUnit(unitName="MyFactory")
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     @Override
     public void create(Utilisateur utilisateur) {
@@ -27,6 +30,11 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote, Utilisate
 
     @Override
     public void remove(Utilisateur utilisateur) {
-        entityManager.merge(utilisateur);
+        entityManager.remove(utilisateur);
+    }
+
+    @Override
+    public boolean contains(Utilisateur utilisateur){
+        return entityManager.contains(utilisateur);
     }
 }
