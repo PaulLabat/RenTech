@@ -9,7 +9,7 @@ Pour pouvoir déployer le projet en ligne de commande il y a quelques étapes à
 
 * Installation de java, maven et de glassfish en ayant dans le path les commandes exécutables respectives à chaque logiciel
 * Paramétrage de Maven avec la rédaction du fichier **settings.xml**
-* Déployement le projet
+* Déploiement le projet
 
 Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne de commande. Concernant la première étape je ne m'attarderai que sur l'installation de Glassfish.
 
@@ -61,7 +61,7 @@ Je rappel que tout ce qui va être fait ici fonctionnera exclusivement en ligne 
 
  Vous remplirez bien évidemment les champs manquants et remplacerez le path de glassfish qui correspondra à votre configuration.
 
-3: Déployement du projet
+3: Déploiement du projet
 -------------------------
 Maintenant que la base de données est à priori en état de marche, il y a eu quelques petits changements sur la manière de déployer le projet. Cela devrait à priori vous simplifier la vie.
 Vous trouverez dans le projet dans le dossier Rentech/ un script **deploy.bat** (pour windows) et **deploy.sh** (pour linux). Pour lancer serveur, base de données et voir le site, il vous suffit d'exécuter le script propre à votre OS.
