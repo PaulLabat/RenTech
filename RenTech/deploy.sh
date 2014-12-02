@@ -9,7 +9,7 @@ host=`hostname`;
 DeployementWithXML(){
 #deploiement du site avec settings.xml
 echo "deploiement du site avec settings.xml"
-asadmin --user $admin undeploy ecom
+asadmin --user $admin undeploy ecomear
 asadmin --user $admin stop-database
 asadmin --user $admin stop-domain
 echo "\n ########################################"
