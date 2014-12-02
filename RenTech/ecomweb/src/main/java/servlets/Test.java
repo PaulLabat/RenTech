@@ -16,7 +16,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import beans.Utilisateur;
+import ejb.entity.Utilisateur;
  
 /** 
  * @ServerEndpoint gives the relative name for the end point
