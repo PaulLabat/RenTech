@@ -1,5 +1,7 @@
+hostname > tmp
+set /p host=<tmp
+del tmp
 (
-host=`hostname`;
 asadmin undeploy ecom
 asadmin stop-database
 asadmin stop-domain
@@ -9,6 +11,6 @@ echo " ########################################\n"
 asadmin start-domain
 asadmin start-database
 mvn clean install
-asadmin redeploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
-xdg-open "http://$host:8080/ecom/"
+asadmin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+start http://%host%:8080/ecom/
 )
