@@ -5,10 +5,12 @@
 	  <meta charset="UTF-8" />
 	  
 	<!-- SCROLLS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css">
+	    
+<!-- 	<link rel="stylesheet" href="css/animate.css"> -->
+<!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
 	
 	<link rel="stylesheet" href="css/header.css" />
 	<link rel="stylesheet" href="css/login.css" />
@@ -20,15 +22,16 @@
 	<link rel="stylesheet" href="css/responsive.css" />
 	
 	<!-- SPELLS -->
-	<script src="js/angular.min.js"></script>
-	<script src="js/angular-route.js"></script>
-	<script src="js/angular-translate.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-translate/angular-translate.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+    
 	<script src="js/script.js"></script>
-<!-- 	<script src="js/script2.js"></script> -->
-<!-- 	<script src="js/websocket.js"></script> -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/forms.js"></script>
+	<script src="js/gestionPanier.js"></script>
 	<title>RenTech</title>
 
 </head>
@@ -63,25 +66,17 @@
 										</button>
 									</div>
 								</li>
-								<li><a href="#panier"><i class="fa fa-shopping-cart"></i>
-										<span translate="PANIER">Panier</span></a></li>
-
-								<%if (request.getSession().getAttribute("user")==null){ %>
-								<li><a href="#login"><i class="fa fa-lock"></i> <span
-										translate="CONNEXION">Connexion</span></a></li>
+								<li ng-controller="headerController"><a href="#panier"><i class="fa fa-shopping-cart"></i>
+									<span>{{number}} </span>
+									<span translate="PRODUIT"></span> </a>
+									<div>{{total}}&#128; HT/mois</div>
 								</li>
-								<%} else {
-									Utilisateur utilisateur = (Utilisateur)request.getSession().getAttribute("user");
-									
-									%>
-								<li><a href="#compte"><i class="fa fa-lock"></i> <span
-										translate="CONNECTED">Connecté en tant que</span> <%=utilisateur.getMail() %></a>
-								</li>
-								<li><a
-									href="<%=request.getContextPath()+"/LogoutServlet"%>"><span
-										class="glyphicon glyphicon-off" aria-hidden="true"></span> <span
-										translate="DECONNEXION">Deconnexion</span></a></li>
-								<%} %>
+								
+								<li><a id="a_login" href="#login"><i class="glyphicon glyphicon-user"></i> 
+									<span translate="CONNEXION">Connexion</span></a></li>
+								
+								<li><a id="a_logout" href="#logout" style="display:none"><i class="glyphicon glyphicon-off"></i> 
+									<span translate="DECONNEXION">Déconnexion</span></a></li>
 
 							</ul>
 						</div>
@@ -146,6 +141,9 @@
 	        <p class="text-muted">Copyright RenTech 2014 © - Augustin HUSSON - Paul LABAT - Paul MARIAGE - Patrick PEREA</p>
 	      </div>
     </footer>
+    
+    <!-- Div necessaire pour les notifications (pops-up)s -->
+    <div growl></div>
 </body>
 
 </html>

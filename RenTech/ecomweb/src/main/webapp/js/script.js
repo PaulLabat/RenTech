@@ -1,6 +1,6 @@
 	// create the module and name it scotchApp
     // also include ngRoute for all our routing needs
-	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate']);
+	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate']);
 
 	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
 	
@@ -10,6 +10,22 @@
 		// Donnees communes aux differentes vues
 		var user;
 
+		var number=0;
+		var total=0;
+		 
+		sharedService.getNumber = function () {
+	    	return number;
+	    };
+	        
+	    sharedService.getTotal = function () {
+	    	return total;
+	    };
+	        
+		sharedService.addItem = function (prix) {
+    	  	number=number+1;
+    	  	total=total+prix;
+        };
+	        
 	    return sharedService;
 	}]);
 	
@@ -49,7 +65,8 @@
 	scotchApp.config(function ($translateProvider) {
 	  $translateProvider.translations('en', {
 		  HOME : 'Home',
-		  PANIER : 'Card',
+		  PANIER : 'Cart',
+		  PRODUIT : 'Products',
 		  CONNEXION : 'Login',
 		  PARTICULIERS : 'Private individuals',
 		  G_UTILISATEURS : 'Group of users',
@@ -78,19 +95,21 @@
 		  PRICE : "Price",
 		  QUANTITY : "Quantity",
 		  VOIR_PLUS: "See more >",
-		  PAYEMENT : "Checkout"
+		  PAYEMENT : "Checkout",
+		  PRODUIT_AJOUTE : "Product added!"
 	  });
 	  
 	  
 	  $translateProvider.translations('fr', {
 		  HOME : 'Accueil',
+		  PRODUIT : 'Produits',
 		  PANIER : 'Panier',
 		  CONNEXION : 'Connexion',
 		  PARTICULIERS : 'Particuliers',
 		  G_UTILISATEURS : 'Groupe d\'utilisateurs',
 		  ENTREPRISES : 'Entreprises',
 		  CONNECTED : 'Connect&eacute; en tant que',
-		  DECONNEXION : 'Deconnexion',
+		  DECONNEXION : 'D&eacuteconnexion',
 		  A_PROPOS : '&Agrave; propos',
 		  A_PARTIR_DE : '&Agrave; partir de',
 		  TAXES : 'HT/mois',
@@ -113,7 +132,8 @@
 		  PRICE : "Prix",
 		  QUANTITY : "Quantit&eacute;",
 		  VOIR_PLUS: "En voir plus >",
-		  PAYEMENT: "Payement"
+		  PAYEMENT: "Payement",
+	      PRODUIT_AJOUTE : "Produit ajout&eacute;!"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
@@ -124,6 +144,13 @@
 		    $translate.use(key);
 		  };
 	});
+	
+	// ------------------------------- POPS UP --------------------------------//
+	scotchApp.config(['growlProvider', function(growlProvider) {
+		  growlProvider.globalTimeToLive(2000);
+		  growlProvider.globalDisableCountDown(true);
+//		  growlProvider.globalPosition('bottom-right');
+	}]);
 	
 	// --------------------------------- URLS -------------------------------- //
 
@@ -159,6 +186,7 @@
 		
 			.when('/git', {
 				templateUrl : 'views/pageProduit_git.jsp',
+				controller : 'pageProduitController'
 			})
 			.when('/web', {
 				templateUrl : 'views/pageProduit_web.jsp',
@@ -192,12 +220,27 @@
 	
 	scotchApp.controller('mainController', ['MyService', 'MySharedService', function(MyService,MySharedService){
 		// Creation automatique de la Websocket lors du passage de 'MyService' en parametre
+		
 	}]);
 
+	scotchApp.controller('headerController', function($scope,MySharedService){
+		// Creation automatique de la Websocket lors du passage de 'MyService' en parametre
+		
+		$scope.number=MySharedService.getNumber();
+		
+		$scope.$watch(MySharedService.getNumber,function(n){
+			  $scope.number=n;
+			  $scope.total=MySharedService.getTotal().toFixed(2);	//2 decimales
+			  
+		});
+
+	});
+	
 	scotchApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});
 
+	
 	scotchApp.controller('connectingController', function(MySharedService,$scope,$location) {
 		
 		$scope.connectUser = function() {
@@ -222,7 +265,9 @@
 		MyService.send(MySharedService.user);		
 		
 		$scope.$on('msgReceived', function(event, data) {
-			$scope.$apply($scope.msg=data);			
+			$scope.$apply($scope.msg=data);		
+			document.getElementById("a_login").style.display = 'none';        
+			document.getElementById("a_logout").style.display = 'block';         
 			console.log("msgReceivedCallback");
         });
 	});
@@ -235,7 +280,11 @@
 		$scope.message = 'Hey! This is a section!';
 	});
 	
-	scotchApp.controller('pageProduitController', function($scope) {
-		$scope.message = 'Hey! This is a section!';
+	scotchApp.controller('pageProduitController', function(MySharedService,$scope,growl) {
+		
+		$scope.addItem = function (prix) {
+			MySharedService.addItem(prix);
+			growl.success("PRODUIT_AJOUTE");
+        };
 	});
 	

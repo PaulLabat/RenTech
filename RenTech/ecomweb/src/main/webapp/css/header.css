@@ -62,7 +62,8 @@
 }
 
 
-.header-bottom {
+.header-bottom .container .row {
+  border-bottom: 1px solid #f5f5f5;
   padding-bottom: 30px;
   padding-top: 30px;
 }
