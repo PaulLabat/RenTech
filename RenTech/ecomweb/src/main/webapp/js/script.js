@@ -49,9 +49,21 @@
 	    	console.log(JSON.parse(message.data));
 	    	var msg_received = JSON.parse(message.data);
 	    	    	
-	    	$rootScope.$broadcast('msgReceived',JSON.stringify(msg_received["email"]));
+	    	if (msg_received["fonct"]=="connectUser")
+	    	{
+	    		onConnectUser(msg_received);
+	    	}
+	    	
+//	    	$rootScope.$broadcast('msgReceived',JSON.stringify(msg_received["email"]));
 	    };	    
 
+	    function onConnectUser(data) {
+	    	if (msg_received["status"]=="OK")
+	    	{
+	    		$rootScope.$broadcast('connectionSucceed',JSON.stringify(msg_received["email"]));
+	    	}
+	    }
+	    
 	    Service.send = function(data) {
 	    	ws.send(JSON.stringify(data));
 	    }
@@ -173,6 +185,7 @@
 		
 			.when('/login', {
 				templateUrl : 'views/login.jsp',
+				controller : 'loginController'
 			})
 		
 			.when('/connected', {
@@ -230,8 +243,7 @@
 		
 		$scope.$watch(MySharedService.getNumber,function(n){
 			  $scope.number=n;
-			  $scope.total=MySharedService.getTotal().toFixed(2);	//2 decimales
-			  
+			  $scope.total=MySharedService.getTotal().toFixed(2);	// 2 decimales
 		});
 
 	});
@@ -241,7 +253,7 @@
 	});
 
 	
-	scotchApp.controller('connectingController', function(WS_Service,MySharedService,$scope,$location) {
+	scotchApp.controller('loginController', function(WS_Service,MySharedService,$scope,$location) {
 		
 		$scope.connectUser = function() {
             var emailUser = document.getElementById("emailConnect").value;
@@ -255,6 +267,7 @@
             //	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
 		}
 
+		$scope.connectSucceed
         $scope.changeView = function(view){
             $location.url(view); // path not hash
 	    	console.log("View changed");            

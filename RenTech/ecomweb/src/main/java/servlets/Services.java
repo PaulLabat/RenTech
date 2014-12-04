@@ -144,6 +144,7 @@ public class Services {
     	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject()
+            .write("fonct", "connectUser")
             .write("status", "OK")
             .write("email", email)
             .writeEnd();
