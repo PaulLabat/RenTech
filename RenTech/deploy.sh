@@ -9,16 +9,16 @@ host=`hostname`;
 DeployementWithXML(){
 #deploiement du site avec settings.xml
 echo "deploiement du site avec settings.xml"
-asadmin --user $(admin) undeploy ecomear
-asadmin --user $(admin) stop-database
-asadmin --user $(admin) stop-domain
+asadmin --user $admin undeploy ecomear
+asadmin --user $admin stop-database
+asadmin --user $admin stop-domain
 echo "\n ########################################"
 echo " ####### Restarting glassfish ... #######"
 echo " ########################################\n"
-asadmin --user $(admin) start-domain
-asadmin --user $(admin) start-database
+asadmin --user $admin start-domain
+asadmin --user $admin start-database
 mvn clean install
-asadmin --user $(admin) redeploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+asadmin --user $admin redeploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
 xdg-open "http://$host:8080/ecom/"
 }
 
@@ -38,7 +38,7 @@ asadmin redeploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.
 xdg-open "http://$host:8080/ecom/"
 }
 
-if [ -e $(settingsXML) ]
+if [ -e $settingsXML ]
 then
     echo "##### fichier settings.xml trouvé #####"
     password=`sed -n -r 's%<local.glassfish.adminPassword>(.*)<\/local.glassfish.adminPassword>%\1%p' $settingsXML`
