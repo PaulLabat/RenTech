@@ -1,4 +1,4 @@
-package ejb;
+package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,7 +10,7 @@ import java.util.Collection;
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "USER")
+@Table(name = "UTILISATEUR")
 public class Utilisateur implements Serializable{
     @Id
     @GeneratedValue
@@ -25,8 +25,8 @@ public class Utilisateur implements Serializable{
     private String mdp;
     @NotNull
     private String nom;
-    @NotNull
     private String prenom;
+    private String adresseFactu;
     @ManyToOne
     private Entreprise entreprise;
     @ManyToOne
@@ -48,10 +48,6 @@ public class Utilisateur implements Serializable{
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getMail() {
@@ -84,6 +80,14 @@ public class Utilisateur implements Serializable{
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public String getAdresseFactu() {
+        return adresseFactu;
+    }
+
+    public void setAdresseFactu(String adresseFactu) {
+        this.adresseFactu = adresseFactu;
     }
 
     public Entreprise getEntreprise() {

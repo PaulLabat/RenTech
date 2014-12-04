@@ -1,4 +1,4 @@
-package ejb;
+package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,26 +9,23 @@ import java.util.Collection;
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "ENTREPRISE")
-public class Entreprise implements Serializable{
+@Table(name = "ASSOCIATION")
+public class Association implements Serializable{
+
     @Id
     @GeneratedValue
     private Integer id;
     @NotNull
     private String nom;
-    @OneToMany(mappedBy="utilisateur")
+    @OneToMany(mappedBy = "association")
     private Collection<Utilisateur> utilisateurs ;
 
-    public Entreprise(){
+    public Association(){
 
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNom() {

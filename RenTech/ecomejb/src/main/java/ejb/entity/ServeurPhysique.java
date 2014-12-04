@@ -1,4 +1,4 @@
-package beans;
+package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,8 +9,8 @@ import java.util.Collection;
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "SERVEURVIRTUEL")
-public class ServeurVirtuel implements Serializable{
+@Table(name = "SERVEURPHYSIQUE")
+public class ServeurPhysique implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -20,14 +20,11 @@ public class ServeurVirtuel implements Serializable{
     private Integer ram;
     @NotNull
     private Integer nbreCoeur;
-    @OneToMany
-    private Collection<Git> gits;
-    @OneToMany
-    private Collection<SiteWeb> siteWebs;
-    @OneToMany
-    private Collection<Forum> forums;
+    //supprimer un serveur physique entrainera la suppression des serveurs virtuels
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+    private Collection<ServeurVirtuel> serveurVirtuels;
 
-    public ServeurVirtuel(){
+    public ServeurPhysique(){
 
     }
 
@@ -63,27 +60,11 @@ public class ServeurVirtuel implements Serializable{
         this.nbreCoeur = nbreCoeur;
     }
 
-    public Collection<Git> getGits() {
-        return gits;
+    public Collection<ServeurVirtuel> getServeurVirtuels() {
+        return serveurVirtuels;
     }
 
-    public void setGits(Collection<Git> gits) {
-        this.gits = gits;
-    }
-
-    public Collection<SiteWeb> getSiteWebs() {
-        return siteWebs;
-    }
-
-    public void setSiteWebs(Collection<SiteWeb> siteWebs) {
-        this.siteWebs = siteWebs;
-    }
-
-    public Collection<Forum> getForums() {
-        return forums;
-    }
-
-    public void setForums(Collection<Forum> forums) {
-        this.forums = forums;
+    public void setServeurVirtuels(Collection<ServeurVirtuel> serveurVirtuels) {
+        this.serveurVirtuels = serveurVirtuels;
     }
 }

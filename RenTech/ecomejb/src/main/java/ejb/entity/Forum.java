@@ -1,4 +1,4 @@
-package beans;
+package ejb.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +11,8 @@ import java.io.Serializable;
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "GIT")
-public class Git implements Serializable{
+@Table(name = "FORUM")
+public class Forum implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -23,7 +23,7 @@ public class Git implements Serializable{
     @NotNull
     private Integer nbreCoeur;
 
-    public Git(){
+    public Forum(){
 
     }
 

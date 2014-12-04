@@ -30,7 +30,7 @@
 	}]);
 	
 	// ----------------------------- WEBSOCKETS ------------------------------ //
-	scotchApp.factory('MyService', ['$rootScope', function($rootScope) {
+	scotchApp.factory('WS_Service', ['$rootScope', function($rootScope) {
 		console.log("Debut"); 
 	    // We return this object to anything injecting our service
 	    var Service = {};
@@ -39,7 +39,7 @@
 	    // Create a unique callback ID to map requests to responses
 	    var currentCallbackId = 0;
 	    // Create our websocket object with the address to the websocket
-	    var ws = new WebSocket("ws://localhost:8080/ecomweb-0.1.0/Services");
+	    var ws = new WebSocket("ws://"+location.host+"/ecom/Services");
 	    
 	    ws.onopen = function(){  
 	        console.log("Socket has been opened!");  
@@ -218,7 +218,7 @@
 	
 	// ------------------------------- CONTROLEURS --------------------------------- //
 	
-	scotchApp.controller('mainController', ['MyService', 'MySharedService', function(MyService,MySharedService){
+	scotchApp.controller('mainController', ['WS_Service', 'MySharedService', function(WS_Service,MySharedService){
 		// Creation automatique de la Websocket lors du passage de 'MyService' en parametre
 		
 	}]);
@@ -241,7 +241,7 @@
 	});
 
 	
-	scotchApp.controller('connectingController', function(MySharedService,$scope,$location) {
+	scotchApp.controller('connectingController', function(WS_Service,MySharedService,$scope,$location) {
 		
 		$scope.connectUser = function() {
             var emailUser = document.getElementById("emailConnect").value;
@@ -250,8 +250,9 @@
             
             console.log("Email : " + emailUser + " Password : " + passwordUser);
       
-            MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
-	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
+//            MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
+            WS_Service.send(utilisateur);
+            //	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
 		}
 
         $scope.changeView = function(view){
@@ -260,9 +261,9 @@
         }        
 	});
 	
-	scotchApp.controller('connectedController', function(MyService,MySharedService,$scope) {
+	scotchApp.controller('connectedController', function(WS_Service,MySharedService,$scope) {
 
-		MyService.send(MySharedService.user);		
+		WS_Service.send(MySharedService.user);		
 		
 		$scope.$on('msgReceived', function(event, data) {
 			$scope.$apply($scope.msg=data);		

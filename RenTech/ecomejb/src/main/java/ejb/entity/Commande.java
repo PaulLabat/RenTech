@@ -1,4 +1,4 @@
-package beans;
+package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,6 +17,9 @@ public class Commande implements Serializable{
     @GeneratedValue
     private Integer id;
     @NotNull
+    private String adresseFactu;
+    @NotNull
+    @Temporal(TemporalType.DATE)
     private Calendar beginDate;
     @OneToMany
     private Collection<Offre> offres ;
@@ -29,8 +32,12 @@ public class Commande implements Serializable{
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getAdresseFactu() {
+        return adresseFactu;
+    }
+
+    public void setAdresseFactu(String adresseFactu) {
+        this.adresseFactu = adresseFactu;
     }
 
     public Date getDate(){

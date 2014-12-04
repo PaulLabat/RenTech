@@ -1,6 +1,7 @@
-package ejb;
+package ejb.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -8,11 +9,17 @@ import java.util.Collection;
  * Created by Cirie on 10/11/2014.
  */
 @Entity
-@Table(name = "SUPPORT")
-public class Support implements Serializable{
+@Table(name = "SERVEURVIRTUEL")
+public class ServeurVirtuel implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
+    @NotNull
+    private Integer tailleDisk;
+    @NotNull
+    private Integer ram;
+    @NotNull
+    private Integer nbreCoeur;
     @OneToMany
     private Collection<Git> gits;
     @OneToMany
@@ -20,7 +27,7 @@ public class Support implements Serializable{
     @OneToMany
     private Collection<Forum> forums;
 
-    public Support(){
+    public ServeurVirtuel(){
 
     }
 
@@ -28,8 +35,28 @@ public class Support implements Serializable{
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getTailleDisk() {
+        return tailleDisk;
+    }
+
+    public void setTailleDisk(Integer tailleDisk) {
+        this.tailleDisk = tailleDisk;
+    }
+
+    public Integer getRam() {
+        return ram;
+    }
+
+    public void setRam(Integer ram) {
+        this.ram = ram;
+    }
+
+    public Integer getNbreCoeur() {
+        return nbreCoeur;
+    }
+
+    public void setNbreCoeur(Integer nbreCoeur) {
+        this.nbreCoeur = nbreCoeur;
     }
 
     public Collection<Git> getGits() {

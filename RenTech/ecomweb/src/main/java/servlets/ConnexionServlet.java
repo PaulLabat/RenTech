@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Utilisateur;
+import ejb.entity.Utilisateur;
 
 
 /**
@@ -41,7 +41,9 @@ public class ConnexionServlet extends HttpServlet {
 		String emailUser = (String)request.getParameter("email");
 		String passwordUser = (String)request.getParameter("password");
 
-		Utilisateur utilisateur = new Utilisateur(emailUser,passwordUser);
+		Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setMail(emailUser);
+        utilisateur.setMdp(passwordUser);
 		
 		request.getSession().setAttribute("user",utilisateur);
 
