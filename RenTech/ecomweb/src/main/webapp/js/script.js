@@ -1,6 +1,6 @@
 	// create the module and name it scotchApp
     // also include ngRoute for all our routing needs
-	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate']);
+	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate','ngDialog']);
 
 	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
 	
@@ -52,9 +52,7 @@
 	    	if (msg_received["fonct"]=="connectUser")
 	    	{
 	    		onConnectUser(msg_received);
-	    	}
-	    	
-//	    	$rootScope.$broadcast('msgReceived',JSON.stringify(msg_received["email"]));
+	    	}	    	
 	    };	    
 
 	    function onConnectUser(data) {
@@ -62,6 +60,10 @@
 	    	{
 	    		$rootScope.$broadcast('connectionSucceed',JSON.stringify(msg_received["email"]));
 	    	}
+	    	else if (msg_received["status"]=="FAIL")
+    		{
+	    		$rootScope.$broadcast('connectionFailed',JSON.stringify(msg_received["email"]));
+    		}
 	    }
 	    
 	    Service.send = function(data) {
@@ -253,7 +255,7 @@
 	});
 
 	
-	scotchApp.controller('loginController', function(WS_Service,MySharedService,$scope,$location) {
+	scotchApp.controller('loginController', function(WS_Service,MySharedService,$scope,$location,ngDialog) {
 		
 		$scope.connectUser = function() {
             var emailUser = document.getElementById("emailConnect").value;
@@ -267,7 +269,17 @@
             //	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
 		}
 
-		$scope.connectSucceed
+		$scope.$on('connectionSucceed', function(event, data) {	
+			document.getElementById("a_login").style.display = 'none';        
+			document.getElementById("a_logout").style.display = 'block';         
+			console.log("connectionSucceedCallback");
+        });
+		
+		$scope.$on('connectionFailed', function(event, data) {
+			ngDialog.open({ template: 'dialog_connectionFailed' });        
+			console.log("connectionFailedCallback");
+        });
+		
         $scope.changeView = function(view){
             $location.url(view); // path not hash
 	    	console.log("View changed");            

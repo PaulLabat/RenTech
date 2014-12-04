@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css">
-	    
+	<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
+	
 <!-- 	<link rel="stylesheet" href="css/animate.css"> -->
 <!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
 	
@@ -29,6 +30,7 @@
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+    <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     
 	<script src="js/script.js"></script>
 	<script src="js/gestionPanier.js"></script>
