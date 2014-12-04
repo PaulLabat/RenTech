@@ -19,6 +19,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import ejb.bean.UtilisateurFacadeImpl;
 import ejb.entity.Commande;
 import ejb.entity.Forum;
 import ejb.entity.Git;
@@ -40,6 +41,7 @@ import ejb.entity.Utilisateur;
 public class Services {
 	
 
+	UtilisateurFacadeImpl ufi = new UtilisateurFacadeImpl();
     /**
      * @OnOpen allows us to intercept the creation of a new session.
      * The session class allows us to send data to the user.
@@ -77,6 +79,7 @@ public class Services {
         else if (fonct.compareTo("pushCommande")==0) onPushCommande(session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) onChangeInfos(session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) onDeleteAccount(session,jsonObject);
+        else if (fonct.compareTo("onPushCommande")==0) onPushCommande(session,jsonObject);
         
     }
 
@@ -102,14 +105,8 @@ public class Services {
         utilisateur.setMail(email);
         utilisateur.setMdp(password);
         
-       // UtilisateurFacadeImpl UFI = new UtilisateurFacadeImpl();
+        ufi.create(utilisateur);
         
-        //UFI.create(utilisateur);
-        //Test si l'utilisateur existe dans la base de donnée
-        
-        //Si oui -> renvoi à l'utilisateur qu'il existe déja
-        
-        //Si non -> insertion dans la base de donnée
     	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject()
@@ -136,18 +133,26 @@ public class Services {
         utilisateur.setMail(email);
         utilisateur.setMdp(password);
         
-        //Test si l'utilisateur existe dans la base de donnée
         
-        //Si oui -> renvoi à l'utilisateur qu'il existe déja
-        
-        //Si non -> insertion dans la base de donnée
-    	StringWriter writer = new StringWriter();
+        StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
-        generator.writeStartObject()
-            .write("fonct", "connectUser")
-            .write("status", "OK")
-            .write("email", email)
-            .writeEnd();
+        generator.writeStartObject();
+        generator.write("fonct", "connectUser")
+        //Test si l'utilisateur existe dans la base de données
+        if (ufi.contains(utilisateur))
+        //Si oui -> renvoi à l'utilisateur qu'il existe déja
+        {
+        	generator.write("status", "OK");            
+            
+        }
+        //Si non -> insertion dans la base de donnée
+        else {
+        	generator.write("status", "FAIL");
+
+        }
+       
+        generator.write("email", email);    
+        generator.writeEnd();
         generator.close();
       
         try {
@@ -157,35 +162,16 @@ public class Services {
         }
     }
     
-    public void onAddCart(Session session, JsonObject jsonObject)
-    {
-    	String ID = jsonObject.getString("idObjet");
-        
-    	System.out.println("On ajoute au panier :"+ID);
-    	
-    	StringWriter writer = new StringWriter();
-        JsonGenerator generator = Json.createGenerator(writer);
-        generator.writeStartObject()
-            .write("status", "OK")
-            .write("idObjet",ID)
-            .writeEnd();
-        generator.close();
-      	
-        try {
-        	
-            session.getBasicRemote().sendText(writer.toString());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
     
     private void onDeleteAccount(Session session, JsonObject jsonObject) {
     	String email = jsonObject.getString("email");
     	
     	System.out.println("On supprime le compte ayant l'email : "+email);
-    	
+    	Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setMail(email);
+        
     	//Suppression du compte sur la bdd
-    	
+    	ufi.remove(utilisateur);
     	
 		
 	}
@@ -197,7 +183,14 @@ public class Services {
 		String newFirstName = jsonObject.getString("newFirstName");
 		
 		//On push les infos sur l'utilisateur ayant pour email oldEmail et on remplace les infos par newEmail, newName
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setMail(oldEmail);
+		utilisateur = ufi.find(utilisateur);
+		utilisateur.setMail(newEmail);
+		utilisateur.setNom(newName);
+		utilisateur.setPrenom(newFirstName);
 		
+		ufi.edit(utilisateur);
 		
 		//Renvoi des nouvelles infos au site 
 		StringWriter writer = new StringWriter();
