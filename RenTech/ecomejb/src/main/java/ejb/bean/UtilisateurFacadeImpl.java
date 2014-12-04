@@ -18,23 +18,23 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote, Serializa
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-    @Override
     public void create(Utilisateur utilisateur) {
         entityManager.persist(utilisateur);
     }
 
-    @Override
     public void edit(Utilisateur utilisateur) {
         entityManager.merge(utilisateur);
     }
 
-    @Override
     public void remove(Utilisateur utilisateur) {
         entityManager.remove(utilisateur);
     }
 
-    @Override
     public boolean contains(Utilisateur utilisateur){
         return entityManager.contains(utilisateur);
     }
+
+	public Utilisateur find(Utilisateur utilisateur) {
+		return (Utilisateur) entityManager.createQuery("select * from Personne where mail='"+utilisateur.getMail()+"';").getResultList().get(0);
+	}
 }

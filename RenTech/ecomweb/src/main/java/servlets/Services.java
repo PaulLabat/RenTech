@@ -137,7 +137,7 @@ public class Services {
         StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject();
-        generator.write("fonct", "connectUser")
+        generator.write("fonct", "connectUser");
         //Test si l'utilisateur existe dans la base de données
         if (ufi.contains(utilisateur))
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
