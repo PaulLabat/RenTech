@@ -49,6 +49,7 @@
 	    	console.log(JSON.parse(message.data));
 	    	var msg_received = JSON.parse(message.data);
 	    	    	
+	    	console.log("Message received from server : " + JSON.stringify(msg_received));
 	    	if (msg_received["fonct"]=="connectUser")
 	    	{
 	    		onConnectUser(msg_received);
@@ -67,6 +68,7 @@
 	    }
 	    
 	    Service.send = function(data) {
+	    	console.log("sending...");
 	    	ws.send(JSON.stringify(data));
 	    }
 	    

@@ -41,7 +41,8 @@ import ejb.entity.Utilisateur;
 public class Services {
 	
 
-	UtilisateurFacadeImpl ufi = new UtilisateurFacadeImpl();
+	UtilisateurFacadeImpl ufi;
+	
     /**
      * @OnOpen allows us to intercept the creation of a new session.
      * The session class allows us to send data to the user.
@@ -57,6 +58,8 @@ public class Services {
             .write("status", "Connexion Established")
             .writeEnd();
         generator.close();
+        
+        ufi = new UtilisateurFacadeImpl();
         try {
             session.getBasicRemote().sendText(writer.toString());
         } catch (IOException ex) {
@@ -126,6 +129,7 @@ public class Services {
     
     public void onConnectUser(Session session, JsonObject jsonObject)
     {
+    	System.out.println("Debut onConnectUser");
     	String email = jsonObject.getString("email");
         String password = jsonObject.getString("password");
         
@@ -133,31 +137,35 @@ public class Services {
         utilisateur.setMail(email);
         utilisateur.setMdp(password);
         
+        System.out.println("onConnectUser 1");
         
         StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject();
         generator.write("fonct", "connectUser");
         //Test si l'utilisateur existe dans la base de données
-        if (ufi.contains(utilisateur))
+        System.out.println("onConnectUser 2");
+        /*if (ufi.contains(utilisateur))
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
         {
         	generator.write("status", "OK");            
             
         }
         //Si non -> insertion dans la base de donnée
-        else {
+        else {*/
         	generator.write("status", "FAIL");
 
-        }
-       
+//        }
+        System.out.println("onConnectUser 3");
         generator.write("email", email);    
         generator.writeEnd();
         generator.close();
       
+        System.out.println("onConnectUser 4");
         try {
             session.getBasicRemote().sendText(writer.toString());
         } catch (Exception ex) {
+        	System.out.println("onConnectUser 5");
             ex.printStackTrace();
         }
     }
