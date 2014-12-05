@@ -10,9 +10,15 @@
 		// Donnees communes aux differentes vues
 		var user;
 
+		// Nombre de produits dans le panier
 		var number=0;
+		
+		// Prix total du panier
 		var total=0;
-		 
+		
+		// Produits ajoutes au panier
+		var list_items = [];
+		
 		sharedService.getNumber = function () {
 	    	return number;
 	    };
@@ -21,11 +27,16 @@
 	    	return total;
 	    };
 	        
-		sharedService.addItem = function (prix) {
+		sharedService.addItem = function (n,p) {
+			list_items.push({ name: n, prix: p });
     	  	number=number+1;
-    	  	total=total+prix;
+    	  	total=total+p;
         };
 	        
+		sharedService.getList = function () {
+			return list_items;
+        };
+        
 	    return sharedService;
 	}]);
 	
@@ -63,6 +74,7 @@
 			
 			.when('/panier', {
 				templateUrl : 'views/panier.jsp',
+				controller  : 'panierController'
 			})
 		
 			.when('/git', {
@@ -109,10 +121,6 @@
 	});
 	
 	scotchApp.controller('categController', function($scope) {
-		$scope.message = 'Hey! This is a section!';
-	});
-	
-	scotchApp.controller('panierController', function($scope) {
 		$scope.message = 'Hey! This is a section!';
 	});
 	

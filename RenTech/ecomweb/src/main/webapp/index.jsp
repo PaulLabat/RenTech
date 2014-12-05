@@ -42,6 +42,7 @@
 	<script src="js/registerController.js"></script>
 	<script src="js/connectedController.js"></script>
 	<script src="js/pageProduitController.js"></script>
+	<script src="js/panierController.js"></script>
 	<title>RenTech</title>
 
 </head>

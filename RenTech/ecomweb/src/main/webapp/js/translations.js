@@ -38,6 +38,7 @@
 		  QUANTITY : "Quantity",
 		  VOIR_PLUS: "See more >",
 		  PAYEMENT : "Checkout",
+		  PANIER_VIDE : "Your cart is empty!",
 		  PRODUIT_AJOUTE : "Product added!"
 	  });
 	  
@@ -79,6 +80,7 @@
 		  QUANTITY : "Quantit&eacute;",
 		  VOIR_PLUS: "En voir plus >",
 		  PAYEMENT: "Payement",
+		  PANIER_VIDE : "Votre panier est vide!",
 	      PRODUIT_AJOUTE : "Produit ajout&eacute;!"
 	  });
 	  
