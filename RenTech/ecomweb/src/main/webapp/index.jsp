@@ -78,8 +78,26 @@
 								<li><a id="a_login" href="#login"><i class="glyphicon glyphicon-user"></i> 
 									<span translate="CONNEXION">Connexion</span></a></li>
 								
-								<li><a id="a_logout" href="#logout" style="display:none"><i class="glyphicon glyphicon-off"></i> 
-									<span translate="DECONNEXION">Déconnexion</span></a></li>
+								<li ng-controller="connectedController" role="presentation" class="dropdown">
+				
+								    <a id="a_logout" style="display:none" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								      <span translate="CONNECTE"></span> {{username}} <span class="caret"></span>
+								    </a>
+								    <ul class="dropdown-menu" role="menu">
+								    	<li role="presentation"><a role="menuitem">			    		
+								    		<i class="glyphicon glyphicon-list"></i> 
+											<span translate="HISTORIQUE"></span></a>
+											</li>
+								    	<li role="presentation"><a role="menuitem">
+								    		<i class="glyphicon glyphicon-cog"></i> 
+											<span translate="PARAMETRES"></span></a>
+											</li>
+								      	<li role="presentation"><a role="menuitem">
+								      		<i class="glyphicon glyphicon-off"></i> 
+											<span translate="DECONNEXION"></span></a>
+										</li>
+								    </ul>
+								</li>
 
 							</ul>
 						</div>

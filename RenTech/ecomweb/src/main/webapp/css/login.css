@@ -10,6 +10,13 @@
   margin-bottom: 30px;
 }
 
+.login-form h3, .signup-form h3 {
+  color: #AA0000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
 
 .login-form form input, .signup-form form input {
   background: #F0F0E9;

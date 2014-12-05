@@ -1,6 +1,6 @@
 	// create the module and name it scotchApp
     // also include ngRoute for all our routing needs
-	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate','ngDialog']);
+	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate']);
 
 	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
 	
@@ -57,13 +57,13 @@
 	    };	    
 
 	    function onConnectUser(data) {
-	    	if (msg_received["status"]=="OK")
+	    	if (data["status"]=="OK")
 	    	{
-	    		$rootScope.$broadcast('connectionSucceed',JSON.stringify(msg_received["email"]));
+	    		$rootScope.$broadcast('connectionSucceed',data["email"]);
 	    	}
-	    	else if (msg_received["status"]=="FAIL")
+	    	else if (data["status"]=="FAIL")
     		{
-	    		$rootScope.$broadcast('connectionFailed',JSON.stringify(msg_received["email"]));
+	    		$rootScope.$broadcast('connectionFailed',data["email"]);
     		}
 	    }
 	    
@@ -84,6 +84,8 @@
 		  PANIER : 'Cart',
 		  PRODUIT : 'Products',
 		  CONNEXION : 'Login',
+		  CONNECTE : 'Connected as ',
+		  CONNEXION_FAILED : 'Incorrect email or password',
 		  PARTICULIERS : 'Private individuals',
 		  G_UTILISATEURS : 'Group of users',
 		  ENTREPRISES : 'Companies',
@@ -107,6 +109,8 @@
 		  LAST_NAME : "Last name",
 		  CITY : "City",
 		  POSTAL_CODE : "Postal code",
+		  HISTORIQUE : "History rentals",
+		  PARAMETRES : "Account parameters",
 		  PRODUCT : "Product",
 		  PRICE : "Price",
 		  QUANTITY : "Quantity",
@@ -121,6 +125,8 @@
 		  PRODUIT : 'Produits',
 		  PANIER : 'Panier',
 		  CONNEXION : 'Connexion',
+		  CONNECTE : 'Connect&eacute; en tant que ',
+		  CONNEXION_FAILED : 'Email ou mot de passe invalide',
 		  PARTICULIERS : 'Particuliers',
 		  G_UTILISATEURS : 'Groupe d\'utilisateurs',
 		  ENTREPRISES : 'Entreprises',
@@ -144,6 +150,8 @@
 		  LAST_NAME : "Nom",
 		  CITY : "Ville",
 		  POSTAL_CODE : "Code postal",
+		  HISTORIQUE : "Historique des commandes",
+		  PARAMETRES : "Param&egrave;tres compte",
 		  PRODUCT : "Produit",
 		  PRICE : "Prix",
 		  QUANTITY : "Quantit&eacute;",
@@ -190,11 +198,6 @@
 			.when('/login', {
 				templateUrl : 'views/login.jsp',
 				controller : 'loginController'
-			})
-		
-			.when('/connected', {
-				templateUrl : 'views/connected.jsp',
-				controller  : 'connectedController'
 			})
 			
 			.when('/panier', {
@@ -257,7 +260,7 @@
 	});
 
 	
-	scotchApp.controller('loginController', function(WS_Service,MySharedService,$scope,$location,ngDialog) {
+	scotchApp.controller('loginController', function(WS_Service,MySharedService,$scope) {
 		
 		$scope.connectUser = function() {
             var emailUser = document.getElementById("emailConnect").value;
@@ -266,38 +269,40 @@
             
             console.log("Email : " + emailUser + " Password : " + passwordUser);
       
-//            MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
+            MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
             WS_Service.send(utilisateur);
-            //	        $scope.changeView('/connected');	// Le changement de vue appelera automatiquement le controller 'connectedController', qui enverra les donnees au serveur
 		}
+		
+		$scope.$on('connectionFailed', function(event, data) { 
+			document.getElementById("s_connectionFailed").style.display = 'block';
+			console.log("connectionFailedCallback");
+        });    
+	});
+	
+	scotchApp.controller('connectedController', function(WS_Service,MySharedService,$scope,$location) {
 
 		$scope.$on('connectionSucceed', function(event, data) {	
-			document.getElementById("a_login").style.display = 'none';        
-			document.getElementById("a_logout").style.display = 'block';         
+			document.getElementById("a_login").style.display = 'none';      
+			document.getElementById("s_connectionFailed").style.display = 'none';
+			document.getElementById("a_logout").style.display = 'block';       
+			
+			$scope.$apply($scope.username=data);	
+			$scope.$apply($scope.changeView('/'));
+			
 			console.log("connectionSucceedCallback");
-        });
-		
-		$scope.$on('connectionFailed', function(event, data) {
-			ngDialog.open({ template: 'dialog_connectionFailed' });        
-			console.log("connectionFailedCallback");
-        });
+        });	
 		
         $scope.changeView = function(view){
             $location.url(view); // path not hash
 	    	console.log("View changed");            
-        }        
-	});
-	
-	scotchApp.controller('connectedController', function(WS_Service,MySharedService,$scope) {
-
-		WS_Service.send(MySharedService.user);		
-		
-		$scope.$on('msgReceived', function(event, data) {
+        }   
+        
+		/*$scope.$on('msgReceived', function(event, data) {
 			$scope.$apply($scope.msg=data);		
 			document.getElementById("a_login").style.display = 'none';        
 			document.getElementById("a_logout").style.display = 'block';         
 			console.log("msgReceivedCallback");
-        });
+        });*/
 	});
 	
 	scotchApp.controller('categController', function($scope) {

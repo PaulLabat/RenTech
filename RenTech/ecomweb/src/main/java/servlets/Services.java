@@ -147,13 +147,13 @@ public class Services {
         System.out.println("onConnectUser 2");
         /*if (ufi.contains(utilisateur))
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
-        {
+        {*/
         	generator.write("status", "OK");            
             
-        }
+        /*}
         //Si non -> insertion dans la base de donnée
         else {*/
-        	generator.write("status", "FAIL");
+//        	generator.write("status", "FAIL");
 
 //        }
         System.out.println("onConnectUser 3");

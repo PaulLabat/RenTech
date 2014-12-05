@@ -9,6 +9,10 @@
 						<span translate="CONNEXION"> Se connecter</span>
 					</h2>
 
+					<h3>
+						<span id="s_connectionFailed" style="display:none" translate="CONNEXION_FAILED"> </span>
+					</h3>
+					
 					<div class="input-group margin-bottom-sm">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
@@ -19,10 +23,8 @@
 							<input class="form-control" type="password" placeholder="Password" id="passwordConnect">
 
 						</div>
-						<span> 
-							<input type="checkbox" class="checkbox"> 
-							<span translate="REMEMBER_ME"> Se souvenir de moi</span>
-						</span>
+	
+						<input translate="REMEMBER_ME" type="checkbox">  Se souvenir de moi<br>
 						<button id="connect" ng-click="connectUser()" type="submit" class="btn btn-primary pull-right">
 
 							<span translate="CONNEXION">Se connecter</span>
