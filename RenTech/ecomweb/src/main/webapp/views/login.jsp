@@ -2,7 +2,7 @@
 	<!--form-->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-1">
+			<div ng-controller="loginController" class="col-sm-4 col-sm-offset-1">
 				<div id="login-div" class="login-form">
 					<!--login form-->
 					<h2>
@@ -33,7 +33,7 @@
 				<!--/login form-->
 			</div>
 
-			<div class="col-sm-4">
+			<div ng-controller="registerController" class="col-sm-4">
 				<div class="signup-form">
 					<!--sign up form-->
 					<h2><span translate="NOT_A_MEMBER"> Pas encore membre ?</span></h2>
@@ -50,7 +50,7 @@
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 							<input class="form-control" type="password"	placeholder="Password" id="passwordRegister">
 						</div>
-						<button onclick="createUser();" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
+						<button ng-click="createUser();" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
 					
 				</div>
 				<!--/sign up form-->

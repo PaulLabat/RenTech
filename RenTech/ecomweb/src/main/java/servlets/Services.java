@@ -2,7 +2,6 @@ package servlets;
 
 import java.awt.List;
 import java.io.IOException;
- 
 
 
 import java.io.StringReader;
@@ -18,8 +17,12 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.ejb.EJB;
 
 import ejb.bean.UtilisateurFacadeImpl;
+import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
 import ejb.entity.Forum;
 import ejb.entity.Git;
@@ -40,8 +43,8 @@ import ejb.entity.Utilisateur;
 @ServerEndpoint("/Services") 
 public class Services {
 	
-
-	UtilisateurFacadeImpl ufi;
+	@EJB
+	UtilisateurFacadeRemote ufi;
 	
     /**
      * @OnOpen allows us to intercept the creation of a new session.
@@ -59,7 +62,17 @@ public class Services {
             .writeEnd();
         generator.close();
         
-        ufi = new UtilisateurFacadeImpl();
+        /*try {
+        	ufi = (UtilisateurFacadeRemote) new InitialContext().lookup("java:app/ejb/bean/UtilisateurFacadeImpl");
+        }
+        catch (NamingException e)
+        {
+        	e.printStackTrace();
+        }*/
+        
+        if (ufi == null)
+        	System.out.println("UFI NULL");
+        
         try {
             session.getBasicRemote().sendText(writer.toString());
         } catch (IOException ex) {
@@ -77,12 +90,12 @@ public class Services {
         JsonObject jsonObject = Json.createReader(new StringReader(message)).readObject();
         String fonct = jsonObject.getString("fonct");
         
-        if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
-        else if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
+        if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
+        /*else if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
         else if (fonct.compareTo("pushCommande")==0) onPushCommande(session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) onChangeInfos(session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) onDeleteAccount(session,jsonObject);
-        else if (fonct.compareTo("onPushCommande")==0) onPushCommande(session,jsonObject);
+        else if (fonct.compareTo("onPushCommande")==0) onPushCommande(session,jsonObject);*/
         
     }
 
@@ -97,7 +110,7 @@ public class Services {
     }
     
     
-    public void onCreateUser(Session session, JsonObject jsonObject)
+   /* public void onCreateUser(Session session, JsonObject jsonObject)
     {
     	String nom = jsonObject.getString("name");
         String email = jsonObject.getString("email");
@@ -125,7 +138,7 @@ public class Services {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
     
     public void onConnectUser(Session session, JsonObject jsonObject)
     {
@@ -145,17 +158,16 @@ public class Services {
         generator.write("fonct", "connectUser");
         //Test si l'utilisateur existe dans la base de données
         System.out.println("onConnectUser 2");
-        /*if (ufi.contains(utilisateur))
+        if (ufi.contains(utilisateur))
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
-        {*/
+        {
         	generator.write("status", "OK");            
-            
-        /*}
+        }
         //Si non -> insertion dans la base de donnée
-        else {*/
-//        	generator.write("status", "FAIL");
+        else {
+        	generator.write("status", "FAIL");
 
-//        }
+        }
         System.out.println("onConnectUser 3");
         generator.write("email", email);    
         generator.writeEnd();
@@ -171,7 +183,7 @@ public class Services {
     }
     
     
-    private void onDeleteAccount(Session session, JsonObject jsonObject) {
+   /* private void onDeleteAccount(Session session, JsonObject jsonObject) {
     	String email = jsonObject.getString("email");
     	
     	System.out.println("On supprime le compte ayant l'email : "+email);
@@ -182,9 +194,9 @@ public class Services {
     	ufi.remove(utilisateur);
     	
 		
-	}
+	}*/
 
-	private void onChangeInfos(Session session, JsonObject jsonObject) {
+	/*private void onChangeInfos(Session session, JsonObject jsonObject) {
 		String oldEmail = jsonObject.getString("oldEmail");
 		String newEmail = jsonObject.getString("newEmail");
 		String newName = jsonObject.getString("newName");
@@ -217,9 +229,9 @@ public class Services {
         }
 		
 		
-	}
+	}*/
 	
-	private void onPushCommande(Session session, JsonObject jsonObject) {
+	/*private void onPushCommande(Session session, JsonObject jsonObject) {
 		String emailUser =  jsonObject.getString("emailUser");
 		
 		//On crée la commande 
@@ -261,6 +273,6 @@ public class Services {
             ex.printStackTrace();
         }
 		
-	}
+	}*/
 
 }

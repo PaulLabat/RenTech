@@ -33,7 +33,15 @@
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     
 	<script src="js/script.js"></script>
-	<script src="js/gestionPanier.js"></script>
+	
+	<!-- Controllers -->
+	<script src="js/websockets.js"></script>
+	<script src="js/translations.js"></script>
+	<script src="js/headerController.js"></script>
+	<script src="js/loginController.js"></script>
+	<script src="js/registerController.js"></script>
+	<script src="js/connectedController.js"></script>
+	<script src="js/pageProduitController.js"></script>
 	<title>RenTech</title>
 
 </head>
@@ -49,7 +57,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="#"><img src="img/logo-small.png" alt="" /></a>
+							<a href="#"><img src="img/RenTech-logo.png" alt="" /></a>
 
 						</div>
 					</div>
