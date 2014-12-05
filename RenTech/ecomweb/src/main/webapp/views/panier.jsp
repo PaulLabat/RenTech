@@ -47,9 +47,11 @@
 						<td> </td>
 
 						<td>
-							<button type="button" class="btn btn-success">
-								<span translate="PAYEMENT">Payement</span>
+							<a href="#orderForm">
+								<button type="button" class="btn btn-success">
+								<span translate="PAYEMENT"></span>
 							</button>
+							</a>
 						</td>
 					</tr>
 				</tbody>

@@ -102,6 +102,10 @@
 			.when('/compte/historique', {
 				templateUrl : 'views/compteClientHistorique.jsp',
 			})
+			.when('/orderForm', {
+				templateUrl : 'views/orderForm.jsp',
+				controller : 'orderFormController'
+			})
 			.otherwise({
 				templateUrl : 'views/Error404.jsp'
 			})
