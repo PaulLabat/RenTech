@@ -1,5 +1,6 @@
 package client;
 
+import java.io.Console;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,10 @@ public class Shell {
                     helpUser();
                     break;
                 case "/root":
+                    Console console = System.console();
+                    System.out.println("please enter the root name");
+                    String user = sc.nextLine();
+                    String password = new String(console.readPassword("Please enter your password: "));
                     runRoot();
                     break;
                 case "/exit":
