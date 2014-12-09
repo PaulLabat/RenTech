@@ -13,7 +13,7 @@ import java.util.Collection;
 @Table(name = "UTILISATEUR")
 public class Utilisateur implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @NotNull
     @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
