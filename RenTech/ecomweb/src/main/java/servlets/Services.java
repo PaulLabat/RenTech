@@ -43,8 +43,8 @@ import ejb.entity.Utilisateur;
 @ServerEndpoint("/Services") 
 public class Services {
 	
-	@EJB
-	UtilisateurFacadeRemote ufi;
+	/*@EJB
+	UtilisateurFacadeRemote ufi;*/
 	
     /**
      * @OnOpen allows us to intercept the creation of a new session.
@@ -62,16 +62,16 @@ public class Services {
             .writeEnd();
         generator.close();
         
-        /*try {
-        	ufi = (UtilisateurFacadeRemote) new InitialContext().lookup("java:app/ejb/bean/UtilisateurFacadeImpl");
+       /* try {
+        	ufi = (UtilisateurFacadeRemote) new InitialContext().lookup("UtilisateurFacadeImpl");
         }
         catch (NamingException e)
         {
         	e.printStackTrace();
-        }*/
+        }
         
         if (ufi == null)
-        	System.out.println("UFI NULL");
+        	System.out.println("UFI NULL");*/
         
         try {
             session.getBasicRemote().sendText(writer.toString());
@@ -158,16 +158,16 @@ public class Services {
         generator.write("fonct", "connectUser");
         //Test si l'utilisateur existe dans la base de données
         System.out.println("onConnectUser 2");
-        if (ufi.contains(utilisateur))
+        /*if (ufi.contains(utilisateur))
         //Si oui -> renvoi à l'utilisateur qu'il existe déja
-        {
+        {*/
         	generator.write("status", "OK");            
-        }
+        /*}
         //Si non -> insertion dans la base de donnée
         else {
         	generator.write("status", "FAIL");
 
-        }
+        }*/
         System.out.println("onConnectUser 3");
         generator.write("email", email);    
         generator.writeEnd();
