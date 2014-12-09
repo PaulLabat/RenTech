@@ -54,19 +54,6 @@ public class Admin implements Serializable{
         this.mdp = mdp;
     }
 
-    /**
-     *
-     * @param mdp : mdp en clair, il est chiffré en md5 dans cette méthode
-     */
-    public void setMdpAndEncrypt(String mdp){
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-1");
-            this.mdp = new String(md.digest(mdp.getBytes()));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-    }
-
     public String getNom() {
         return nom;
     }

@@ -14,4 +14,6 @@ public interface DataBase {
     public void printUser(String mail);
 
     String printTable();
+
+    boolean checkAdmin(String name, String psw);
 }

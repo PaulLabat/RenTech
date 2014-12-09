@@ -37,7 +37,12 @@ public class Shell {
                     System.out.println("please enter the root name");
                     String user = sc.nextLine();
                     String password = new String(console.readPassword("Please enter your password: "));
-                    runRoot();
+                    if(dataBase.checkAdmin(user,password)){
+                        System.out.println("access to the root mode");
+                        runRoot();
+                    } else{
+                        System.out.println("access denied");
+                    }
                     break;
                 case "/exit":
                     System.out.println("thanks you for your visiting. The system should be exited.");

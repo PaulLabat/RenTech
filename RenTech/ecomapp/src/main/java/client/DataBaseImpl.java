@@ -1,5 +1,6 @@
 package client;
 
+import ejb.bean.AdminFacade;
 import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Utilisateur;
 
@@ -11,6 +12,7 @@ import javax.naming.NamingException;
  */
 public class DataBaseImpl implements DataBase{
     UtilisateurFacadeRemote utilisateurFacadeRemote;
+    AdminFacade adminFacade;
 
     public DataBaseImpl(){
         InitialContext context;
@@ -18,6 +20,7 @@ public class DataBaseImpl implements DataBase{
         try {
             context = new InitialContext();
             utilisateurFacadeRemote = (UtilisateurFacadeRemote) context.lookup("UtilisateurFacade");
+            adminFacade = (AdminFacade) context.lookup("AdminFacade");
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -52,5 +55,10 @@ public class DataBaseImpl implements DataBase{
     @Override
     public String printTable(){
         return utilisateurFacadeRemote.printTable();
+    }
+
+    @Override
+    public boolean checkAdmin(String name, String psw){
+        return adminFacade.contains(name, psw);
     }
 }
