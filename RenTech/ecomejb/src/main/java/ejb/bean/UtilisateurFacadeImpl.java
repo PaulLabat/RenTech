@@ -1,6 +1,6 @@
 package ejb.bean;
 
-import ejb.entity.Utilisateur;
+
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -11,13 +11,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
-import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import ejb.entity.Utilisateur;
+
+import java.util.List;
 
 /**
  * Created by augustin on 25/11/14.
@@ -101,7 +97,6 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
     	}
     		return true;
     		
-    		
     	}
 
     public boolean contains(Utilisateur utilisateur){
@@ -120,4 +115,21 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		entityManager.close();
         return true;
     }
+    
+    @SuppressWarnings("unchecked")
+	public List<Utilisateur> getUsers(){
+    	entityManager = entityManagerFactory.createEntityManager();
+
+		Query query =  entityManager.createQuery("select u from Utilisateur u");
+		List<Utilisateur> usersList = null;
+		try{
+			usersList = query.getResultList();
+		}catch(NoResultException e){
+			usersList = null;
+		}
+
+		return usersList;
+	}
+
+
 }
