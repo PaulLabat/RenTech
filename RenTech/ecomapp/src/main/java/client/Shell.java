@@ -37,6 +37,7 @@ public class Shell {
                 case "/exit":
                     System.out.println("thanks you for your visiting. The system should be exited.");
                     exit = true;
+                    break;
                 default:
                     System.out.println("unknown this command : "+command);
                     break;
