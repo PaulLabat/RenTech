@@ -48,6 +48,7 @@ public class Shell {
     private void runRoot(){
         boolean exit = false;
         String command;
+        String email;
 
         while(!exit){
             System.out.print("rentech@root -> ");
@@ -65,18 +66,25 @@ public class Shell {
                     System.out.println("please enter the user name");
                     String name = sc.nextLine();
                     System.out.println("please enter the user email");
-                    String email = sc.nextLine();
+                    email = sc.nextLine();
                     System.out.println("please enter the user password");
                     String mdp = sc.nextLine();
 
                     dataBase.createUser(name,email,mdp);
                     break;
                 case "/delete":
+                    System.out.println("please enter the user email");
+                    email = sc.nextLine();
+                    if(dataBase.deleteUser(email)){
+                        System.out.println("successfully deleted");
+                    } else{
+                        System.out.println("error when try to delete user, maybe user doesn't exist ?");
+                    }
                     break;
                 case "/search":
                     System.out.println("please enter the user email");
-                    String mail = sc.nextLine();
-                    if(dataBase.isUserExist(mail)){
+                    email = sc.nextLine();
+                    if(dataBase.isUserExist(email)){
                         System.out.println("this user exist");
                     } else{
                         System.out.println("this user doesn't exist");

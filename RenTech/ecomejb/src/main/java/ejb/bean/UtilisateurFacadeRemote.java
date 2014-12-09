@@ -18,6 +18,8 @@ public interface UtilisateurFacadeRemote {
 
     boolean remove(Utilisateur utilisateur);
 
+    boolean remove(String email);
+
     boolean contains(Utilisateur utilisateur);
 
     boolean contains(String email);

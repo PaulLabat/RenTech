@@ -7,7 +7,7 @@ public interface DataBase {
 
     public void createUser(String name, String email, String mdp);
 
-    public void deleteUser(String email);
+    public boolean deleteUser(String email);
 
     public boolean isUserExist(String email);
 

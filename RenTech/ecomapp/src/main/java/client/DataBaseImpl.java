@@ -35,8 +35,8 @@ public class DataBaseImpl implements DataBase{
     }
 
     @Override
-    public void deleteUser(String email) {
-        
+    public boolean deleteUser(String email) {
+        return utilisateurFacadeRemote.remove(email);
     }
 
     @Override

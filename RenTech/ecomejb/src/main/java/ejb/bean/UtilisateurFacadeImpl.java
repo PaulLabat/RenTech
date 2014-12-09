@@ -80,31 +80,55 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return u;
     }
 
-    public boolean remove(Utilisateur utilisateur){
-    	entityManager = entityManagerFactory.createEntityManager();
-    	
-    	if(contains(utilisateur))
-    	{
-    		entityManager = entityManagerFactory.createEntityManager();
-        	Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
-    		myQuery.setParameter("mail",utilisateur.getMail());
-    		myQuery.setParameter("password",utilisateur.getMdp());
-    		Utilisateur u; 
-    		
-            
-    		try{
-    			u = (Utilisateur) myQuery.getSingleResult();
-    		}catch(NoResultException e){
-    			return false;
-    		}
-    		
-    		entityManager.remove(u);
-    	}
-    		return true;
-    		
-    		
-    	}
+	@Override
+	public boolean remove(Utilisateur utilisateur){
+		entityManager = entityManagerFactory.createEntityManager();
 
+		if(contains(utilisateur)) {
+			entityManager = entityManagerFactory.createEntityManager();
+			Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
+			myQuery.setParameter("mail",utilisateur.getMail());
+			myQuery.setParameter("password",utilisateur.getMdp());
+			Utilisateur u;
+
+
+			try{
+				u = (Utilisateur) myQuery.getSingleResult();
+				entityManager.remove(u);
+				return true;
+			}catch(NoResultException e){
+				return false;
+			}
+		}
+
+		return false;
+
+	}
+
+	@Override
+	public boolean remove(String email){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		if(contains(email)) {
+			entityManager = entityManagerFactory.createEntityManager();
+			Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+			myQuery.setParameter("mail",email);
+			Utilisateur u;
+
+
+			try{
+				u = (Utilisateur) myQuery.getSingleResult();
+				entityManager.remove(u);
+				return true;
+			}catch(NoResultException e){
+				return false;
+			}
+		}
+
+		return false;
+	}
+
+	@Override
     public boolean contains(Utilisateur utilisateur){
     	entityManager = entityManagerFactory.createEntityManager();
     	Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
