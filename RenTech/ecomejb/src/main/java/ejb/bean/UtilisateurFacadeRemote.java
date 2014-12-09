@@ -1,5 +1,7 @@
 package ejb.bean;
 
+import java.sql.SQLException;
+
 import ejb.entity.Utilisateur;
 
 import javax.ejb.Remote;
@@ -10,11 +12,11 @@ import javax.ejb.Remote;
 @Remote
 public interface UtilisateurFacadeRemote {
 
-    void create(Utilisateur utilisateur);
+    Utilisateur create(Utilisateur utilisateur);
 
-    void edit(Utilisateur utilisateur);
+    Utilisateur edit(Utilisateur utilisateur);
 
-    void remove(Utilisateur utilisateur);
+    boolean remove(Utilisateur utilisateur);
 
     boolean contains(Utilisateur utilisateur);
 }

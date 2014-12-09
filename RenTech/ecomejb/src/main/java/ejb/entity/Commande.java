@@ -13,7 +13,11 @@ import java.util.Date;
 @Entity
 @Table(name = "COMMANDE")
 public class Commande implements Serializable{
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue
     private Integer id;
     @NotNull
