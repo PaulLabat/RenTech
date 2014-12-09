@@ -6,7 +6,7 @@ import javax.ejb.Remote;
  * Created by Cirie on 09/12/2014.
  */
 @Remote
-public interface AdminFacade {
+public interface AdminFacadeRemote {
 
     void create(String name, String psw);
 

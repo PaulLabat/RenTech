@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by Cirie on 09/12/2014.
  */
 @Stateless(mappedName="AdminFacade")
-public class AdminFacadeImpl implements AdminFacade{
+public class AdminFacadeImpl implements AdminFacadeRemote {
 
     @PersistenceUnit(unitName="MyFactory")
     private EntityManagerFactory entityManagerFactory;
