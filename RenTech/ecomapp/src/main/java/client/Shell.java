@@ -18,13 +18,13 @@ public class Shell {
         sc = new Scanner(System.in);
         boolean exit = false;
         String command;
-        System.out.println("\n##################################\n" +
-                "###### Welcome in the Shell ######\n" +
-                "##################################\n" +
-                "\n please enter /help if you want to see the list of command\n");
+        System.out.println("\n\t\t##################################\n" +
+                "\t\t###### Welcome in the Shell ######\n" +
+                "\t\t##################################\n" +
+                "\n\t please enter /help if you want to see the list of command\n");
 
         while(!exit){
-            System.out.println("rentech@user -> ");
+            System.out.print("rentech@user -> ");
             command = sc.nextLine();
 
             switch(command){
@@ -50,7 +50,7 @@ public class Shell {
         String command;
 
         while(!exit){
-            System.out.println("rentech@root -> ");
+            System.out.print("rentech@root -> ");
             command = sc.nextLine();
 
             switch (command){
@@ -61,7 +61,7 @@ public class Shell {
                     exit = true;
                     System.out.println("exit root mode");
                     break;
-                case "/create":
+                case "/creat":
                     System.out.println("please enter the user name");
                     String name = sc.nextLine();
                     System.out.println("please enter the user email");
@@ -70,7 +70,20 @@ public class Shell {
                     String mdp = sc.nextLine();
 
                     dataBase.createUser(name,email,mdp);
-
+                    break;
+                case "/delete":
+                    break;
+                case "/search":
+                    System.out.println("please enter the user email");
+                    String mail = sc.nextLine();
+                    if(dataBase.isUserExist(mail)){
+                        System.out.println("this user exist");
+                    } else{
+                        System.out.println("this user doesn't exist");
+                    }
+                    break;
+                case "/list":
+                    System.out.println(dataBase.printTable());
                     break;
                 default:
                     System.out.println("unknown this command : "+command);

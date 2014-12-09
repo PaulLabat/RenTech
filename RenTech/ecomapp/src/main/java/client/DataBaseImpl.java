@@ -41,11 +41,16 @@ public class DataBaseImpl implements DataBase{
 
     @Override
     public boolean isUserExist(String email) {
-        return false;
+       return utilisateurFacadeRemote.contains(email);
     }
 
     @Override
     public void printUser(String mail) {
 
+    }
+
+    @Override
+    public String printTable(){
+        return utilisateurFacadeRemote.printTable();
     }
 }

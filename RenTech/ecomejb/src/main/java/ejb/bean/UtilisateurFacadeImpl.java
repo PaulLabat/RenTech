@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  * Created by augustin on 25/11/14.
@@ -113,11 +114,49 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
     
 		try{
 			u = (Utilisateur) myQuery.getSingleResult();
-			u.toString();
+			System.out.println(u.toString());
+			entityManager.close();
+			return true;
 		}catch(NoResultException e){
+			entityManager.close();
 			return false;
 		}
-		entityManager.close();
-        return true;
+
     }
+
+	@Override
+	public boolean contains(String email){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+		myQuery.setParameter("mail",email);
+
+		Utilisateur u;
+
+		try{
+			u = (Utilisateur) myQuery.getSingleResult();
+			System.out.println(u.toString());
+			entityManager.close();
+			return true;
+		}catch(NoResultException e){
+			entityManager.close();
+			return false;
+		}
+	}
+
+	@Override
+	public String printTable(){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query myQuery = entityManager.createQuery("select u from Utilisateur u");
+
+		List<Utilisateur> list = myQuery.getResultList();
+		String result ="";
+		for(Utilisateur u : list){
+			result = result + u.toString() +"\n";
+		}
+
+		entityManager.close();
+		return result;
+	}
 }

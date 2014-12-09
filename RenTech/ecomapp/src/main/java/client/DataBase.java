@@ -12,4 +12,6 @@ public interface DataBase {
     public boolean isUserExist(String email);
 
     public void printUser(String mail);
+
+    String printTable();
 }
