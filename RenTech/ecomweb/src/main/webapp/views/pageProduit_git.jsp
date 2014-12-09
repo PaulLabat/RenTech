@@ -1,3 +1,4 @@
+<breadcrumbs></breadcrumbs>
 
 <div class="container">
 	<div class="row">

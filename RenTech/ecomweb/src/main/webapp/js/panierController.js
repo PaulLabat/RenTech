@@ -1,5 +1,6 @@
-scotchApp.controller('panierController', function(MySharedService,$scope) {
+scotchApp.controller('panierController', function(MySharedService,$scope,$location) {
 	
+	console.log($location.path());
 	$scope.products = MySharedService.getList();
 	$scope.total = MySharedService.getTotal().toFixed(2);	// 2 decimales
 

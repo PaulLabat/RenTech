@@ -58,8 +58,6 @@ import ejb.entity.Utilisateur;
 @ServerEndpoint("/Services") 
 public class Services {
 	
-
-
 	UtilisateurFacadeRemote ufi; 
 	InitialContext ctx;
 
@@ -95,7 +93,6 @@ public class Services {
             .write("status", "Connexion Established")
             .writeEnd();
         generator.close();
-        
         
         try {
             session.getBasicRemote().sendText(writer.toString());
@@ -134,12 +131,7 @@ public class Services {
     @OnClose
     public void onClose(Session session){
         System.out.println("Session " +session.getId()+" has ended");
-    }
-    
-    
-
-
-	
+    }	
 	
 	private void onPushCommande(Session session, JsonObject jsonObject) {
 		String emailUser =  jsonObject.get("emailUser").getAsString();
