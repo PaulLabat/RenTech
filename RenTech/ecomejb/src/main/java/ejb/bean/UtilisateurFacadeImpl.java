@@ -53,7 +53,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return u;
 	}
   
-
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Utilisateur edit(Utilisateur utilisateur) {
     	entityManager = entityManagerFactory.createEntityManager();
 
