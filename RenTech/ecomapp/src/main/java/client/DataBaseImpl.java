@@ -28,7 +28,7 @@ public class DataBaseImpl implements DataBase{
     @Override
     public void createUser(String name, String email, String mdp) {
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setMdp(mdp);
+        utilisateur.setMdpAndEncrypt(mdp);
         utilisateur.setMail(email);
         utilisateur.setNom(name);
         utilisateurFacadeRemote.create(utilisateur);
@@ -42,5 +42,10 @@ public class DataBaseImpl implements DataBase{
     @Override
     public boolean isUserExist(String email) {
         return false;
+    }
+
+    @Override
+    public void printUser(String mail) {
+
     }
 }

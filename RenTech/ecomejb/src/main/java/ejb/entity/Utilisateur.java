@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 
 /**
@@ -62,8 +64,25 @@ public class Utilisateur implements Serializable{
         return mdp;
     }
 
+    /**
+     *
+     * @param mdp : le mdp doit être chiffré avant d'être passé en paramètre dans cette méthode
+     */
     public void setMdp(String mdp) {
         this.mdp = mdp;
+    }
+
+    /**
+     *
+     * @param mdp : mdp en clair, il est chiffré en md5 dans cette méthode
+     */
+    public void setMdpAndEncrypt(String mdp){
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            this.mdp = new String(md.digest(mdp.getBytes()));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getNom() {

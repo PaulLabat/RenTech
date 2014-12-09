@@ -10,4 +10,6 @@ public interface DataBase {
     public void deleteUser(String email);
 
     public boolean isUserExist(String email);
+
+    public void printUser(String mail);
 }
