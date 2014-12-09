@@ -78,7 +78,7 @@ public class Utilisateur implements Serializable{
      */
     public void setMdpAndEncrypt(String mdp){
         try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
             this.mdp = new String(md.digest(mdp.getBytes()));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
