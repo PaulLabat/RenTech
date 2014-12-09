@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Created by augustin on 25/11/14.
  */
 
-@Stateless
+@Stateless(mappedName = "UtilisateurFacade")
 public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote, Serializable{
     @PersistenceUnit(unitName="MyFactory")
     private EntityManagerFactory entityManagerFactory;
