@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #!parse fichier settings.xml
-settingsXML='/home/augustin/.m2/settings.xml'
+settingsXML='/home/paul/.m2/settings.xml'
 password="";
 admin="";
 host=`hostname`;
@@ -9,16 +9,16 @@ host=`hostname`;
 DeployementWithXML(){
 #deploiement du site avec settings.xml
 echo "deploiement du site avec settings.xml"
-asadmin --user $admin undeploy ecomear
 asadmin --user $admin stop-database
 asadmin --user $admin stop-domain
 echo "\n ########################################"
 echo " ####### Restarting glassfish ... #######"
 echo " ########################################\n"
 asadmin --user $admin start-domain
+asadmin --user $admin undeploy ecomear
 asadmin --user $admin start-database
 mvn clean install
-asadmin --user $admin redeploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+asadmin --user $admin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
 xdg-open "http://$host:8080/ecom/"
 }
 
@@ -32,9 +32,10 @@ echo "\n ########################################"
 echo " ####### Restarting glassfish ... #######"
 echo " ########################################\n"
 asadmin start-domain
+asadmin undeploy ecomear
 asadmin start-database
 mvn clean install
-asadmin redeploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+asadmin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
 xdg-open "http://$host:8080/ecom/"
 }
 
