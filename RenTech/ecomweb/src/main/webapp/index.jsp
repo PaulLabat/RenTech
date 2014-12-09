@@ -19,7 +19,8 @@
 	<link rel="stylesheet" href="css/menus.css" />
 	<link rel="stylesheet" href="css/panier.css" />
 	<link rel="stylesheet" href="css/pageProduit.css" />
-	<link rel="stylesheet" href="css/footer.css" >
+	<link rel="stylesheet" href="css/footer.css" />
+	<link rel="stylesheet" href="css/orderForm.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
 	
 	<!-- SPELLS -->
@@ -33,7 +34,16 @@
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     
 	<script src="js/script.js"></script>
-	<script src="js/gestionPanier.js"></script>
+	
+	<!-- Controllers -->
+	<script src="js/websockets.js"></script>
+	<script src="js/translations.js"></script>
+	<script src="js/headerController.js"></script>
+	<script src="js/loginController.js"></script>
+	<script src="js/registerController.js"></script>
+	<script src="js/connectedController.js"></script>
+	<script src="js/pageProduitController.js"></script>
+	<script src="js/panierController.js"></script>
 	<title>RenTech</title>
 
 </head>
@@ -49,7 +59,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="#"><img src="img/logo-small.png" alt="" /></a>
+							<a href="#"><img src="img/RenTech-logo.png" alt="" /></a>
 
 						</div>
 					</div>
@@ -78,8 +88,26 @@
 								<li><a id="a_login" href="#login"><i class="glyphicon glyphicon-user"></i> 
 									<span translate="CONNEXION">Connexion</span></a></li>
 								
-								<li><a id="a_logout" href="#logout" style="display:none"><i class="glyphicon glyphicon-off"></i> 
-									<span translate="DECONNEXION">Déconnexion</span></a></li>
+								<li ng-controller="connectedController" role="presentation" class="dropdown">
+				
+								    <a id="a_logout" style="display:none" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								      <span translate="CONNECTE"></span> {{username}} <span class="caret"></span>
+								    </a>
+								    <ul class="dropdown-menu" role="menu">
+								    	<li role="presentation"><a role="menuitem">			    		
+								    		<i class="glyphicon glyphicon-list"></i> 
+											<span translate="HISTORIQUE"></span></a>
+											</li>
+								    	<li role="presentation"><a role="menuitem">
+								    		<i class="glyphicon glyphicon-cog"></i> 
+											<span translate="PARAMETRES"></span></a>
+											</li>
+								      	<li role="presentation"><a role="menuitem">
+								      		<i class="glyphicon glyphicon-off"></i> 
+											<span translate="DECONNEXION"></span></a>
+										</li>
+								    </ul>
+								</li>
 
 							</ul>
 						</div>

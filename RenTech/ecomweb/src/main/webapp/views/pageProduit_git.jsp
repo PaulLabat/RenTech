@@ -19,7 +19,7 @@
 				<h3>4.99&#128; HT/mois</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem(4.99)" class="btn btn-default btn-lg"><i class="icon-ok"></i>
+					<button ng-click="addItem('Micro',4.99)" class="btn btn-default btn-lg"><i class="icon-ok"></i>
 						<i class="fa fa-shopping-cart"></i> Ajouter au panier</button>
 				</p>
 			</div>
@@ -42,7 +42,7 @@
 				<h3>9.99&#128; HT/mois</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem(9.99)" onclick="addCart('smallGit');" class="btn btn-success btn-lg" href="#"><i class="icon-ok"></i>
+					<button ng-click="addItem('Small',9.99)" class="btn btn-success btn-lg" href="#"><i class="icon-ok"></i>
 						<i class="fa fa-shopping-cart"></i> Ajouter au panier</button>
 				</p>
 			</div>
@@ -65,8 +65,8 @@
 				<h3>14.99&#128; HT/mois</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem(14.99)" class="btn btn-default btn-lg" href="#"><i class="icon-ok"></i><i
-						class="fa fa-shopping-cart"></i> Ajouter au panier</button>
+					<button ng-click="addItem('Medium',14.99)" class="btn btn-default btn-lg" href="#"><i class="icon-ok"></i>
+					<i class="fa fa-shopping-cart"></i> Ajouter au panier</button>
 				</p>
 			</div>
 		</div>
@@ -88,8 +88,8 @@
 				<h3>29.99&#128; HT/mois</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem(29.99)" class="btn btn-default btn-lg" href="#"><i class="icon-ok"></i><i
-						class="fa fa-shopping-cart"></i> Ajouter au panier</button>
+					<button ng-click="addItem('Large',29.99)" class="btn btn-default btn-lg" href="#"><i class="icon-ok"></i>
+					<i class="fa fa-shopping-cart"></i> Ajouter au panier</button>
 				</p>
 			</div>
 		</div>

@@ -2,13 +2,17 @@
 	<!--form-->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-1">
+			<div ng-controller="loginController" class="col-sm-4 col-sm-offset-1">
 				<div id="login-div" class="login-form">
 					<!--login form-->
 					<h2>
 						<span translate="CONNEXION"> Se connecter</span>
 					</h2>
 
+					<h3>
+						<span id="s_connectionFailed" style="display:none" translate="CONNEXION_FAILED"> </span>
+					</h3>
+					
 					<div class="input-group margin-bottom-sm">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
@@ -19,10 +23,8 @@
 							<input class="form-control" type="password" placeholder="Password" id="passwordConnect">
 
 						</div>
-						<span> 
-							<input type="checkbox" class="checkbox"> 
-							<span translate="REMEMBER_ME"> Se souvenir de moi</span>
-						</span>
+	
+						<input translate="REMEMBER_ME" type="checkbox">  Se souvenir de moi<br>
 						<button id="connect" ng-click="connectUser()" type="submit" class="btn btn-primary pull-right">
 
 							<span translate="CONNEXION">Se connecter</span>
@@ -31,7 +33,7 @@
 				<!--/login form-->
 			</div>
 
-			<div class="col-sm-4">
+			<div ng-controller="registerController" class="col-sm-4">
 				<div class="signup-form">
 					<!--sign up form-->
 					<h2><span translate="NOT_A_MEMBER"> Pas encore membre ?</span></h2>
@@ -48,7 +50,7 @@
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 							<input class="form-control" type="password"	placeholder="Password" id="passwordRegister">
 						</div>
-						<button onclick="createUser();" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
+						<button ng-click="createUser();" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
 					
 				</div>
 				<!--/sign up form-->

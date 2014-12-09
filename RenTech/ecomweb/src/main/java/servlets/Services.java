@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
- 
 
 
 import java.io.StringReader;
@@ -27,7 +26,12 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.ejb.EJB;
 
+
+import ejb.bean.UtilisateurFacadeImpl;
 import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
 import ejb.entity.Offre;
@@ -44,8 +48,10 @@ import ejb.entity.Utilisateur;
 public class Services {
 	
 
+
 	UtilisateurFacadeRemote ufi; 
 	InitialContext ctx;
+
     /**
      * @OnOpen allows us to intercept the creation of a new session.
      * The session class allows us to send data to the user.
@@ -98,8 +104,8 @@ public class Services {
         JsonObject jsonObject = Json.createReader(new StringReader(message)).readObject();
         String fonct = jsonObject.getString("fonct");
         
-        if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
-        else if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
+        if (fonct.compareTo("connectUser")==0) onConnectUser(session,jsonObject);
+        else if (fonct.compareTo("createUser")==0) onCreateUser(session,jsonObject);
         else if (fonct.compareTo("pushCommande")==0) onPushCommande(session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) onChangeInfos(session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) onDeleteAccount(session,jsonObject);
@@ -118,7 +124,7 @@ public class Services {
     }
     
     
-    public void onCreateUser(Session session, JsonObject jsonObject)
+   public void onCreateUser(Session session, JsonObject jsonObject)
     {
     	String nom = jsonObject.getString("name");
         String email = jsonObject.getString("email");
@@ -168,6 +174,7 @@ public class Services {
         generator.write("fonct", "connectUser");
         //Test si l'utilisateur existe dans la base de données
         System.out.println("onConnectUser 2");
+
         System.out.println("UFI initialisé : "+(ufi!=null));
         if (ufi.contains(utilisateur))
         {
@@ -179,7 +186,7 @@ public class Services {
     	   //Si non -> insertion dans la base de donnée
         	generator.write("status", "FAIL");
         }
-
+        
         System.out.println("onConnectUser 3");
         generator.write("email", email);    
         generator.writeEnd();
@@ -195,7 +202,7 @@ public class Services {
     }
     
     
-    private void onDeleteAccount(Session session, JsonObject jsonObject) {
+   private void onDeleteAccount(Session session, JsonObject jsonObject) {
     	String email = jsonObject.getString("email");
     	
     	System.out.println("On supprime le compte ayant l'email : "+email);
@@ -285,6 +292,7 @@ public class Services {
             ex.printStackTrace();
         }
 		
+
 	}
 	
 }
