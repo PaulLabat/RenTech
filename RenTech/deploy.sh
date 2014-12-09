@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #!parse fichier settings.xml
-settingsXML='/home/paul/.m2/settings.xml'
+user=`echo $USER`;
+settingsXML="/home/$user/.m2/settings.xml"
 password="";
 admin="";
 host=`hostname`;
@@ -19,7 +20,6 @@ asadmin --user $admin undeploy ecomear
 asadmin --user $admin start-database
 mvn clean install
 asadmin --user $admin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
-xdg-open "http://$host:8080/ecom/"
 }
 
 DeployementWithoutXML(){
@@ -36,7 +36,6 @@ asadmin undeploy ecomear
 asadmin start-database
 mvn clean install
 asadmin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
-xdg-open "http://$host:8080/ecom/"
 }
 
 if [ -e $settingsXML ]
@@ -49,3 +48,4 @@ else
     echo "##### le fichier settings.xml n'a pas été trouvé #####"
     DeployementWithoutXML
 fi
+xdg-open "http://$host:8080/ecom/"
