@@ -135,16 +135,22 @@ public class Services {
         utilisateur.setMail(email);
         utilisateur.setMdp(password);
         
-        ufi.create(utilisateur);
+        
         
     	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
-        generator.writeStartObject()
-            .write("status", "OK")
-            .write("nom", nom)
-            .write("email", email)
-            .write("password", password)
-            .writeEnd();
+        generator.writeStartObject();
+        
+        utilisateur = ufi.create(utilisateur);
+       if (utilisateur!=null)
+       {
+    	   generator.write("status", "OK"); 
+       }
+       else generator.write("status", "FAIL");
+        generator.write("nom", utilisateur.getNom());
+        generator.write("email", utilisateur.getMail());
+        generator.write("password", utilisateur.getMdp());
+        generator.writeEnd();
         generator.close();
         
         try {
