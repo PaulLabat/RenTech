@@ -50,6 +50,10 @@
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 							<input class="form-control" type="password"	placeholder="Password" id="passwordRegister">
 						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							<input class="form-control" type="password"	placeholder="Confirm password" id="passwordRegister">
+						</div>
 						<button ng-click="createUser();" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
 					
 				</div>

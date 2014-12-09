@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css">
 	<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
+	<link rel="stylesheet" href="bower_components/allmighty-autocomplete/style/autocomplete.css">
 	
 <!-- 	<link rel="stylesheet" href="css/animate.css"> -->
 <!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
@@ -23,7 +24,7 @@
 	<link rel="stylesheet" href="css/orderForm.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
 	
-	<!-- SPELLS -->
+	<!-- BOWER -->
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-animate/angular-animate.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
@@ -32,6 +33,8 @@
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="bower_components/angular-breadcrumbs/dist/breadcrumbs.js"></script>
+    <script src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
     
 	<script src="js/script.js"></script>
 	
@@ -44,6 +47,8 @@
 	<script src="js/connectedController.js"></script>
 	<script src="js/pageProduitController.js"></script>
 	<script src="js/panierController.js"></script>
+	<script src="js/searchController.js"></script>
+	
 	<title>RenTech</title>
 
 </head>
@@ -150,11 +155,10 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search" />
-						</div>
-					</div>
+					
+					<div class="col-sm-3" ng-controller="searchController">
+				      <autocomplete ng-model="yourchoice" data="movies" on-type="updateMovies"></autocomplete>
+				    </div>
 				</div>
 			</div>
 		</div><!--/header-bottom-->

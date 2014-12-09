@@ -1,6 +1,6 @@
 	// create the module and name it scotchApp
     // also include ngRoute for all our routing needs
-	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate']);
+	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate', 'breadcrumbs','autocomplete']);
 
 	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
 	
