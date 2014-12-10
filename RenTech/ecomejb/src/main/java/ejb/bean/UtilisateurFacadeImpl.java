@@ -180,7 +180,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		Query myQuery = entityManager.createQuery("select u from Utilisateur u");
 
 		List<Utilisateur> list = myQuery.getResultList();
-		String result ="";
+		String result ="nb of user : "+list.size() +"\n";
 		for(Utilisateur u : list){
 			result = result + u.toString() +"\n";
 		}

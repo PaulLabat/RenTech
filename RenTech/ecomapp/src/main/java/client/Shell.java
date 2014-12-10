@@ -74,7 +74,7 @@ public class Shell {
                     exit = true;
                     System.out.println("exit root mode");
                     break;
-                case "/creat":
+                case "/create":
                     System.out.println("please enter the user name");
                     String name = sc.nextLine();
                     System.out.println("please enter the user email");
@@ -155,6 +155,12 @@ public class Shell {
     }
 
     private void helpRoot(){
-
+        System.out.println("this is the list of command wich can access with a root account");
+        System.out.println("/exit ---> return to the user mode\n" +
+                "/create ---> create an user acoount \n" +
+                "/generate ---> generate x user accounts \n" +
+                "/delete ----> delete an user account \n" +
+                "/search ---> see if a user account exist\n" +
+                "/list ---> show the list of user account\n");
     }
 }
