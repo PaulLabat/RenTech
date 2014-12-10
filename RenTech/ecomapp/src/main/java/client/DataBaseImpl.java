@@ -31,7 +31,7 @@ public class DataBaseImpl implements DataBase{
     @Override
     public void createUser(String name, String email, String mdp) {
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setMdpAndEncrypt(mdp);
+        utilisateur.setMdp(mdp);
         utilisateur.setMail(email);
         utilisateur.setNom(name);
         utilisateurFacadeRemote.create(utilisateur);

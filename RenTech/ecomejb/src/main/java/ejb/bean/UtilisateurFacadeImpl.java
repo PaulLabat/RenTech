@@ -12,6 +12,8 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,7 +47,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		}catch(NoResultException e){
 			u = new Utilisateur();
 			u.setMail(utilisateur.getMail());
-			u.setMdp(utilisateur.getMdp());
+			u.setMdp(encryptedPassword(utilisateur.getMdp()));
 			u.setNom(utilisateur.getNom());
 			u.setPrenom(utilisateur.getPrenom());
 			entityManager.persist(u);
@@ -57,10 +59,11 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Utilisateur edit(Utilisateur utilisateur) {
     	entityManager = entityManagerFactory.createEntityManager();
+		String newPassword = encryptedPassword(utilisateur.getMdp());
 
 		Query query =  entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
 		query.setParameter("mail", utilisateur.getMail());
-		query.setParameter("password", utilisateur.getMdp());
+		query.setParameter("password", newPassword);
 		Utilisateur u = null;
 		try{
 			u = (Utilisateur) query.getSingleResult();
@@ -83,12 +86,12 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 	@Override
 	public boolean remove(Utilisateur utilisateur){
 		entityManager = entityManagerFactory.createEntityManager();
-
+		String newPassword = encryptedPassword(utilisateur.getMdp());
 		if(contains(utilisateur)) {
 			entityManager = entityManagerFactory.createEntityManager();
 			Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
 			myQuery.setParameter("mail",utilisateur.getMail());
-			myQuery.setParameter("password",utilisateur.getMdp());
+			myQuery.setParameter("password",newPassword);
 			Utilisateur u;
 
 
@@ -131,9 +134,11 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 	@Override
     public boolean contains(Utilisateur utilisateur){
     	entityManager = entityManagerFactory.createEntityManager();
+		String newPassword = encryptedPassword(utilisateur.getMdp());
     	Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
+
 		myQuery.setParameter("mail",utilisateur.getMail());
-		myQuery.setParameter("password",utilisateur.getMdp());
+		myQuery.setParameter("password",newPassword);
 		Utilisateur u; 
     
 		try{
@@ -182,5 +187,17 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
 		entityManager.close();
 		return result;
+	}
+
+	private String encryptedPassword(String password){
+		String newPassword = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-1");
+			newPassword = new String(md.digest(password.getBytes()));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+		return newPassword;
 	}
 }
