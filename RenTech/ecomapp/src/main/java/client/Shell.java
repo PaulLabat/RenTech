@@ -1,5 +1,7 @@
 package client;
 
+import org.apache.commons.lang.RandomStringUtils;
+
 import java.io.Console;
 import java.util.Scanner;
 
@@ -82,6 +84,16 @@ public class Shell {
 
                     dataBase.createUser(name,email,mdp);
                     break;
+                case "/generate":
+                    System.out.println("please enter the number of user that i have to generate for you");
+                    try {
+                        int nbUser = Integer.parseInt(sc.nextLine());
+                        generateMultiUser(nbUser);
+                    } catch (Exception ex){
+                        System.out.println("you should enter a number, not anything");
+                    }
+
+                    break;
                 case "/delete":
                     System.out.println("please enter the user email");
                     email = sc.nextLine();
@@ -107,6 +119,32 @@ public class Shell {
                     System.out.println("unknown this command : "+command);
                     break;
             }
+        }
+    }
+
+    private void generateMultiUser(int nbUser){
+        int i = 0;
+        String[] listMail = {"gmail.com", "laposte.net", "rentech.com", "hotmail.fr", "outlook.com"," e.ujf-grenoble.fr"};
+        int size = listMail.length;
+        String nom;
+        String prenom;
+        String password;
+        String email;
+
+        while(i < nbUser){
+            nom = RandomStringUtils.random(5,true,false).toLowerCase();
+            prenom = RandomStringUtils.random(5,true,false).toLowerCase();
+            password = RandomStringUtils.random(14,true,true);
+            email = prenom + "." + nom + "@" + listMail[i%size];
+
+            try {
+                System.out.println("the user account will be created with parameters : name --> " + nom + " email--> " + email + "  password : " + password);
+                dataBase.createUser(nom, email, password);
+            } catch (Exception ex){
+                System.out.println("An exception appeared during a creation of account: "+ex);
+            }
+
+            i++;
         }
     }
 
