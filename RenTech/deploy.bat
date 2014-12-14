@@ -18,4 +18,5 @@ ij createAdminUser.sql
 
 start appclient -jar ecomear/target/ecomearClient.jar
 start http://%host%:8080/ecom/
+del derby.log
 )
