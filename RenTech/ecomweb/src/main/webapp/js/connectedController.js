@@ -5,7 +5,7 @@ scotchApp.controller('connectedController', function(WS_Service,MySharedService,
 		document.getElementById("s_connectionFailed").style.display = 'none';
 		document.getElementById("a_logout").style.display = 'block';       
 		
-		$scope.$apply($scope.username=data);	
+		$scope.$apply($scope.username=data.replace(/\"/g,''));	
 		$scope.$apply($scope.changeView('/'));
 		
 		console.log("connectionSucceedCallback");

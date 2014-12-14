@@ -4,8 +4,7 @@
 		<li role="presentation" class="active"><a href="#compte">Profile</a></li>
 		<li role="presentation"><a href="#compte/password"><span translate="PASSWORD">Mot de passe</span></a></li>
 		<li role="presentation"><a href="#compte/adresse"><span translate="ADDRESS">Adresse</span></a></li>
-		<li role="presentation"><a href="#compte/commandes"><span translate="CURRENT_ORDERS">Commandes
-				en cours</span></a></li>
+		<li role="presentation"><a href="#compte/commandes"><span translate="CURRENT_ORDERS">Commandes en cours</span></a></li>
 		<li role="presentation"><a href="#compte/historique"><span translate="COMPLETED_ORDERS">Commandes termin&eacute;es</span></a></li>
 	</ul>
 
@@ -17,11 +16,11 @@
 				<fieldset>
 
 					<br> <br> <br>
-					<!-- Text input-->
+					<!-- Text input--> 
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="textinput"><span translate="FIRST_NAME">Prénom</span></label>
 						<div class="col-sm-8">
-							<input type="text" placeholder="" class="form-control">
+							{{firstname}}
 						</div>
 					</div>
 
@@ -29,7 +28,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="textinput"><span translate="LAST_NAME">Nom</span></label>
 						<div class="col-sm-8">
-							<input type="text" placeholder="" class="form-control">
+							{{name}}
 						</div>
 					</div>
 
@@ -37,20 +36,35 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="textinput">E-mail</label>
 						<div class="col-sm-8">
-							<input type="text" placeholder=""
-								class="form-control">
+							{{email}}
 						</div>
 					</div>
 
+					
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<div class="pull-right">
+								<button class="btn btn-primary" ng-click="openDialogProfile()"><span translate="MODIFIER"></span></button>
+							</div>
+						</div>
+					</div>
+					
+					<hr>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="textinput"><span translate="PASSWORD"></span></label>
+						<div class="col-sm-8">
+							{{pwd}}
+						</div>
+					</div>
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<div class="pull-right">
-								<button type="submit" class="btn btn-primary"><span translate="SAVE">Sauvegarde</span></button>
+								<button class="btn btn-primary" ng-click="openDialogPwd()"><span translate="MODIFIER"></span></button>
 							</div>
 						</div>
 					</div>
-
 				</fieldset>
 			</form>
 		</div>

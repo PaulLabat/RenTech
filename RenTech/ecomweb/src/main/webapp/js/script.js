@@ -1,15 +1,15 @@
 	// create the module and name it scotchApp
     // also include ngRoute for all our routing needs
-	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate', 'breadcrumbs','autocomplete']);
+	var scotchApp = angular.module('scotchApp', ['ngRoute','pascalprecht.translate','angular-growl','ngAnimate', 'breadcrumbs','autocomplete','oc.modal']);
 
 	// -------------- SERVICE POUR COMMUNIQUER ENTRE LES VUES ---------------- //
 	
 	scotchApp.factory('MySharedService', ['$rootScope', function($rootScope) {
 		var sharedService = {};
 		
-		// Donnees communes aux differentes vues
+		// ---- Donnees communes aux differentes vues ---- //
 		var user;
-
+		
 		// Nombre de produits dans le panier
 		var number=0;
 		
@@ -89,6 +89,7 @@
 			})
 			.when('/compte',{
 				templateUrl : 'views/compteClient.jsp',
+				controller : 'compteClientController'
 			})
 			.when('/compte/password', {
 				templateUrl : 'views/compteClientPassword.jsp',

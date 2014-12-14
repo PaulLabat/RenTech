@@ -2,59 +2,60 @@
 <!-- define angular app -->
 <html ng-app="scotchApp">
 <head>
-<meta charset="UTF-8" />
-
-<!-- SCROLLS -->
-<link rel="stylesheet"
-	href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="bower_components/components-font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="bower_components/angular-growl-v2/build/angular-growl.css">
-<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
-<link rel="stylesheet"
-	href="bower_components/allmighty-autocomplete/style/autocomplete.css">
-
+	<meta charset="UTF-8" />
+	  
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css">
+	<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
+	<link rel="stylesheet" href="bower_components/allmighty-autocomplete/style/autocomplete.css">
+	<link rel="stylesheet" href="bower_components/ocModal/dist/css/ocModal.light.min.css"> 
+	<link rel="stylesheet" href="bower_components/ocModal/dist/css/ocModal.animations.css">
+	
 <!-- 	<link rel="stylesheet" href="css/animate.css"> -->
 <!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
-
-<link rel="stylesheet" href="css/header.css" />
-<link rel="stylesheet" href="css/login.css" />
-<link rel="stylesheet" href="css/home.css" />
-<link rel="stylesheet" href="css/menus.css" />
-<link rel="stylesheet" href="css/panier.css" />
-<link rel="stylesheet" href="css/pageProduit.css" />
-<link rel="stylesheet" href="css/footer.css" />
-<link rel="stylesheet" href="css/orderForm.css" />
-<link rel="stylesheet" href="css/responsive.css" />
-
-<!-- BOWER -->
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
-<script src="bower_components/ngDialog/js/ngDialog.js"></script>
-<script src="bower_components/angular-breadcrumbs/dist/breadcrumbs.js"></script>
-<script
-	src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
-
-<script src="js/script.js"></script>
-
-<!-- Controllers -->
-<script src="js/websockets.js"></script>
-<script src="js/translations.js"></script>
-<script src="js/headerController.js"></script>
-<script src="js/loginController.js"></script>
-<script src="js/registerController.js"></script>
-<script src="js/connectedController.js"></script>
-<script src="js/pageProduitController.js"></script>
-<script src="js/panierController.js"></script>
-<script src="js/searchController.js"></script>
-
-<title>RenTech</title>
+	
+	<link rel="stylesheet" href="css/header.css" />
+	<link rel="stylesheet" href="css/login.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	<link rel="stylesheet" href="css/menus.css" />
+	<link rel="stylesheet" href="css/panier.css" />
+	<link rel="stylesheet" href="css/pageProduit.css" />
+	<link rel="stylesheet" href="css/footer.css" />
+	<link rel="stylesheet" href="css/orderForm.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	
+	<!-- BOWER -->
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-translate/angular-translate.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+    <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="bower_components/angular-breadcrumbs/dist/breadcrumbs.js"></script>
+    <script src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
+    <script src="bower_components/ocModal/dist/ocModal.js"></script>
+    
+	<script src="js/script.js"></script>
+	
+	<!-- Controllers -->
+	<script src="js/websockets.js"></script>
+	<script src="js/translations.js"></script>
+	<script src="js/headerController.js"></script>
+	<script src="js/loginController.js"></script>
+	<script src="js/registerController.js"></script>
+	<script src="js/connectedController.js"></script>
+	<script src="js/pageProduitController.js"></script>
+	<script src="js/panierController.js"></script>
+	<script src="js/searchController.js"></script>
+	<script src="js/compteClientController.js"></script>
+	<script src="js/changeProfileController.js"></script>
+	<script src="js/changePwdController.js"></script>
+	
+	<title>RenTech</title>
 
 </head>
 <!-- HEADER AND NAVBAR -->
@@ -108,7 +109,7 @@
 										<li role="presentation"><a role="menuitem"> <i
 												class="glyphicon glyphicon-list"></i> <span
 												translate="HISTORIQUE"></span></a></li>
-										<li role="presentation"><a role="menuitem"> <i
+										<li role="presentation"><a href="#compte" role="menuitem"> <i
 												class="glyphicon glyphicon-cog"></i> <span
 												translate="PARAMETRES"></span></a></li>
 										<li role="presentation"><a role="menuitem"> <i
@@ -152,8 +153,8 @@
 							</ul></li>
 						<li><a href="#about"><span translate="A_PROPOS">A propos</span></a></li>
 						<li><div  ng-controller="searchController">
-								<autocomplete ng-model="yourchoice" data="movies"
-									on-type="updateMovies"></autocomplete>
+								<autocomplete ng-model="yourchoice" data="services"
+									on-select="updateServices"></autocomplete>
 							</div></li>
 					</ul>
 				</div>
