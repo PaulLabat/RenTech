@@ -7,5 +7,13 @@ scotchApp.controller('searchController', function($scope){
                         "Mumble",
                         "Cloud dedie",
                         "Cloud public",
-                        "Stockage"];
+                        "Stockage",
+                        "Git server",
+                        "Web hosting",
+                        "Mailserver",
+                        "Dedicated server",
+                        "File hosting service",
+                        "Public cloud",
+                        "Dedicated cloud",
+                        "Data storage"];
     });

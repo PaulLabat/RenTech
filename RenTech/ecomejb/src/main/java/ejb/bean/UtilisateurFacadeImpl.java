@@ -14,6 +14,7 @@ import javax.persistence.Query;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 import java.util.List;
 
 /**
@@ -112,16 +113,18 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 			myQuery.setParameter("mail",email);
 			Utilisateur u;
 
-
 			try{
 				u = (Utilisateur) myQuery.getSingleResult();
 				entityManager.remove(u);
+                entityManager.close();
 				return true;
 			}catch(NoResultException e){
+                entityManager.close();
 				return false;
 			}
 		}
 
+        entityManager.close();
 		return false;
 	}
 
@@ -194,4 +197,21 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
         return newPassword;
     }
+    
+    @SuppressWarnings("unchecked")
+	public List<Utilisateur> getUsers(){
+    	entityManager = entityManagerFactory.createEntityManager();
+
+		Query query =  entityManager.createQuery("select u from Utilisateur u");
+		List<Utilisateur> usersList = null;
+		try{
+			usersList = query.getResultList();
+		}catch(NoResultException e){
+			usersList = null;
+		}
+
+		return usersList;
+	}
+
+
 }
