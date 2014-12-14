@@ -1,7 +1,5 @@
 package client;
 
-import java.util.Scanner;
-
 /**
  * Created by augustin on 02/12/14.
  */

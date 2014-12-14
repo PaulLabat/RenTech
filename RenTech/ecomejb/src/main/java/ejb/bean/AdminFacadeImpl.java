@@ -1,5 +1,7 @@
 package ejb.bean;
 
+import org.apache.commons.codec.binary.Hex;
+
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import java.security.MessageDigest;
@@ -55,7 +57,7 @@ public class AdminFacadeImpl implements AdminFacadeRemote {
         String newPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-1");
-            newPassword = new String(md.digest(password.getBytes()));
+            newPassword = new String(Hex.encodeHex(md.digest(password.getBytes())));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

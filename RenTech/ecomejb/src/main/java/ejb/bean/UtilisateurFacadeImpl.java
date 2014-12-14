@@ -1,6 +1,7 @@
 package ejb.bean;
 
 import ejb.entity.Utilisateur;
+import org.apache.commons.codec.binary.Hex;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -11,15 +12,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
-import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -189,15 +183,15 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return result;
 	}
 
-	private String encryptedPassword(String password){
-		String newPassword = null;
-		try {
-			MessageDigest md = MessageDigest.getInstance("SHA-1");
-			newPassword = new String(md.digest(password.getBytes()));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+    private String encryptedPassword(String password){
+        String newPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            newPassword = new String(Hex.encodeHex(md.digest(password.getBytes())));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 
-		return newPassword;
-	}
+        return newPassword;
+    }
 }
