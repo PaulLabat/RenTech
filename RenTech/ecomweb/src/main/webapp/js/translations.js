@@ -46,7 +46,8 @@
 		  FILE_HOSTING_SERVICE : "File hosting service",
 		  DEDICATED_CLOUD : "Dedicated cloud",
 		  PUBLIC_CLOUD : "Public cloud",
-		  DATA_STORAGE : "Data storage"
+		  DATA_STORAGE : "Data storage",
+		  ADD_TO_CART : "Add to cart"
 	  });
 	  
 	  
@@ -95,7 +96,8 @@
 		  FILE_HOSTING_SERVICE : "Serveur de partage",
 		  DEDICATED_CLOUD : "Cloud d&eacute;di&eacute;",
 		  PUBLIC_CLOUD : "Cloud public",
-		  DATA_STORAGE : "Stockage"
+		  DATA_STORAGE : "Stockage",
+		  ADD_TO_CART : "Ajout au panier"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
