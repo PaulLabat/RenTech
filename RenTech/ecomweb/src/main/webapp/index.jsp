@@ -152,8 +152,8 @@
 							</ul></li>
 						<li><a href="#about"><span translate="A_PROPOS">A propos</span></a></li>
 						<li><div  ng-controller="searchController">
-								<autocomplete ng-model="yourchoice" data="movies"
-									on-type="updateMovies"></autocomplete>
+								<autocomplete ng-model="yourchoice" data="services"
+									on-select="updateServices"></autocomplete>
 							</div></li>
 					</ul>
 				</div>

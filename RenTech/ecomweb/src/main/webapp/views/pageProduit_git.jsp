@@ -1,6 +1,10 @@
-<breadcrumbs></breadcrumbs>
-
 <div class="container">
+	<br>
+	<ol class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#"><span translate="PARTICULIERS">Particuliers</span></a></li>
+		<li class="active">Git</li>
+	</ol>
 	<div class="row">
 		<div class="col-sm-3 col-md-3">
 			<div class="well">
@@ -17,11 +21,16 @@
 					nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
 					ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
 				<hr>
-				<h3>4.99&#128; <span translate="TAXES">HT/mois</span></h3>
+				<h3>
+					4.99&#128; <span translate="TAXES">HT/mois</span>
+				</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem('Micro',4.99)" class="btn btn-default btn-lg"><i class="icon-ok"></i>
-						<i class="fa fa-shopping-cart"></i> <span translate="ADD_TO_CART">Ajouter au panier</span></button>
+					<button ng-click="addItem('Micro',4.99)"
+						class="btn btn-default btn-lg">
+						<i class="icon-ok"></i> <i class="fa fa-shopping-cart"></i> <span
+							translate="ADD_TO_CART">Ajouter au panier</span>
+					</button>
 				</p>
 			</div>
 		</div>
@@ -40,11 +49,16 @@
 					nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
 					ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
 				<hr>
-				<h3>9.99&#128; <span translate="TAXES">HT/mois</span></h3>
+				<h3>
+					9.99&#128; <span translate="TAXES">HT/mois</span>
+				</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem('Small',9.99)" class="btn btn-success btn-lg" href="#"><i class="icon-ok"></i>
-						<i class="fa fa-shopping-cart"></i> <span translate="ADD_TO_CART">Ajouter au panier</span></button>
+					<button ng-click="addItem('Small',9.99)"
+						class="btn btn-success btn-lg" href="#">
+						<i class="icon-ok"></i> <i class="fa fa-shopping-cart"></i> <span
+							translate="ADD_TO_CART">Ajouter au panier</span>
+					</button>
 				</p>
 			</div>
 		</div>
@@ -63,11 +77,16 @@
 					nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
 					ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
 				<hr>
-				<h3>14.99&#128; <span translate="TAXES">HT/mois</span></h3>
+				<h3>
+					14.99&#128; <span translate="TAXES">HT/mois</span>
+				</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem('Medium',14.99)" class="btn btn-default btn-lg" href="#"><i class="icon-ok"></i>
-					<i class="fa fa-shopping-cart"></i> <span translate="ADD_TO_CART">Ajouter au panier</span></button>
+					<button ng-click="addItem('Medium',14.99)"
+						class="btn btn-default btn-lg" href="#">
+						<i class="icon-ok"></i> <i class="fa fa-shopping-cart"></i> <span
+							translate="ADD_TO_CART">Ajouter au panier</span>
+					</button>
 				</p>
 			</div>
 		</div>
@@ -86,11 +105,16 @@
 					nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
 					ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
 				<hr>
-				<h3>29.99&#128; <span translate="TAXES">HT/mois</span></h3>
+				<h3>
+					29.99&#128; <span translate="TAXES">HT/mois</span>
+				</h3>
 				<hr>
 				<p>
-					<button ng-click="addItem('Large',29.99)" class="btn btn-default btn-lg" href="#"><i class="icon-ok"></i>
-					<i class="fa fa-shopping-cart"></i> <span translate="ADD_TO_CART">Ajouter au panier</span></button>
+					<button ng-click="addItem('Large',29.99)"
+						class="btn btn-default btn-lg" href="#">
+						<i class="icon-ok"></i> <i class="fa fa-shopping-cart"></i> <span
+							translate="ADD_TO_CART">Ajouter au panier</span>
+					</button>
 				</p>
 			</div>
 		</div>
