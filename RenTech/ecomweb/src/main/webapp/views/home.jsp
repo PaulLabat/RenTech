@@ -17,7 +17,7 @@
 						<h3>
 							Git
 						</h3>
-						<span translate="A_PARTIR_DE">Ã  partir de</span> <b>4,99&#128;</b>
+						<span translate="A_PARTIR_DE">À  partir de</span> <b>4,99&#128;</b>
 						<span translate="TAXES">HT/mois</span>
 
 					</div>
@@ -27,7 +27,7 @@
 						<h3>
 							Hebergement web
 						</h3>
-						<span translate="A_PARTIR_DE">Ã  partir de</span> <b>4,99&#128;</b>
+						<span translate="A_PARTIR_DE">À  partir de</span> <b>4,99&#128;</b>
 						<span translate="TAXES">HT/mois</span>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 						<h3>
 							Serveur Mumble
 						</h3>
-						<span translate="A_PARTIR_DE">Ã  partir de</span> <b>9,99&#128;</b>
+						<span translate="A_PARTIR_DE">À  partir de</span> <b>9,99&#128;</b>
 						<span translate="TAXES">HT/mois</span>
 					</div>
 
@@ -63,7 +63,7 @@
 						<h3>
 							Serveur dédié Big Data
 						</h3>
-						<span translate="A_PARTIR_DE">Ã  partir de</span> <b>299,9&#128;</b>
+						<span translate="A_PARTIR_DE">À  partir de</span> <b>299,9&#128;</b>
 						<span translate="TAXES">HT/mois</span>
 
 					</div>
