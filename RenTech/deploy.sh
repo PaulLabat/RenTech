@@ -3,10 +3,10 @@
 #!parse fichier settings.xml
 user=`echo $USER`;
 settingsXML="truc";
-if [ $# = 1 -o $# = 2 -o $# = 3 ]
-then if [ $1 = "whithout" -o $2 = "whithout" -o $3 = "whithout" ]
-    then settingsXML="truc";
-    else settingsXML="/home/$user/.m2/settings.xml";
+if [ $# = 1 ]
+then if [ $1 = "whith" ]
+    then settingsXML="/home/$user/.m2/settings.xml";
+    else echo "unknown this command : "$1;
     fi
 fi
 
