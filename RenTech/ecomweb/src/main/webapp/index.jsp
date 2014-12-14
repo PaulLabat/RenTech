@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css">
 	<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
 	<link rel="stylesheet" href="bower_components/allmighty-autocomplete/style/autocomplete.css">
+	<link rel="stylesheet" href="bower_components/ocModal/dist/css/ocModal.light.min.css"> 
+	<link rel="stylesheet" href="bower_components/ocModal/dist/css/ocModal.animations.css">
 	
 <!-- 	<link rel="stylesheet" href="css/animate.css"> -->
 <!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
@@ -35,6 +37,7 @@
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     <script src="bower_components/angular-breadcrumbs/dist/breadcrumbs.js"></script>
     <script src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
+    <script src="bower_components/ocModal/dist/ocModal.js"></script>
     
 	<script src="js/script.js"></script>
 	
@@ -48,6 +51,9 @@
 	<script src="js/pageProduitController.js"></script>
 	<script src="js/panierController.js"></script>
 	<script src="js/searchController.js"></script>
+	<script src="js/compteClientController.js"></script>
+	<script src="js/changeProfileController.js"></script>
+	<script src="js/changePwdController.js"></script>
 	
 	<title>RenTech</title>
 
@@ -102,11 +108,11 @@
 								    	<li role="presentation"><a role="menuitem">			    		
 								    		<i class="glyphicon glyphicon-list"></i> 
 											<span translate="HISTORIQUE"></span></a>
-											</li>
-								    	<li role="presentation"><a role="menuitem">
+										</li>
+								    	<li role="presentation"><a href="#compte" role="menuitem">
 								    		<i class="glyphicon glyphicon-cog"></i> 
 											<span translate="PARAMETRES"></span></a>
-											</li>
+										</li>
 								      	<li role="presentation"><a role="menuitem">
 								      		<i class="glyphicon glyphicon-off"></i> 
 											<span translate="DECONNEXION"></span></a>
@@ -177,8 +183,9 @@
 	      </div>
     </footer>
     
-    <!-- Div necessaire pour les notifications (pops-up)s -->
+    <!-- Div necessaire pour les notifications (pops-ups) -->
     <div growl></div>
+    
 </body>
 
 </html>
