@@ -130,6 +130,21 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
 		return usersList;
 	}
+    
+    @SuppressWarnings("unchecked")
+	public Utilisateur getUser(String email){
+    	entityManager = entityManagerFactory.createEntityManager();
+
+		Query query =  entityManager.createQuery("select u from Utilisateur u where email='"+email+"'");
+		Utilisateur user = new Utilisateur();
+		try{
+			user = (Utilisateur) query.getSingleResult();
+		}catch(NoResultException e){
+			user = null;
+		}
+
+		return user;
+	}
 
 
 }

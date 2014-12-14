@@ -23,4 +23,6 @@ public interface UtilisateurFacadeRemote {
     boolean contains(Utilisateur utilisateur);
     
     public List<Utilisateur> getUsers();
+
+	public Utilisateur getUser(String email);
 }

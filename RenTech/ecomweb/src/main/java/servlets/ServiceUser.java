@@ -122,26 +122,72 @@ public class ServiceUser {
 			String newEmail = jsonObject.get("newEmail").getAsString();
 			String newName = jsonObject.get("newName").getAsString();
 			String newFirstName = jsonObject.get("newFirstName").getAsString();
-			
+			StringWriter writer = new StringWriter();
+	        JsonGenerator generator = Json.createGenerator(writer);
 			
 			
 			//On push les infos sur l'utilisateur ayant pour email oldEmail et on remplace les infos par newEmail, newName
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setMail(oldEmail);
-			//utilisateur = ufi.find(utilisateur);
+			if (ufi.contains(utilisateur))
+			{
 			utilisateur.setMail(newEmail);
 			utilisateur.setNom(newName);
 			utilisateur.setPrenom(newFirstName);
-			
-			ufi.edit(utilisateur);
-			
-			//Renvoi des nouvelles infos au site 
-			StringWriter writer = new StringWriter();
-	        JsonGenerator generator = Json.createGenerator(writer);
-	        generator.writeStartObject().write("status", "OK");
+			generator.writeStartObject().write("status", "OK");
 	        generator.writeStartObject().write("newEmail", newEmail);
 	        generator.writeStartObject().write("newName", newName);
 	        generator.writeStartObject().write("newFirstName", newFirstName);
+	       
+			ufi.edit(utilisateur);
+			
+			}
+			else 
+			{
+				generator.writeStartObject().write("status", "FAIL");
+				
+			}
+			//Renvoi des nouvelles infos au site 
+			
+	        
+	        generator.writeStartObject().writeEnd();
+	        generator.close();
+	      	
+	        try {
+	            session.getBasicRemote().sendText(writer.toString());
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+			
+			
+		}
+	   
+	   static void onChangePassword(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
+			String Email = jsonObject.get("Email").getAsString();
+			String oldPassword = jsonObject.get("oldPassword").getAsString();
+			String newPassword = jsonObject.get("newPassword").getAsString();
+			StringWriter writer = new StringWriter();
+	        JsonGenerator generator = Json.createGenerator(writer);
+			
+			
+			//On push les infos sur l'utilisateur ayant pour email oldEmail et on remplace les infos par newEmail, newName
+			Utilisateur utilisateur = new Utilisateur();
+			utilisateur.setMail(Email);
+			utilisateur.setMdp(oldPassword);
+			if(ufi.contains(utilisateur))
+			{
+				utilisateur.setMdp(newPassword);
+				ufi.edit(utilisateur);
+				generator.writeStartObject().write("status", "OK");
+				generator.writeStartObject().write("newPassword", newPassword);
+			}
+			else 
+			{
+				generator.writeStartObject().write("status", "FAIL");	
+				
+			}
+			
+			
 	        generator.writeStartObject().writeEnd();
 	        generator.close();
 	      	
@@ -155,6 +201,30 @@ public class ServiceUser {
 		}
 	   
 	   static void onGetUsers(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
+			
+		   
+		   String Email = jsonObject.get("Email").getAsString();
+		   Utilisateur user = ufi.getUser(Email);
+		   	Gson gson = new Gson();
+		   	
+			String monUser = gson.toJson(user);
+			
+			StringWriter writer = new StringWriter();
+	        JsonGenerator generator = Json.createGenerator(writer);
+	        generator.writeStartObject().write("utilisateur",monUser);
+	        
+	        generator.close();
+	      	
+	        try {
+	            session.getBasicRemote().sendText(writer.toString());
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+			
+		
+		}
+	   
+	   static void onGetInfoUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 			
 		   	Gson gson = new Gson();
 		   	

@@ -120,6 +120,8 @@ public class Services {
         else if (fonct.compareTo("changeInfos")==0) ServiceUser.onChangeInfos(ufi,session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) ServiceUser.onDeleteAccount(ufi,session,jsonObject);
         else if (fonct.compareTo("getUsers")==0) ServiceUser.onGetUsers(ufi,session,jsonObject);
+        else if (fonct.compareTo("getInfosUser")==0) ServiceUser.onGetInfoUser(ufi,session,jsonObject);
+        else if (fonct.compareTo("changePassword")==0) ServiceUser.onChangePassword(ufi,session,jsonObject);
         
     }
 
