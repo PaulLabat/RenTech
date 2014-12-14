@@ -25,7 +25,7 @@
 					<div class="thumbnail">
 						<img src="img/WordPress.svg" alt="..." class="img-rounded">
 						<h3>
-							Hebergement web
+							<span translate="WEB_HOSTING">Hébergement web</span>
 						</h3>
 						<span translate="A_PARTIR_DE">À  partir de</span> <b>4,99&#128;</b>
 						<span translate="TAXES">HT/mois</span>
@@ -43,7 +43,7 @@
 					<div class="thumbnail">
 						<img src="img/mumble_glossy.png" alt="..." class="img-rounded">
 						<h3>
-							Serveur Mumble
+							Mumble
 						</h3>
 						<span translate="A_PARTIR_DE">À  partir de</span> <b>9,99&#128;</b>
 						<span translate="TAXES">HT/mois</span>
@@ -61,7 +61,7 @@
 					<div class="thumbnail">
 						<img src="img/big-data.png" alt="..." class="img-rounded">
 						<h3>
-							Serveur dédié Big Data
+							<span translate="DEDICATED_SERVER">Serveur dédié</span> Big Data
 						</h3>
 						<span translate="A_PARTIR_DE">À  partir de</span> <b>299,9&#128;</b>
 						<span translate="TAXES">HT/mois</span>

@@ -39,7 +39,14 @@
 		  VOIR_PLUS: "See more >",
 		  PAYEMENT : "Checkout",
 		  PANIER_VIDE : "Your cart is empty!",
-		  PRODUIT_AJOUTE : "Product added!"
+		  PRODUIT_AJOUTE : "Product added!",
+		  WEB_HOSTING : "Web hosting",
+		  MAIL_SERVER : "Mailserver",
+		  DEDICATED_SERVER : "Dedicated server",
+		  FILE_HOSTING_SERVICE : "File hosting service",
+		  DEDICATED_CLOUD : "Dedicated cloud",
+		  PUBLIC_CLOUD : "Public cloud",
+		  DATA_STORAGE : "Data storage"
 	  });
 	  
 	  
@@ -81,7 +88,14 @@
 		  VOIR_PLUS: "En voir plus >",
 		  PAYEMENT: "Payement",
 		  PANIER_VIDE : "Votre panier est vide!",
-	      PRODUIT_AJOUTE : "Produit ajout&eacute;!"
+	      PRODUIT_AJOUTE : "Produit ajout&eacute;!",
+	      WEB_HOSTING : "H&eacute;bergement web",
+	      MAIL_SERVER : "Serveur mail",
+		  DEDICATED_SERVER : "Serveur d&eacute;di&eacute;",
+		  FILE_HOSTING_SERVICE : "Serveur de partage",
+		  DEDICATED_CLOUD : "Cloud d&eacute;di&eacute;",
+		  PUBLIC_CLOUD : "Cloud public",
+		  DATA_STORAGE : "Stockage"
 	  });
 	  
 	  $translateProvider.preferredLanguage('fr');
