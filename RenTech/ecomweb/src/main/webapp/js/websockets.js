@@ -20,20 +20,21 @@
 	    	    	
 	    	console.log("Message received from server : " + JSON.stringify(msg_received));
 	    	if (msg_received["fonct"]=="connectUser")
-	    	{
 	    		onConnectUser(msg_received);
-	    	}	    	
+	    	   	
 	    };	    
 
 	    function onConnectUser(data) {
+    		var partsArray = data["email"].split('@');
+    		
 	    	if (data["status"]=="OK")
 	    	{
-	    		$rootScope.$broadcast('connectionSucceed',data["email"]);
+	    		console.log("onConnectUser : " + partsArray[0]);
+	    		$rootScope.$broadcast('connectionSucceed',partsArray[0]);
 	    	}
 	    	else if (data["status"]=="FAIL")
-    		{
-	    		$rootScope.$broadcast('connectionFailed',data["email"]);
-    		}
+	    		$rootScope.$broadcast('connectionFailed',partsArray[0]);
+    		
 	    }
 	    
 	    Service.send = function(data) {

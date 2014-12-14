@@ -1,7 +1,5 @@
 package ejb.bean;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -20,9 +18,16 @@ public interface UtilisateurFacadeRemote {
 
     boolean remove(Utilisateur utilisateur);
 
+    boolean remove(String email);
+
     boolean contains(Utilisateur utilisateur);
-    
+
+    boolean contains(String email);
+
+    String printTable();
+
     public List<Utilisateur> getUsers();
 
 	public Utilisateur getUser(String email);
+
 }

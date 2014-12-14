@@ -1,5 +1,10 @@
-
 <div class="container">
+	<br>
+	<ol class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#"><span translate="PARTICULIERS">Particuliers</span></a></li>
+		<li class="active"><span translate="MAIL_SERVER">Serveur mail</span></li>
+	</ol>
 	<div class="row">
 		<div class="col-sm-3 col-md-4">
 			<div class="well">

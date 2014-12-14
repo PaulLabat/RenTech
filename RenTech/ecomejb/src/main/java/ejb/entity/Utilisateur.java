@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 
 /**
@@ -62,6 +64,10 @@ public class Utilisateur implements Serializable{
         return mdp;
     }
 
+    /**
+     *
+     * @param mdp : le mdp doit être chiffré avant d'être passé en paramètre dans cette méthode
+     */
     public void setMdp(String mdp) {
         this.mdp = mdp;
     }
@@ -144,5 +150,10 @@ public class Utilisateur implements Serializable{
 
     public void setForums(Collection<Forum> forums) {
         this.forums = forums;
+    }
+
+    @Override
+    public String toString() {
+        return "id : "+this.id + " name : "+this.nom + " email : "+ this.mail + " mdp : "+this.mdp;
     }
 }

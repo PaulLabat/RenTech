@@ -2,10 +2,25 @@
 
 #!parse fichier settings.xml
 user=`echo $USER`;
-settingsXML="/home/$user/.m2/settings.xml"
+settingsXML="truc";
+if [ $# = 1 ]
+then if [ $1 = "whith" ]
+    then settingsXML="/home/$user/.m2/settings.xml";
+    else echo "unknown this command : "$1;
+    fi
+fi
+
 password="";
 admin="";
 host=`hostname`;
+
+DeleteBDD(){
+/opt/glassfish4/javadb/bin/./ij deleteTable.sql;
+}
+
+CreateAdminAccess(){
+/opt/glassfish4/javadb/bin/./ij createAdminUser.sql;
+}
 
 DeployementWithXML(){
 #deploiement du site avec settings.xml
@@ -18,14 +33,15 @@ echo " ########################################\n"
 asadmin --user $admin start-domain
 asadmin --user $admin undeploy ecomear
 asadmin --user $admin start-database
+DeleteBDD
 mvn clean install
 asadmin --user $admin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+asadmin --user $admin get-client-stubs --appname ecomear ecomear/target/
 }
 
 DeployementWithoutXML(){
 #deploiement du site sans settings.xml
 echo "deploiement du site sans settings.xml"
-asadmin undeploy ecom
 asadmin stop-database
 asadmin stop-domain
 echo "\n ########################################"
@@ -34,9 +50,12 @@ echo " ########################################\n"
 asadmin start-domain
 asadmin undeploy ecomear
 asadmin start-database
+DeleteBDD
 mvn clean install
 asadmin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+asadmin get-client-stubs --appname ecomear ecomear/target/
 }
+
 
 if [ -e $settingsXML ]
 then
@@ -48,4 +67,8 @@ else
     echo "##### le fichier settings.xml n'a pas été trouvé #####"
     DeployementWithoutXML
 fi
+
+CreateAdminAccess
+
+xterm  -e "appclient -jar ecomear/target/ecomearClient.jar" &
 xdg-open "http://$host:8080/ecom/"
