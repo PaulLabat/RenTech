@@ -140,7 +140,7 @@ public class Services {
 		
 		//On crée la commande 
 		Commande commande = new Commande();
-				
+		Utilisateur User = new Utilisateur();
 		//on ajoute les nouvelles offres
 		/*JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
 		ArrayList<Offre> listOffre = new ArrayList<Offre>();
@@ -167,7 +167,11 @@ public class Services {
         JsonGenerator generator = Json.createGenerator(writer);
         
 		// Si ok 
-        if (!error) generator.writeStartObject().write("status", "OK");
+        if (!error) 
+        	{
+        		generator.writeStartObject().write("status", "OK");
+        		ServiceMail.sendMailCommande(User, commande);
+        	}
         else generator.writeStartObject().write("status", "ERROR");
 		//Renvoi des nouvelles infos au site 
         generator.writeStartObject().writeEnd();

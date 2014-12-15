@@ -41,6 +41,7 @@ public class ServiceUser {
        if (utilisateur!=null)
        {
     	   generator.write("status", "OK"); 
+    	   ServiceMail.sendMailNewUser(utilisateur);
        }
        else generator.write("status", "FAIL");
         generator.write("nom", utilisateur.getNom());
@@ -113,6 +114,7 @@ public class ServiceUser {
 	        
 	    	//Suppression du compte sur la bdd
 	    	ufi.remove(utilisateur);
+	    	ServiceMail.sendMailDeleteUser(utilisateur);
 	    	
 			
 		}
@@ -140,6 +142,7 @@ public class ServiceUser {
 	        generator.writeStartObject().write("newFirstName", newFirstName);
 	       
 			ufi.edit(utilisateur);
+			ServiceMail.sendMailModifyUser(utilisateur);
 			
 			}
 			else 
