@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.json.Json;
@@ -11,7 +10,6 @@ import javax.json.stream.JsonGenerator;
 import javax.websocket.Session;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import ejb.bean.UtilisateurFacadeRemote;

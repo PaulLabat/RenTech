@@ -1,22 +1,13 @@
 package servlets;
 
 import java.io.IOException;
- 
 
-
-import java.io.StringReader;
-import java.io.StringWriter;
-
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.stream.JsonGenerator;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import ejb.entity.Utilisateur;
  
 /** 
  * @ServerEndpoint gives the relative name for the end point
