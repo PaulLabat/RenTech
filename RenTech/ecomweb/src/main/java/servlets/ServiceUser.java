@@ -203,7 +203,7 @@ public class ServiceUser {
 			
 		}
 	   
-	   static void onGetUsers(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
+	   static void onGetInfoUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 			
 		   
 		   String Email = jsonObject.get("Email").getAsString();
@@ -227,7 +227,7 @@ public class ServiceUser {
 		
 		}
 	   
-	   static void onGetInfoUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
+	   static void onGetUsers(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 			
 		   	Gson gson = new Gson();
 		   	
