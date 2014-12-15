@@ -48,6 +48,7 @@
 		  DEDICATED_CLOUD : "Dedicated cloud",
 		  PUBLIC_CLOUD : "Public cloud",
 		  DATA_STORAGE : "Data storage",
+		  REMOVE_ACCOUNT : "   Delete my account",
 		  ADD_TO_CART : "Add to cart"
 	  });
 	  
@@ -99,6 +100,7 @@
 		  DEDICATED_CLOUD : "Cloud d&eacute;di&eacute;",
 		  PUBLIC_CLOUD : "Cloud public",
 		  DATA_STORAGE : "Stockage",
+		  REMOVE_ACCOUNT : "   Supprimer mon compte",
 		  ADD_TO_CART : "Ajout au panier"
 	  });
 	  

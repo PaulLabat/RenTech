@@ -112,7 +112,7 @@
 										<li role="presentation"><a href="#compte" role="menuitem"> <i
 												class="glyphicon glyphicon-cog"></i> <span
 												translate="PARAMETRES"></span></a></li>
-										<li role="presentation"><a role="menuitem"> <i
+										<li role="presentation"><a ng-click="disconnect()" role="menuitem"> <i
 												class="glyphicon glyphicon-off"></i> <span
 												translate="DECONNEXION"></span></a></li>
 									</ul></li>
@@ -152,10 +152,12 @@
 								<li><a href="#stockage"><span translate="DATA_STORAGE">Stockage</span></a></li>
 							</ul></li>
 						<li><a href="#about"><span translate="A_PROPOS">A propos</span></a></li>
-						<li><div  ng-controller="searchController">
+						<li>
+							<div ng-controller="searchController">
 								<autocomplete ng-model="yourchoice" data="services"
 									on-select="updateServices"></autocomplete>
-							</div></li>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>

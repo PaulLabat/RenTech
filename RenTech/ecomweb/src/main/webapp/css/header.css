@@ -62,11 +62,11 @@
 }
 
 
-.header-bottom .container .row {
+.header-bottom .container .mainmenu {
   border-bottom: 1px solid #f5f5f5;
-  padding-bottom: 20px;
-  margin-bottom: 10px;
   padding-top: 30px;
+  padding-bottom: 50px;
+  margin-bottom: 30px;
   margin-left: 0;
   margin-right: 0;
 }

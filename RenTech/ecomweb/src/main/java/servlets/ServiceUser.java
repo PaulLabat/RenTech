@@ -112,9 +112,7 @@ public class ServiceUser {
 	        utilisateur.setMail(email);
 	        
 	    	//Suppression du compte sur la bdd
-	    	ufi.remove(utilisateur);
-	    	
-			
+	    	ufi.remove(utilisateur);			
 		}
 	   
 	   static void onChangeInfos(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {

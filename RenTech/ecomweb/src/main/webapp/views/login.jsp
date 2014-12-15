@@ -1,6 +1,12 @@
 <section id="form">
 	<!--form-->
 	<div class="container">
+	
+		<ol class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li class="active"><span translate="CONNEXION"></span></li>
+		</ol>
+	
 		<div class="row">
 			<div ng-controller="loginController" class="col-sm-4 col-sm-offset-1">
 				<div id="login-div" class="login-form">

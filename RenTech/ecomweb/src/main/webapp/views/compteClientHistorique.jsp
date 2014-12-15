@@ -1,8 +1,12 @@
 <div class="container">
 
+	<ol class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li class="active"><span translate="PARAMETRES"></span></li>
+	</ol>
+	
 	<ul class="nav nav-pills" role="tablist">
 		<li role="presentation"><a href="#compte">Profile</a></li>
-		<li role="presentation"><a href="#compte/password"><span translate="PASSWORD">Mot de passe</span></a></li>
 		<li role="presentation"><a href="#compte/adresse"><span translate="ADDRESS">Adresse</span></a></li>
 		<li role="presentation"><a href="#compte/commandes"><span translate="CURRENT_ORDERS">Commandes
 				en cours</span></a></li>

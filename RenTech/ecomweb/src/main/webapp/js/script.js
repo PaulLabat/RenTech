@@ -9,6 +9,7 @@
 		
 		// ---- Donnees communes aux differentes vues ---- //
 		var user;
+		var connected;
 		
 		// Nombre de produits dans le panier
 		var number=0;
