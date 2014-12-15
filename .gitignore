@@ -1,3 +1,4 @@
+#fichier propre aux IDE et à la compilation du code
 RemoteSystemsTempFiles
 *iml
 out
@@ -7,4 +8,7 @@ target
 .settings
 .classpath
 .project
-deploy.sh
+
+#fichier de la bdd
+sun-appserv-samples
+derby.log

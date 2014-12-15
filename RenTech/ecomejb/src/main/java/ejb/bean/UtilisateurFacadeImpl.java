@@ -1,6 +1,7 @@
 package ejb.bean;
 
-
+import ejb.entity.Utilisateur;
+import org.apache.commons.codec.binary.Hex;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -11,7 +12,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
-import ejb.entity.Utilisateur;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		}catch(NoResultException e){
 			u = new Utilisateur();
 			u.setMail(utilisateur.getMail());
-			u.setMdp(utilisateur.getMdp());
+			u.setMdp(encryptedPassword(utilisateur.getMdp()));
 			u.setNom(utilisateur.getNom());
 			u.setPrenom(utilisateur.getPrenom());
 			entityManager.persist(u);
@@ -52,10 +54,11 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Utilisateur edit(Utilisateur utilisateur) {
     	entityManager = entityManagerFactory.createEntityManager();
+		String newPassword = encryptedPassword(utilisateur.getMdp());
 
 		Query query =  entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
 		query.setParameter("mail", utilisateur.getMail());
-		query.setParameter("password", utilisateur.getMdp());
+		query.setParameter("password", newPassword);
 		Utilisateur u = null;
 		try{
 			u = (Utilisateur) query.getSingleResult();
@@ -75,45 +78,124 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return u;
     }
 
-    public boolean remove(Utilisateur utilisateur){
-    	entityManager = entityManagerFactory.createEntityManager();
-    	
-    	if(contains(utilisateur))
-    	{
-    		entityManager = entityManagerFactory.createEntityManager();
-        	Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
-    		myQuery.setParameter("mail",utilisateur.getMail());
-    		myQuery.setParameter("password",utilisateur.getMdp());
-    		Utilisateur u; 
-    		
-            
-    		try{
-    			u = (Utilisateur) myQuery.getSingleResult();
-    		}catch(NoResultException e){
-    			return false;
-    		}
-    		
-    		entityManager.remove(u);
-    	}
-    		return true;
-    		
-    	}
+	@Override
+	public boolean remove(Utilisateur utilisateur){
+		entityManager = entityManagerFactory.createEntityManager();
+		String newPassword = encryptedPassword(utilisateur.getMdp());
+		if(contains(utilisateur)) {
+			entityManager = entityManagerFactory.createEntityManager();
+			Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
+			myQuery.setParameter("mail",utilisateur.getMail());
+			myQuery.setParameter("password",newPassword);
+			Utilisateur u;
 
+
+			try{
+				u = (Utilisateur) myQuery.getSingleResult();
+				entityManager.remove(u);
+				return true;
+			}catch(NoResultException e){
+				return false;
+			}
+		}
+
+		return false;
+
+	}
+
+	@Override
+	public boolean remove(String email){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		if(contains(email)) {
+			entityManager = entityManagerFactory.createEntityManager();
+			Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+			myQuery.setParameter("mail",email);
+			Utilisateur u;
+
+			try{
+				u = (Utilisateur) myQuery.getSingleResult();
+				entityManager.remove(u);
+                entityManager.close();
+				return true;
+			}catch(NoResultException e){
+                entityManager.close();
+				return false;
+			}
+		}
+
+        entityManager.close();
+		return false;
+	}
+
+	@Override
     public boolean contains(Utilisateur utilisateur){
     	entityManager = entityManagerFactory.createEntityManager();
+		String newPassword = encryptedPassword(utilisateur.getMdp());
     	Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.mdp = :password");
+
 		myQuery.setParameter("mail",utilisateur.getMail());
-		myQuery.setParameter("password",utilisateur.getMdp());
+		myQuery.setParameter("password",newPassword);
 		Utilisateur u; 
     
 		try{
 			u = (Utilisateur) myQuery.getSingleResult();
-			u.toString();
+			System.out.println(u.toString());
+			entityManager.close();
+			return true;
 		}catch(NoResultException e){
+			entityManager.close();
 			return false;
 		}
+
+    }
+
+	@Override
+	public boolean contains(String email){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+		myQuery.setParameter("mail",email);
+
+		Utilisateur u;
+
+		try{
+			u = (Utilisateur) myQuery.getSingleResult();
+			System.out.println(u.toString());
+			entityManager.close();
+			return true;
+		}catch(NoResultException e){
+			entityManager.close();
+			return false;
+		}
+	}
+
+	@Override
+	public String printTable(){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query myQuery = entityManager.createQuery("select u from Utilisateur u");
+
+		List<Utilisateur> list = myQuery.getResultList();
+		String result ="nb of user : "+list.size() +"\n";
+		for(Utilisateur u : list){
+			result = result + u.toString() +"\n";
+		}
+
 		entityManager.close();
-        return true;
+		return result;
+	}
+
+    private String encryptedPassword(String password){
+        String newPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            newPassword = new String(Hex.encodeHex(md.digest(password.getBytes())));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return newPassword;
     }
     
     @SuppressWarnings("unchecked")
@@ -129,6 +211,21 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		}
 
 		return usersList;
+	}
+    
+    @SuppressWarnings("unchecked")
+	public Utilisateur getUser(String email){
+    	entityManager = entityManagerFactory.createEntityManager();
+
+		Query query =  entityManager.createQuery("select u from Utilisateur u where email='"+email+"'");
+		Utilisateur user = new Utilisateur();
+		try{
+			user = (Utilisateur) query.getSingleResult();
+		}catch(NoResultException e){
+			user = null;
+		}
+
+		return user;
 	}
 
 

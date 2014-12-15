@@ -9,7 +9,14 @@ echo ########################################
 asadmin start-domain
 asadmin undeploy ecomear
 asadmin start-database
+ij deleteTable.sql
 mvn clean install
 asadmin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.ear
+asadmin get-client-stubs --appname ecomear ecomear/target/
+
+ij createAdminUser.sql
+
+start appclient -jar ecomear/target/ecomearClient.jar
 start http://%host%:8080/ecom/
+del derby.log
 )
