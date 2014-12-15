@@ -13,9 +13,9 @@ echo "\n ########################################"
 echo " ####### Restarting glassfish ... #######"
 echo " ########################################\n"
 $asadmin start-domain
-$asadmin undeploy ecomear
+$asadmin undeploy --port 6969 ecomear
 $asadmin start-database
 DeleteBDD
-$asadmin deploy --name ecomear --contextroot "ecom" target/ecomear-0.1.0.ear
+$asadmin deploy --port 6969 --name ecomear --contextroot "ecom" target/ecomear-0.1.0.ear
 $asadmin get-client-stubs --appname ecomear target/
 CreateAdminAccess
