@@ -7,15 +7,15 @@ $ij deleteTable.sql;
 CreateAdminAccess(){
 $ij createAdminUser.sql;
 }
-$asadmin stop-database
-$asadmin stop-domain
-echo "\n ########################################"
+$asadmin --6969 stop-database
+$asadmin --6969 stop-domain
+echo " ########################################"
 echo " ####### Restarting glassfish ... #######"
-echo " ########################################\n"
+echo " ########################################"
 $asadmin start-domain
 $asadmin undeploy --port 6969 ecomear
 $asadmin start-database
 DeleteBDD
 $asadmin deploy --port 6969 --name ecomear --contextroot "ecom" target/ecomear-0.1.0.ear
-$asadmin get-client-stubs --appname ecomear target/
+$asadmin get-client-stubs --port 6969 --appname ecomear target/
 CreateAdminAccess
