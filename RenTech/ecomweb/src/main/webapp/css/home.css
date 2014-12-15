@@ -1,9 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Abel);
-@font-face {
-	font-family:"Roboto";
-	src: url("fonts/Roboto-Regular.ttf") format('ttf');
+@font-face{
+	font-family:'abel';
+	src: url('../fonts/Abel-Regular.ttf') format('truetype');
+		font-weight : normal;
+		font-style : normal;
+	
 }
-
 .panel a {
 	position: absolute; bottom: 0; left: 0; 
 }

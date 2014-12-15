@@ -1,10 +1,9 @@
-<ul class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Products</a></li>
-    <li class="active">Accessories</li>
-</ul>
-
 <div class="container">
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li class="active"><span translate="PANIER">Panier</span></li>
+	</ul>
+
 	<div ng-hide="emptyCard()" class="row">
 		<div class="col-sm-12 col-md-10 col-md-offset-1">
 			<table class="table table-hover">
@@ -39,7 +38,7 @@
 							</button>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td>
 							<h3>Total</h3> 
@@ -52,19 +51,17 @@
 					<tr>
 						<td> </td>
 
-						<td>
-							<a href="#orderForm">
+						<td><a href="#orderForm">
 								<button type="button" class="btn btn-success">
-								<span translate="PAYEMENT"></span>
-							</button>
-							</a>
-						</td>
+									<span translate="PAYEMENT"></span>
+								</button>
+						</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
+
 	<div ng-show="emptyCard()">
 		<span translate="PANIER_VIDE"></span>
 	</div>

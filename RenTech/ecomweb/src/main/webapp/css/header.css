@@ -1,4 +1,14 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
+
+@font-face{
+	font-family:'Roboto';
+	src: url('../fonts/Roboto-Regular-webfont.eot') format('eot'),
+		url('../fonts/Roboto-Regular-webfont.woff') format('woff'),
+		url('../fonts/Roboto-Regular-webfont.svg') format('svg'),
+		url('../fonts/Roboto-Regular-webfont.ttf') format('truetype');
+		font-weight : normal;
+		font-style : normal;
+	
+}
 
 .header_top {
   background: none repeat scroll 0 0 #F0F0E9;
