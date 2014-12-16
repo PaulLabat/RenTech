@@ -24,8 +24,6 @@ import java.util.List;
 @Stateless(mappedName="UtilisateurFacade")
 public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 	
-	String driver = "jdbc:derby://localhost:1527/sun-appserv-samples;user=APP;password=APP;create=true";
-	
     @PersistenceUnit(unitName="MyFactory")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager ;
@@ -202,7 +200,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
     	entityManager = entityManagerFactory.createEntityManager();
 
 		Query query =  entityManager.createQuery("select u from Utilisateur u");
-		List<Utilisateur> usersList = null;
+		List<Utilisateur> usersList;
 		try{
 			usersList = query.getResultList();
 		}catch(NoResultException e){
@@ -216,8 +214,10 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 	public Utilisateur getUser(String email){
     	entityManager = entityManagerFactory.createEntityManager();
 
-		Query query =  entityManager.createQuery("select u from Utilisateur u where email='"+email+"'");
-		Utilisateur user = new Utilisateur();
+        Query query = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+        query.setParameter("mail",email);
+		Utilisateur user;
+
 		try{
 			user = (Utilisateur) query.getSingleResult();
 		}catch(NoResultException e){
