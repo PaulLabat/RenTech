@@ -53,6 +53,7 @@
 	<script src="js/compteClientController.js"></script>
 	<script src="js/changeProfileController.js"></script>
 	<script src="js/changePwdController.js"></script>
+	<script src="js/createUserSucceedController.js"></script>
 	
 	<title>RenTech</title>
 
@@ -105,7 +106,7 @@
 										{{username}} <span class="caret"></span>
 								</a>
 									<ul class="dropdown-menu" role="menu">
-										<li role="presentation"><a role="menuitem"> <i
+										<li role="presentation"><a href="#compte/commandes" role="menuitem"> <i
 												class="glyphicon glyphicon-list"></i> <span
 												translate="HISTORIQUE"></span></a></li>
 										<li role="presentation"><a href="#compte" role="menuitem"> <i

@@ -16,11 +16,13 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import ejb.bean.CommandeFacadeRemote;
 import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
 import ejb.entity.Offre;
@@ -37,6 +39,7 @@ import ejb.entity.Utilisateur;
 public class Services {
 	
 	UtilisateurFacadeRemote ufi; 
+	CommandeFacadeRemote cfi; 
 	InitialContext ctx;
 
     /**
@@ -60,6 +63,7 @@ public class Services {
 			ctx = new InitialContext(System.getProperties());
 			System.out.println("CTX initialisé");
 			ufi = (UtilisateurFacadeRemote)ctx.lookup("UtilisateurFacade");
+			cfi = (CommandeFacadeRemote)ctx.lookup("CommandeFacade");
 			
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
@@ -94,7 +98,8 @@ public class Services {
         
         if (fonct.compareTo("connectUser")==0) ServiceUser.onConnectUser(ufi,session,jsonObject);
         else if (fonct.compareTo("createUser")==0) ServiceUser.onCreateUser(ufi,session,jsonObject);
-        else if (fonct.compareTo("pushCommande")==0) onPushCommande(session,jsonObject);
+        else if (fonct.compareTo("pushCommande")==0) ServiceCommande.onPushCommande(cfi,session,jsonObject);
+        else if (fonct.compareTo("modifyCommande")==0) ServiceCommande.onModifyCommande(cfi,session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) ServiceUser.onChangeInfos(ufi,session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) ServiceUser.onDeleteAccount(ufi,session,jsonObject);
         else if (fonct.compareTo("getUsers")==0) ServiceUser.onGetUsers(ufi,session,jsonObject);
@@ -113,61 +118,6 @@ public class Services {
         System.out.println("Session " +session.getId()+" has ended");
     }	
 	
-	private void onPushCommande(Session session, JsonObject jsonObject) {
-		String emailUser =  jsonObject.get("emailUser").getAsString();
-		
-		//On crée la commande 
-		Commande commande = new Commande();
-		Utilisateur User = new Utilisateur();
-		//on ajoute les nouvelles offres
-		JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
-		ArrayList<Offre> listOffre = new ArrayList<Offre>();
-		
-		for (int i=0; i<OffreList.length(); i++) {
-			listOffre.add( OffreList.getString(i) );
-		}
-		
-		int offreID;
-		Iterator<JsonElement> itr=OffreList.iterator();
-		while (itr.hasNext()){
-			JsonElement Current = itr.next();
-			offreID = OffreList.get().getAsInt();
-			//Récupération de l'offre correspondante sur la bdd;
-			Offre offre = new Offre();
-			//offre = find(id);
-			listOffre.add(offre);
-		}
-		
-		String adresseFactu = jsonObject.getString("adresseFactu");
-		commande.setAdresseFactu(adresseFactu);
-		commande.setOffres(listOffre);
-		*/
-		//On renvoi la commande sur la bdd
-		boolean error = false; //Boolean disant si tout s'est bien passé
-        
-		//Envoi de la réponse au client 
-		StringWriter writer = new StringWriter();
-        JsonGenerator generator = Json.createGenerator(writer);
-        
-		// Si ok 
-        if (!error) 
-        	{
-        		generator.writeStartObject().write("status", "OK");
-        		ServiceMail.sendMailCommande(User, commande);
-        	}
-        else generator.writeStartObject().write("status", "ERROR");
-		//Renvoi des nouvelles infos au site 
-        generator.writeStartObject().writeEnd();
-        generator.close();
-      	
-        try {
-            session.getBasicRemote().sendText(writer.toString());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-		
-
-	}
 	
 	
 }

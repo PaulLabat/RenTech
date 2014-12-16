@@ -1,4 +1,4 @@
-Un message de confirmation vous a été envoyé à l'adresse {{email}}.
+Un message de confirmation vous a été envoyé à l'adresse {{email}}.  
 
 
-<button class="btn btn-default" ng-click="closeDialog()"><span>Cancel</span></button>
+<button class="btn btn-default" ng-click="closeDialog()"><span>OK</span></button>

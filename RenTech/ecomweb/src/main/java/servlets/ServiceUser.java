@@ -35,13 +35,18 @@ public class ServiceUser {
         generator.writeStartObject();
         generator.write("fonct", "createUser");
         
-        utilisateur = ufi.create(utilisateur);
-       if (utilisateur!=null)
-       {
-    	   generator.write("status", "OK"); 
-    	   ServiceMail.sendMailNewUser(utilisateur);
-       }
-       else generator.write("status", "FAIL");
+       if(!ufi.contains(utilisateur)) 
+        {
+    	   
+    	   utilisateur = ufi.create(utilisateur);
+	       if (utilisateur!=null)
+	       {
+	    	   generator.write("status", "OK"); 
+	    	   ServiceMail.sendMailNewUser(utilisateur);
+	       }
+	       else generator.write("status", "FAIL");
+        }
+       else generator.write("status", "FAILEXIST");
         generator.write("nom", utilisateur.getNom());
         generator.write("email", utilisateur.getMail());
         generator.write("password", utilisateur.getMdp());

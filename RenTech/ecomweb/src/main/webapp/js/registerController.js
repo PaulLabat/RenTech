@@ -8,23 +8,19 @@ scotchApp.controller('registerController', function(WS_Service,MySharedService,$
         
         console.log("createUser() : Name : " + nameUser + "Email : " + emailUser + " Password : " + passwordUser);
   
-//        MySharedService.user = utilisateur;	// Inscription de la donnee dans un service pour qu'elle soit visible a une autre vue
         WS_Service.send(utilisateur);
 	}  
 	
 	$scope.$on('createUserSucceed', function(event, data) {	
 			console.log("createUserSucceed");
 			
-			$scope.email = data["email"];
-			
 	    	$ocModal.open({
 	    		url :'views/dialog/createUserSucceedDialog.jsp',
-	    		controller : 'registerController',
-	    		cls: 'slide-down'
+	    		controller : 'createUserSucceedController',
+	    		cls: 'slide-down',
+    		    init: {
+    		        param1: data["email"]
+    		    }
 	    	});
     });	
-	
-    $scope.closeDialog = function(){
-        $ocModal.close();
-    }
 });
