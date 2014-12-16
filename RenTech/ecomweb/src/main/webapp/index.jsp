@@ -53,6 +53,7 @@
 	<script src="js/compteClientController.js"></script>
 	<script src="js/changeProfileController.js"></script>
 	<script src="js/changePwdController.js"></script>
+	<script src="js/CGUController.js"></script>
 	<script src="js/createUserSucceedController.js"></script>
 	
 	<title>RenTech</title>
@@ -178,7 +179,7 @@
 
 	<footer class="footer">
 		<div class="container">
-			<p class="text-muted">Copyright RenTech 2014 &copy; - Augustin
+			<p class="text-muted" style="text-align:center;">Copyright RenTech 2014 &copy; - Augustin
 				HUSSON - Paul LABAT - Paul MARIAGE - Patrick PEREA</p>
 		</div>
 	</footer>
