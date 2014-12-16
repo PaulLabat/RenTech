@@ -46,6 +46,9 @@
 	    	
 	    	else if (data["status"]=="FAIL")
 	    		$rootScope.$broadcast('createUserFailed',data);
+	    	
+	    	else if (data["status"]=="FAILEXIST")
+	    		$rootScope.$broadcast('createUserFailExist',data);
 	    }
 	    
 	    Service.send = function(data) {

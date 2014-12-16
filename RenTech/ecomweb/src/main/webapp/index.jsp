@@ -53,7 +53,7 @@
 	<script src="js/compteClientController.js"></script>
 	<script src="js/changeProfileController.js"></script>
 	<script src="js/changePwdController.js"></script>
-	<script src="js/createUserSucceedController.js"></script>
+	<script src="js/createUserController.js"></script>
 	
 	<title>RenTech</title>
 
