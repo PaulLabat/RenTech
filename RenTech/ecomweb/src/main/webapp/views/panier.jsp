@@ -51,7 +51,7 @@
 					<tr>
 						<td> </td>
 
-						<td><a href="#orderForm">
+						<td><a>
 								<button ng-click="pay()" type="button" class="btn btn-success">
 									<span translate="PAYEMENT"></span>
 								</button>

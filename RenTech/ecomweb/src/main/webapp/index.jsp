@@ -109,7 +109,7 @@
 										<li role="presentation"><a href="#compte/commandes" role="menuitem"> <i
 												class="glyphicon glyphicon-list"></i> <span
 												translate="HISTORIQUE"></span></a></li>
-										<li role="presentation"><a href="#compte" role="menuitem"> <i
+										<li role="presentation"><a ng-click="askUserInfos()" href="#compte" role="menuitem"> <i
 												class="glyphicon glyphicon-cog"></i> <span
 												translate="PARAMETRES"></span></a></li>
 										<li role="presentation"><a ng-click="disconnect()" role="menuitem"> <i

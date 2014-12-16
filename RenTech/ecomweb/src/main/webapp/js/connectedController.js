@@ -25,6 +25,13 @@ scotchApp.controller('connectedController', function(WS_Service,MySharedService,
 		MySharedService.connected = false;
     }  
     
+    // Demande au serveur les infos de l'utilisateur
+    $scope.askUserInfos = function(){
+    	var emailUser = MySharedService.user["email"];
+    	var askUserInfoCommand = {fonct : "getInfosUser", email : emailUser};
+    	
+    	WS_Service.send(askUserInfoCommand);
+    }  
 	/*$scope.$on('msgReceived', function(event, data) {
 		$scope.$apply($scope.msg=data);		
 		document.getElementById("a_login").style.display = 'none';        

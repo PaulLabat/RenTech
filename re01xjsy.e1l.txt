@@ -1,0 +1,13 @@
+﻿fix merge
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	deleted:    RenTech/ecomweb/src/main/webapp/bower_components/dialog_connectionFailed.jsp
+#	deleted:    RenTech/ecomweb/src/main/webapp/views/changeProfile.jsp
+#	deleted:    RenTech/ecomweb/src/main/webapp/views/changePwd.jsp
+#	deleted:    RenTech/ecomweb/src/main/webapp/views/compteClientPassword.jsp
+#
+

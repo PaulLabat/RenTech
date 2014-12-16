@@ -10,8 +10,15 @@ scotchApp.controller('panierController', function(WS_Service,MySharedService,$sc
     }   
     
     $scope.pay = function() {
-    	var 
-    	WS_Service,
+    	var t = JSON.stringify(MySharedService.getTotal().toFixed(2));
+    	console.log(t);
+    	var listeGit = MySharedService.getListGit();
+    	console.log(listeGit);
+//    	var listeOffre = {prix : t; git : listeGit};
+//    	console.log(listeOffre);
+//    	var command = {fonct : "pushCommande", adresse: "avenue du general de Gaulle", offre : listeOffre};
+    	
+//    	console.log(command);
     }   
     
 });

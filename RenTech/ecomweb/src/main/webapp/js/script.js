@@ -18,7 +18,7 @@
 		var total=0;
 		
 		// Produits ajoutes au panier
-		var list_items = [];
+		var list_itemsGit = [];
 		
 		sharedService.getNumber = function () {
 	    	return number;
@@ -28,14 +28,18 @@
 	    	return total;
 	    };
 	        
-		sharedService.addItem = function (n,p) {
-			list_items.push({ name: n, prix: p });
+		sharedService.addItemGit = function (n,p,t,r,nb) {
+			list_itemsGit.push({ name: n, prix: p , taille:t, ram:r, nbcoeurs:nb});
     	  	number=number+1;
     	  	total=total+p;
         };
 	        
 		sharedService.getList = function () {
-			return list_items;
+			return list_itemsGit;
+        };
+        
+        sharedService.getListGit = function () {
+			return list_itemsGit;
         };
         
 	    return sharedService;

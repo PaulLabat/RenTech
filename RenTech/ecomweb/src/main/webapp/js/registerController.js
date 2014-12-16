@@ -12,10 +12,10 @@ scotchApp.controller('registerController', function(WS_Service,MySharedService,$
 	}  
 	
 	$scope.$on('createUserSucceed', function(event, data) {	
-			console.log("createUserSucceed");
-			
-			var messageSucceed = "A confirmation mail has been sent to " + data["email"];
-			growl.success(messageSucceed, {ttl: -1});
+		console.log("createUserSucceed");
+		
+		var messageSucceed = "A confirmation mail has been sent to " + data["email"];
+		growl.success(messageSucceed, {ttl: -1});
     });	
 	
 	$scope.$on('createUserFailExist', function(event, data) {	
