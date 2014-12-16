@@ -19,9 +19,11 @@
 	    	var msg_received = JSON.parse(message.data);
 	    	    	
 	    	console.log("Message received from server : " + JSON.stringify(msg_received));
+	    	
 	    	if (msg_received["fonct"]=="connectUser")
 	    		onConnectUser(msg_received);
-	    	   	
+	    	else if (msg_received["fonct"]=="createUser")
+	    		onCreateUser(msg_received);
 	    };	    
 
 	    function onConnectUser(data) {
@@ -35,6 +37,15 @@
 	    	else if (data["status"]=="FAIL")
 	    		$rootScope.$broadcast('connectionFailed',partsArray[0]);
     		
+	    }
+	    
+	    function onCreateUser(data) {
+	    	
+	    	if (data["status"]=="OK")
+	    		$rootScope.$broadcast('createUserSucceed',data);
+	    	
+	    	else if (data["status"]=="FAIL")
+	    		$rootScope.$broadcast('createUserFailed',data);
 	    }
 	    
 	    Service.send = function(data) {

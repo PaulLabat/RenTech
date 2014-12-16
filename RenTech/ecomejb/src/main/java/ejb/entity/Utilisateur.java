@@ -28,6 +28,8 @@ public class Utilisateur implements Serializable{
     @NotNull
     private String nom;
     private String prenom;
+    @NotNull
+    private Boolean validate;
     private String adresseFactu;
     @ManyToOne
     private Entreprise entreprise;
@@ -45,7 +47,7 @@ public class Utilisateur implements Serializable{
     private Collection<Forum> forums;
 
     public Utilisateur(){
-
+        this.validate = false;
     }
 
     public Integer getId() {
@@ -86,6 +88,14 @@ public class Utilisateur implements Serializable{
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public Boolean getValidate() {
+        return validate;
+    }
+
+    public void setValidate(Boolean validate) {
+        this.validate = validate;
     }
 
     public String getAdresseFactu() {
