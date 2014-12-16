@@ -78,7 +78,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return u;
     }
 
-	@Override
+
 	public boolean remove(Utilisateur utilisateur){
 		entityManager = entityManagerFactory.createEntityManager();
 		String newPassword = encryptedPassword(utilisateur.getMdp());
@@ -103,7 +103,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
 	}
 
-	@Override
+
 	public boolean remove(String email){
 		entityManager = entityManagerFactory.createEntityManager();
 
@@ -128,7 +128,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return false;
 	}
 
-	@Override
+
     public boolean contains(Utilisateur utilisateur){
     	entityManager = entityManagerFactory.createEntityManager();
 		String newPassword = encryptedPassword(utilisateur.getMdp());
@@ -150,7 +150,6 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
     }
 
-	@Override
 	public boolean contains(String email){
 		entityManager = entityManagerFactory.createEntityManager();
 
@@ -170,7 +169,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		}
 	}
 
-	@Override
+	
 	public String printTable(){
 		entityManager = entityManagerFactory.createEntityManager();
 

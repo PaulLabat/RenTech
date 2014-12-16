@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.json.Json;
@@ -11,7 +10,6 @@ import javax.json.stream.JsonGenerator;
 import javax.websocket.Session;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import ejb.bean.UtilisateurFacadeRemote;
@@ -41,6 +39,7 @@ public class ServiceUser {
        if (utilisateur!=null)
        {
     	   generator.write("status", "OK"); 
+    	   ServiceMail.sendMailNewUser(utilisateur);
        }
        else generator.write("status", "FAIL");
         generator.write("nom", utilisateur.getNom());
@@ -112,7 +111,8 @@ public class ServiceUser {
 	        utilisateur.setMail(email);
 	        
 	    	//Suppression du compte sur la bdd
-	    	ufi.remove(utilisateur);			
+	    	ufi.remove(utilisateur);
+	    	ServiceMail.sendMailDeleteUser(utilisateur);
 		}
 	   
 	   static void onChangeInfos(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
@@ -138,6 +138,7 @@ public class ServiceUser {
 	        generator.writeStartObject().write("newFirstName", newFirstName);
 	       
 			ufi.edit(utilisateur);
+			ServiceMail.sendMailModifyUser(utilisateur);
 			
 			}
 			else 
@@ -198,7 +199,7 @@ public class ServiceUser {
 			
 		}
 	   
-	   static void onGetUsers(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
+	   static void onGetInfoUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 			
 		   
 		   String Email = jsonObject.get("Email").getAsString();
@@ -222,7 +223,7 @@ public class ServiceUser {
 		
 		}
 	   
-	   static void onGetInfoUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
+	   static void onGetUsers(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 			
 		   	Gson gson = new Gson();
 		   	

@@ -17,17 +17,15 @@ public class AdminFacadeImpl implements AdminFacadeRemote {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager ;
 
-    @Override
     public void create(String name, String psw) {
 
     }
 
-    @Override
     public void delete(String name, String psw) {
         String newPassword = encryptedPassword(psw);
     }
 
-    @Override
+
     public boolean contains(String name, String password) {
         String newPassword = encryptedPassword(password);
         if(newPassword != null){
@@ -48,7 +46,7 @@ public class AdminFacadeImpl implements AdminFacadeRemote {
         return false;
     }
 
-    @Override
+
     public String list() {
         return null;
     }

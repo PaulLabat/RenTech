@@ -23,7 +23,6 @@
 	<link rel="stylesheet" href="css/panier.css" />
 	<link rel="stylesheet" href="css/pageProduit.css" />
 	<link rel="stylesheet" href="css/footer.css" />
-	<link rel="stylesheet" href="css/orderForm.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
 	
 	<!-- BOWER -->
