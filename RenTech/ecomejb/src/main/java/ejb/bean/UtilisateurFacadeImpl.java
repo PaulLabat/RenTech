@@ -152,7 +152,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		}
 
     }
-
+   
     /**
      * /!\ methode accessible que via des droits root
      * @param email
