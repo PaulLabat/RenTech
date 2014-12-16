@@ -164,6 +164,6 @@ public class Utilisateur implements Serializable{
 
     @Override
     public String toString() {
-        return "id : "+this.id + " name : "+this.nom + " email : "+ this.mail + " mdp : "+this.mdp;
+        return "id : "+this.id + " name : "+this.nom + " email : "+ this.mail + " mdp : "+this.mdp + " valide : "+this.validate;
     }
 }

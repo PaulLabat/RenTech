@@ -15,11 +15,11 @@ admin="";
 host=`hostname`;
 
 DeleteBDD(){
-ij deleteTable.sql;
+/opt/glassfish4/javadb/bin/./ij deleteTable.sql;
 }
 
 CreateAdminAccess(){
-ij createAdminUser.sql;
+/opt/glassfish4/javadb/bin/./ij createAdminUser.sql;
 }
 
 DeployementWithXML(){

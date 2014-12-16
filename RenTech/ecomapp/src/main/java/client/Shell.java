@@ -81,8 +81,17 @@ public class Shell {
                     email = sc.nextLine();
                     System.out.println("please enter the user password");
                     String mdp = sc.nextLine();
-
-                    dataBase.createUser(name,email,mdp);
+                    System.out.println("Do you want to validate this account (y/n) ?");
+                    String validate = sc.nextLine();
+                    boolean isValidate;
+                    if(validate.contains("y")){
+                        isValidate = true;
+                        System.out.println("validate account");
+                    } else{
+                        isValidate = false;
+                        System.out.println("Invalid account");
+                    }
+                    dataBase.createUser(name,email,mdp,isValidate);
                     break;
                 case "/generate":
                     System.out.println("please enter the number of user that i have to generate for you");

@@ -38,6 +38,16 @@ public class DataBaseImpl implements DataBase{
     }
 
     @Override
+    public void createUser(String name, String email, String mdp, boolean isValidate){
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setMdp(mdp);
+        utilisateur.setMail(email);
+        utilisateur.setNom(name);
+        utilisateur.setValidate(isValidate);
+        utilisateurFacadeRemote.create(utilisateur);
+    }
+
+    @Override
     public boolean deleteUser(String email) {
         return utilisateurFacadeRemote.remove(email);
     }
