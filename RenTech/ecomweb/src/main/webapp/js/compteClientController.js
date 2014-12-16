@@ -38,6 +38,10 @@ scotchApp.controller('compteClientController', function(WS_Service,$scope,$locat
     	console.log("View changed");            
     }   
     
+	$scope.$on('onGetInfosUser', function(event, data) {	
+		console.log("onGetInfosUserCallback");
+    });	
+	
     $scope.email = MySharedService.user["email"];
     $scope.pwd = MySharedService.user["password"];
 });

@@ -16,13 +16,6 @@
 
 			<br>
 			<hr>
-			<!-- Text input--> 
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="textinput"><span translate="FIRST_NAME">Prénom</span></label>
-				<div class="col-sm-8">
-					{{firstname}}
-				</div>
-			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
