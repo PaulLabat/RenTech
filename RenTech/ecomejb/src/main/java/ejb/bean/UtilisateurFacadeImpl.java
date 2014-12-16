@@ -23,9 +23,7 @@ import java.util.List;
 
 @Stateless(mappedName="UtilisateurFacade")
 public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
-	
-	String driver = "jdbc:derby://localhost:1527/sun-appserv-samples;user=APP;password=APP;create=true";
-	
+
     @PersistenceUnit(unitName="MyFactory")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager ;
@@ -103,7 +101,11 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
 	}
 
-
+    /**
+     * /!\ methode accessible que via des droits root
+     * @param email
+     * @return
+     */
 	public boolean remove(String email){
 		entityManager = entityManagerFactory.createEntityManager();
 
@@ -150,6 +152,11 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
     }
 
+    /**
+     * /!\ methode accessible que via des droits root
+     * @param email
+     * @return
+     */
 	public boolean contains(String email){
 		entityManager = entityManagerFactory.createEntityManager();
 
@@ -185,6 +192,38 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		return result;
 	}
 
+    @SuppressWarnings("unchecked")
+    public List<Utilisateur> getUsers(){
+        entityManager = entityManagerFactory.createEntityManager();
+
+        Query query =  entityManager.createQuery("select u from Utilisateur u");
+        List<Utilisateur> usersList;
+        try{
+            usersList = query.getResultList();
+        }catch(NoResultException e){
+            usersList = null;
+        }
+
+        return usersList;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Utilisateur getUser(String email){
+        entityManager = entityManagerFactory.createEntityManager();
+
+        Query query = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+        query.setParameter("mail",email);
+        Utilisateur user;
+
+        try{
+            user = (Utilisateur) query.getSingleResult();
+        }catch(NoResultException e){
+            user = null;
+        }
+
+        return user;
+    }
+
     private String encryptedPassword(String password){
         String newPassword = null;
         try {
@@ -196,36 +235,5 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 
         return newPassword;
     }
-    
-    @SuppressWarnings("unchecked")
-	public List<Utilisateur> getUsers(){
-    	entityManager = entityManagerFactory.createEntityManager();
-
-		Query query =  entityManager.createQuery("select u from Utilisateur u");
-		List<Utilisateur> usersList = null;
-		try{
-			usersList = query.getResultList();
-		}catch(NoResultException e){
-			usersList = null;
-		}
-
-		return usersList;
-	}
-    
-    @SuppressWarnings("unchecked")
-	public Utilisateur getUser(String email){
-    	entityManager = entityManagerFactory.createEntityManager();
-
-		Query query =  entityManager.createQuery("select u from Utilisateur u where email='"+email+"'");
-		Utilisateur user = new Utilisateur();
-		try{
-			user = (Utilisateur) query.getSingleResult();
-		}catch(NoResultException e){
-			user = null;
-		}
-
-		return user;
-	}
-
 
 }
