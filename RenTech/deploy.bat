@@ -15,6 +15,11 @@ asadmin deploy --name ecomear --contextroot "ecom" ecomear/target/ecomear-0.1.0.
 asadmin get-client-stubs --appname ecomear ecomear/target/
 
 ij createAdminUser.sql
+ij AutoGenerationSQL/genererGit.sql
+ij AutoGenerationSQL/genererSiteWeb.sql
+ij AutoGenerationSQL/genererForum.sql
+ij AutoGenerationSQL/genererSV.sql
+ij AutoGenerationSQL/genererSP.sql
 
 start appclient -jar ecomear/target/ecomearClient.jar
 start http://%host%:8080/ecom/
