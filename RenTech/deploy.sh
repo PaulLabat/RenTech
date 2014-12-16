@@ -1,6 +1,10 @@
 #!/bin/sh
+ij_home="/opt/glassfish4/javadb/bin/"
+ij=`ij`
+if [ -e $ij_home ]
+then ij=`/opt/glassfish4/javadb/bin/./ij`
+fi
 
-#!parse fichier settings.xml
 user=`echo $USER`;
 settingsXML="truc";
 if [ $# = 1 ]
@@ -15,11 +19,11 @@ admin="";
 host=`hostname`;
 
 DeleteBDD(){
-ij deleteTable.sql;
+$ij deleteTable.sql;
 }
 
 CreateAdminAccess(){
-ij createAdminUser.sql;
+$ij createAdminUser.sql;
 }
 
 DeployementWithXML(){

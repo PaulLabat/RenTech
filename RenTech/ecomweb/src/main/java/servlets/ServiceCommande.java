@@ -52,4 +52,42 @@ static void onPushCommande(CommandeFacadeRemote cfi,Session session, JsonObject 
 
 	}
 
+public static void onModifyCommande(CommandeFacadeRemote cfi, Session session,
+		JsonObject jsonObject) {
+	
+		Utilisateur user = new Utilisateur();
+		String emailUser = jsonObject.get("emailUser").getAsString();
+		user.setMail(emailUser);
+		String beginDate = jsonObject.get("beginDate").getAsString();
+	
+			Gson gson = new Gson();
+			
+			
+			Commande currentCommande = cfi.getCommande(beginDate);
+			//Envoi de la réponse au client 
+			StringWriter writer = new StringWriter();
+		    JsonGenerator generator = Json.createGenerator(writer);
+			
+			
+			if (currentCommande!=null)
+			{
+				Commande modifiedCommande = gson.fromJson(jsonObject, Commande.class);	
+				cfi.edit(modifiedCommande);
+				generator.writeStartObject().write("status", "OK");
+				ServiceMail.sendMailCommande(user, modifiedCommande);
+				
+			}
+		    else generator.writeStartObject().write("status", "ERROR");
+			//Renvoi des nouvelles infos au site 
+		    generator.writeStartObject().writeEnd();
+		    generator.close();
+		  	
+		    try {
+		        session.getBasicRemote().sendText(writer.toString());
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		    }
+	
+}
+
 }

@@ -114,14 +114,29 @@ public class CommandeFacadeImpl implements CommandeFacadeRemote{
     	entityManager = entityManagerFactory.createEntityManager();
 
 		Query query =  entityManager.createQuery("select c from Commande c");
-		List<Commande> ommandeList = null;
+		List<Commande> commandeList = null;
 		try{
-			ommandeList = query.getResultList();
+			commandeList = query.getResultList();
 		}catch(NoResultException e){
-			ommandeList = null;
+			commandeList = null;
 		}
 
-		return ommandeList;
+		return commandeList;
+	}
+    
+	public Commande getCommande(String beginDate){
+    	entityManager = entityManagerFactory.createEntityManager();
+
+    	 Query query = entityManager.createQuery("select c from Commande c where c.beginDate = :beginDate");
+    	query.setParameter("beginDate", beginDate);
+		Commande commande = null;
+		try{
+			commande = (Commande) query.getSingleResult();
+		}catch(NoResultException e){
+			commande = null;
+		}
+
+		return commande;
 	}
 
 
