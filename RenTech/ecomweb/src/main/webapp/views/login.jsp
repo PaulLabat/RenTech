@@ -60,6 +60,11 @@
 							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 							<input class="form-control" type="password"	placeholder="Confirm password" id="passwordRegister">
 						</div>
+						
+						<div>
+							En vous inscrivant, vous acceptez les <span class="label label-primary">conditions d'utilisation</span> du site
+						</div>
+						
 						<button ng-click="createUser();" class="btn btn-primary pull-right"><span translate="SIGNUP">S'inscrire</span></button>
 					
 				</div>
