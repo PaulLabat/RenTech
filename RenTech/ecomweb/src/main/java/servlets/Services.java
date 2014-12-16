@@ -98,7 +98,7 @@ public class Services {
         
         if (fonct.compareTo("connectUser")==0) ServiceUser.onConnectUser(ufi,session,jsonObject);
         else if (fonct.compareTo("createUser")==0) ServiceUser.onCreateUser(ufi,session,jsonObject);
-        else if (fonct.compareTo("pushCommande")==0) onPushCommande(session,jsonObject);
+        else if (fonct.compareTo("pushCommande")==0) ServiceCommande.onPushCommande(cfi,session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) ServiceUser.onChangeInfos(ufi,session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) ServiceUser.onDeleteAccount(ufi,session,jsonObject);
         else if (fonct.compareTo("getUsers")==0) ServiceUser.onGetUsers(ufi,session,jsonObject);
@@ -117,55 +117,6 @@ public class Services {
         System.out.println("Session " +session.getId()+" has ended");
     }	
 	
-	private void onPushCommande(Session session, JsonObject jsonObject) {
-		String emailUser =  jsonObject.get("emailUser").getAsString();
-		Gson gson = new Gson();
-		//On crée la commande 
-		Commande commande = new Commande();
-		Utilisateur User = new Utilisateur();
-		
-		
-		//on ajoute les nouvelles offres
-		JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
-		ArrayList<Offre> listOffre = new ArrayList<Offre>();
-		
-		for (int i=0; i<OffreList.size(); i++) {
-			listOffre.add( gson.fromJson(OffreList.get(i),Offre.class) );
-		}
-		
-		
-		String adresseFactu = jsonObject.get("adresseFactu").getAsString();
-		commande.setAdresseFactu(adresseFactu);
-		commande.setOffres(listOffre);
-		
-		cfi.create(commande);
-		
-		//On renvoi la commande sur la bdd
-		boolean error = false; //Boolean disant si tout s'est bien passé
-        
-		//Envoi de la réponse au client 
-		StringWriter writer = new StringWriter();
-        JsonGenerator generator = Json.createGenerator(writer);
-        
-		// Si ok 
-        if (!error) 
-        	{
-        		generator.writeStartObject().write("status", "OK");
-        		ServiceMail.sendMailCommande(User, commande);
-        	}
-        else generator.writeStartObject().write("status", "ERROR");
-		//Renvoi des nouvelles infos au site 
-        generator.writeStartObject().writeEnd();
-        generator.close();
-      	
-        try {
-            session.getBasicRemote().sendText(writer.toString());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-		
-
-	}
 	
 	
 }
