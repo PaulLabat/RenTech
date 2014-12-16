@@ -76,14 +76,12 @@ public class ServiceUser {
         System.out.println("onConnectUser 2");
 
         System.out.println("UFI initialisé : "+(ufi!=null));
-        if (ufi.contains(utilisateur))
+        if (ufi.contains(utilisateur)&&ufi.isValidated(utilisateur.getMail()))
         {
-        	//Si oui -> renvoi à l'utilisateur qu'il existe déja
         	generator.write("status", "OK");  
         }
        else 
         {
-    	   //Si non -> insertion dans la base de donnée
         	generator.write("status", "FAIL");
         }
         

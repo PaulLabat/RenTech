@@ -23,6 +23,8 @@ public interface UtilisateurFacadeRemote {
     boolean contains(Utilisateur utilisateur);
 
     boolean contains(String email);
+    
+    public boolean isValidated(String email);
 
     String printTable();
 
