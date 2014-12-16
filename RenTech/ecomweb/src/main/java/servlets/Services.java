@@ -3,6 +3,8 @@ package servlets;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.json.Json;
 import javax.json.stream.JsonGenerator;
@@ -14,11 +16,14 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
+import ejb.entity.Offre;
 import ejb.entity.Utilisateur;
  
 /** 
@@ -115,12 +120,17 @@ public class Services {
 		Commande commande = new Commande();
 		Utilisateur User = new Utilisateur();
 		//on ajoute les nouvelles offres
-		/*JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
+		JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
 		ArrayList<Offre> listOffre = new ArrayList<Offre>();
+		
+		for (int i=0; i<OffreList.length(); i++) {
+			listOffre.add( OffreList.getString(i) );
+		}
+		
 		int offreID;
-		Iterator<Offre> itr=OffreList.iterator();
+		Iterator<JsonElement> itr=OffreList.iterator();
 		while (itr.hasNext()){
-			Offre Current = itr.next();
+			JsonElement Current = itr.next();
 			offreID = OffreList.get().getAsInt();
 			//Récupération de l'offre correspondante sur la bdd;
 			Offre offre = new Offre();

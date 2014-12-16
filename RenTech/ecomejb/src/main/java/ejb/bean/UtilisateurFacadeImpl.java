@@ -175,6 +175,23 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 			return false;
 		}
 	}
+	
+	public boolean isValidated(String email){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query myQuery = entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+		myQuery.setParameter("mail",email);
+
+		Utilisateur u;
+
+		try{
+			u = (Utilisateur) myQuery.getSingleResult();
+			return (u.getValidate());
+		}catch(NoResultException e){
+			entityManager.close();
+			return false;
+		}
+	}
 
 	
 	public String printTable(){
