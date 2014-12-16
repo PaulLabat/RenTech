@@ -1,12 +1,8 @@
 #!/bin/sh
-ij_home="/opt/glassfish4/javadb/bin/"
-ij=`ij`
-if [ -e $ij_home ]
-then ij=`/opt/glassfish4/javadb/bin/./ij`
-fi
 
 user=`echo $USER`;
 settingsXML="truc";
+
 if [ $# = 1 ]
 then if [ $1 = "whith" ]
     then settingsXML="/home/$user/.m2/settings.xml";
@@ -19,13 +15,21 @@ admin="";
 host=`hostname`;
 
 DeleteBDD(){
-$ij deleteTable.sql;
+ij deleteTable.sql;
 }
 
 CreateAdminAccess(){
-$ij createAdminUser.sql;
+ij createAdminUser.sql;
 }
 
+GenerateBDD(){
+/opt/glassfish4/javadb/bin/./ij AutoGenerationSQL/genererGit.sql
+/opt/glassfish4/javadb/bin/./ij AutoGenerationSQL/genererSiteWeb.sql
+/opt/glassfish4/javadb/bin/./ij AutoGenerationSQL/genererForum.sql
+/opt/glassfish4/javadb/bin/./ij AutoGenerationSQL/genererSV.sql
+/opt/glassfish4/javadb/bin/./ij AutoGenerationSQL/genererSP.sql
+
+}
 DeployementWithXML(){
 #deploiement du site avec settings.xml
 echo "deploiement du site avec settings.xml"
@@ -73,6 +77,7 @@ else
 fi
 
 CreateAdminAccess
+GenerateBDD
 
 xterm  -e "appclient -jar ecomear/target/ecomearClient.jar" &
 xdg-open "http://$host:8080/ecom/"
