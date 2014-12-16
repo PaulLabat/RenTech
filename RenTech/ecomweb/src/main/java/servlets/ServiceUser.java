@@ -30,10 +30,10 @@ public class ServiceUser {
         utilisateur.setMdp(password);
         
         
-        
     	StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject();
+        generator.write("fonct", "createUser");
         
         utilisateur = ufi.create(utilisateur);
        if (utilisateur!=null)
@@ -56,9 +56,7 @@ public class ServiceUser {
     }
 	
 	static void onConnectUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) throws SQLException
-    {
-    
-    	
+    {   	
     	System.out.println("Debut onConnectUser");
     		
         String email = jsonObject.get("email").getAsString();

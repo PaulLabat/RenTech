@@ -1,7 +1,7 @@
 scotchApp.controller('compteClientController', function(WS_Service,$scope,$location,MySharedService,$ocModal){
     $scope.openDialogProfile = function(){
     	$ocModal.open({
-    		url :'views/changeProfile.jsp',
+    		url :'views/dialog/changeProfile.jsp',
     		controller: 'changeProfileController',
     		cls: 'slide-down'
     	});
@@ -9,7 +9,7 @@ scotchApp.controller('compteClientController', function(WS_Service,$scope,$locat
     
     $scope.openDialogPwd = function(){
     	$ocModal.open({
-    		url :'views/changePwd.jsp',
+    		url :'views/dialog/changePwd.jsp',
     		controller: 'changePwdController',
     		cls: 'slide-down'
     	});
