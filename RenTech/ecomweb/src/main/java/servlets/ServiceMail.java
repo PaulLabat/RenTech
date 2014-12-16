@@ -146,7 +146,7 @@ public class ServiceMail {
             		+ "Vous venez de passer une commande chez RenTech.<BR><BR>"
             		+ "Informations sur votre commande : <BR><BR>"
             		+ "ID de la commande : "+commande.getId()+"<BR>"
-            		+ "Adresse de facturation : "+commande.hashCode()+"<BR><BR>"
+            		+ "Adresse de facturation : "+commande.getAdresseFactu()+"<BR><BR>"
             		+ "Merci pour votre commande !"
             		+ "<BR><BR>L'équipe RenTech");
             Transport.send(message);
