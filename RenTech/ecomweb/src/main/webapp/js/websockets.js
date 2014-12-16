@@ -24,6 +24,8 @@
 	    		onConnectUser(msg_received);
 	    	else if (msg_received["fonct"]=="createUser")
 	    		onCreateUser(msg_received);
+	    	else if (msg_received["fonct"]=="getInfosUser")
+	    		onGetInfosUser(msg_received);
 	    };	    
 
 	    function onConnectUser(data) {
@@ -49,6 +51,10 @@
 	    	
 	    	else if (data["status"]=="FAILEXIST")
 	    		$rootScope.$broadcast('createUserFailExist',data);
+	    }
+	    
+	    function onGetInfosUser(data) {
+	    	$rootScope.$broadcast('onGetInfosUser',data);
 	    }
 	    
 	    Service.send = function(data) {

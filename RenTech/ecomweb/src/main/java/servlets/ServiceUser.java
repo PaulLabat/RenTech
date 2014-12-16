@@ -203,14 +203,15 @@ public class ServiceUser {
 	   static void onGetInfoUser(UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 			
 		   
-		   String Email = jsonObject.get("Email").getAsString();
+		   String Email = jsonObject.get("email").getAsString();
 		   Utilisateur user = ufi.getUser(Email);
 		   	Gson gson = new Gson();
 		   	
 			String monUser = gson.toJson(user);
-			
+			System.out.println("User : " + monUser);
 			StringWriter writer = new StringWriter();
 	        JsonGenerator generator = Json.createGenerator(writer);
+	        generator.write("fonct", "getInfosUser");
 	        generator.writeStartObject().write("utilisateur",monUser);
 	        
 	        generator.close();
