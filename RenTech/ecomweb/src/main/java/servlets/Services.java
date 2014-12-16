@@ -22,6 +22,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import ejb.bean.CommandeFacadeRemote;
 import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
 import ejb.entity.Offre;
@@ -38,6 +39,7 @@ import ejb.entity.Utilisateur;
 public class Services {
 	
 	UtilisateurFacadeRemote ufi; 
+	CommandeFacadeRemote cfi; 
 	InitialContext ctx;
 
     /**
@@ -61,6 +63,7 @@ public class Services {
 			ctx = new InitialContext(System.getProperties());
 			System.out.println("CTX initialisé");
 			ufi = (UtilisateurFacadeRemote)ctx.lookup("UtilisateurFacade");
+			cfi = (CommandeFacadeRemote)ctx.lookup("CommandeFacade");
 			
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
@@ -122,9 +125,6 @@ public class Services {
 		Utilisateur User = new Utilisateur();
 		
 		
-		
-		
-		
 		//on ajoute les nouvelles offres
 		JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
 		ArrayList<Offre> listOffre = new ArrayList<Offre>();
@@ -134,10 +134,11 @@ public class Services {
 		}
 		
 		
-		
-		String adresseFactu = jsonObject.getString("adresseFactu");
+		String adresseFactu = jsonObject.get("adresseFactu").getAsString();
 		commande.setAdresseFactu(adresseFactu);
 		commande.setOffres(listOffre);
+		
+		cfi.create(commande);
 		
 		//On renvoi la commande sur la bdd
 		boolean error = false; //Boolean disant si tout s'est bien passé
