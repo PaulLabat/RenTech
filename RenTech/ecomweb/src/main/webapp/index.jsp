@@ -105,7 +105,7 @@
 										{{username}} <span class="caret"></span>
 								</a>
 									<ul class="dropdown-menu" role="menu">
-										<li role="presentation"><a role="menuitem"> <i
+										<li role="presentation"><a href="#compte/commandes" role="menuitem"> <i
 												class="glyphicon glyphicon-list"></i> <span
 												translate="HISTORIQUE"></span></a></li>
 										<li role="presentation"><a href="#compte" role="menuitem"> <i

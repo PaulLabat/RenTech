@@ -6,8 +6,6 @@
 	</ol>
 	
 	<ul class="nav nav-pills" role="tablist">
-		<li role="presentation"><a href="#compte">Profile</a></li>
-		<li role="presentation"><a href="#compte/adresse"><span translate="ADDRESS">Adresse</span></a></li>
 		<li role="presentation"><a href="#compte/commandes"><span translate="CURRENT_ORDERS">Commandes
 				en cours</span></a></li>
 		<li role="presentation" class="active"><a href="#compte/historique"><span translate="COMPLETED_ORDERS">Commandes termin&eacute;es</span></a></li>
