@@ -3,8 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.json.Json;
 import javax.json.stream.JsonGenerator;
@@ -16,17 +14,11 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ejb.bean.CommandeFacadeRemote;
 import ejb.bean.UtilisateurFacadeRemote;
-import ejb.entity.Commande;
-import ejb.entity.Offre;
-import ejb.entity.Utilisateur;
  
 /** 
  * @ServerEndpoint gives the relative name for the end point
@@ -99,6 +91,7 @@ public class Services {
         if (fonct.compareTo("connectUser")==0) ServiceUser.onConnectUser(ufi,session,jsonObject);
         else if (fonct.compareTo("createUser")==0) ServiceUser.onCreateUser(ufi,session,jsonObject);
         else if (fonct.compareTo("pushCommande")==0) ServiceCommande.onPushCommande(cfi,session,jsonObject);
+        else if (fonct.compareTo("modifyCommande")==0) ServiceCommande.onModifyCommande(cfi,session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) ServiceUser.onChangeInfos(ufi,session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) ServiceUser.onDeleteAccount(ufi,session,jsonObject);
         else if (fonct.compareTo("getUsers")==0) ServiceUser.onGetUsers(ufi,session,jsonObject);

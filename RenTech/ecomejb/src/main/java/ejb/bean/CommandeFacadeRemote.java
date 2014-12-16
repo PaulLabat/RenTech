@@ -23,4 +23,6 @@ public interface CommandeFacadeRemote {
     boolean contains(Commande commande);
     
     public List<Commande> getCommandes();
+    
+    public Commande getCommande(String beginDate);
 }

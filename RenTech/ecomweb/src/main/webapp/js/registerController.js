@@ -1,4 +1,4 @@
-scotchApp.controller('registerController', function(WS_Service,MySharedService,$scope,$ocModal) {
+scotchApp.controller('registerController', function(WS_Service,MySharedService,$scope,$ocModal, growl) {
 
 	$scope.createUser = function() {
 		var nameUser = document.getElementById("nameRegister").value;
@@ -22,13 +22,15 @@ scotchApp.controller('registerController', function(WS_Service,MySharedService,$
 	$scope.$on('createUserSucceed', function(event, data) {	
 		console.log("createUserSucceed");
 
-		$ocModal.open({
-			url :'views/dialog/createUserSucceedDialog.jsp',
-			controller : 'createUserSucceedController',
-			cls: 'slide-down',
-			init: {
-				param1: data["email"]
-			}
-		});
+		var messageSucceed = "A confirmation mail has been sent to " + data["email"];
+		growl.success(messageSucceed, {ttl: -1});
 	});	
+
+	$scope.$on('createUserFailExist', function(event, data) {	
+		console.log("createUserFailExist");
+
+		var messageFail = "You are already registered !";
+		growl.error(messageFail, {ttl: -1});
+	});	
+
 });

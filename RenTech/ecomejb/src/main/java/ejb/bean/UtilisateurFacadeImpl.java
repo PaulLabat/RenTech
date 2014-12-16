@@ -43,6 +43,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 			u.setMdp(encryptedPassword(utilisateur.getMdp()));
 			u.setNom(utilisateur.getNom());
 			u.setPrenom(utilisateur.getPrenom());
+            u.setValidate(utilisateur.getValidate());
 			entityManager.persist(u);
 		}
 		entityManager.close();
