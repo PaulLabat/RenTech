@@ -16,6 +16,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -115,33 +116,29 @@ public class Services {
 	
 	private void onPushCommande(Session session, JsonObject jsonObject) {
 		String emailUser =  jsonObject.get("emailUser").getAsString();
-		
+		Gson gson = new Gson();
 		//On crée la commande 
 		Commande commande = new Commande();
 		Utilisateur User = new Utilisateur();
+		
+		
+		
+		
+		
 		//on ajoute les nouvelles offres
 		JsonArray OffreList = jsonObject.get("OffreList").getAsJsonArray();
 		ArrayList<Offre> listOffre = new ArrayList<Offre>();
 		
-		for (int i=0; i<OffreList.length(); i++) {
-			listOffre.add( OffreList.getString(i) );
+		for (int i=0; i<OffreList.size(); i++) {
+			listOffre.add( gson.fromJson(OffreList.get(i),Offre.class) );
 		}
 		
-		int offreID;
-		Iterator<JsonElement> itr=OffreList.iterator();
-		while (itr.hasNext()){
-			JsonElement Current = itr.next();
-			offreID = OffreList.get().getAsInt();
-			//Récupération de l'offre correspondante sur la bdd;
-			Offre offre = new Offre();
-			//offre = find(id);
-			listOffre.add(offre);
-		}
+		
 		
 		String adresseFactu = jsonObject.getString("adresseFactu");
 		commande.setAdresseFactu(adresseFactu);
 		commande.setOffres(listOffre);
-		*/
+		
 		//On renvoi la commande sur la bdd
 		boolean error = false; //Boolean disant si tout s'est bien passé
         
