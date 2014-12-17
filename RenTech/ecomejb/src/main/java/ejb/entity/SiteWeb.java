@@ -2,9 +2,11 @@ package ejb.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 
 /**
@@ -14,7 +16,7 @@ import java.io.Serializable;
 @Table(name = "SITEWEB")
 public class SiteWeb implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @NotNull
     private Integer tailleDisk;

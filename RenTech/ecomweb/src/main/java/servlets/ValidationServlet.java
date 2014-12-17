@@ -51,6 +51,7 @@ public class ValidationServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
         String code = request.getParameter("code");
+
 		String function = "validationFAIL";
 		request.getSession().setAttribute("email", email);
         request.getSession().setAttribute("code",code);

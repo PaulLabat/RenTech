@@ -31,13 +31,14 @@ public class CommandeFacadeImpl implements CommandeFacadeRemote{
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Commande create(Commande commande){
     	entityManager = entityManagerFactory.createEntityManager();
-    	Query myQuery =  entityManager.createQuery("select c from Commande c where u.adresseFactu = :adresseFactu");
-    	myQuery.setParameter("mail", commande.getAdresseFactu());
+    	Query myQuery =  entityManager.createQuery("select c from Commande c where c.adresseFactu = :adresseFactu");
+    	myQuery.setParameter("adresseFactu", commande.getAdresseFactu());
 		Commande c = null;
 		try{
 			myQuery.getSingleResult();
 		}catch(NoResultException e){
 			c = new Commande();
+			c.setOffres(commande.getOffres());
 			c.setAdresseFactu(commande.getAdresseFactu());
 			entityManager.persist(c);
 		}

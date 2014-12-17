@@ -58,4 +58,12 @@ public class Git implements Serializable{
     public void setNbreCoeur(Integer nbreCoeur) {
         this.nbreCoeur = nbreCoeur;
     }
+
+	@Override
+	public String toString() {
+		return "Git [tailleDisk=" + tailleDisk + ", ram=" + ram
+				+ ", nbreCoeur=" + nbreCoeur + "]";
+	}
+    
+
 }

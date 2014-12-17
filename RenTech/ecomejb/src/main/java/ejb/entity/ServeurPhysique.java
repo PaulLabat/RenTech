@@ -2,6 +2,7 @@ package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -12,7 +13,7 @@ import java.util.Collection;
 @Table(name = "SERVEURPHYSIQUE")
 public class ServeurPhysique implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @NotNull
     private Integer tailleDisk;
@@ -21,7 +22,7 @@ public class ServeurPhysique implements Serializable{
     @NotNull
     private Integer nbreCoeur;
     //supprimer un serveur physique entrainera la suppression des serveurs virtuels
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+    @OneToMany
     private Collection<ServeurVirtuel> serveurVirtuels;
 
     public ServeurPhysique(){

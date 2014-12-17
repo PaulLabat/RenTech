@@ -43,11 +43,13 @@ public class ServiceMail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
 
             message.setSubject("Compte crée sur RenTech!!");
+
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! </BR></BR>"
                     + "Vous venez de vous créez un compte sur RenTech.</BR></BR>"
                     + "Veuillez activer votre compte au lien suivant : <BR>"
                     + "http://paul-pc:8080/ecom/ValidationServlet?email="+User.getMail()+"&code="+encryptedPassword(User.getNom()+User.getMail())+" <BR><BR>"
                     + "Merci de votre confiance.<BR><BR>L'équipe RenTech");
+
             Transport.send(message);
 
             System.out.println("Email sent successfully");
@@ -211,5 +213,4 @@ public class ServiceMail {
 
         return newPassword;
     }
-
 }
