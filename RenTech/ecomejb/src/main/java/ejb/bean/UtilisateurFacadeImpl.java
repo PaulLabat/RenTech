@@ -70,12 +70,33 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		u.setMdp(utilisateur.getMdp());
 		u.setNom(utilisateur.getNom());
 		u.setPrenom(utilisateur.getPrenom());
+		u.setValidate(utilisateur.getValidate());
 
 		entityManager.merge(u);
 		entityManager.close();
 
 		return u;
     }
+
+	public Utilisateur edit(String email, boolean validate){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query query =  entityManager.createQuery("select u from Utilisateur u where u.mail = :mail");
+		query.setParameter("mail", email);
+		Utilisateur u;
+		try{
+			u = (Utilisateur) query.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
+
+		u.setValidate(validate);
+
+		entityManager.merge(u);
+		entityManager.close();
+
+		return u;
+	}
 
 
 	public boolean remove(Utilisateur utilisateur){

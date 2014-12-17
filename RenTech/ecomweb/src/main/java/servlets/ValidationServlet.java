@@ -56,9 +56,7 @@ public class ValidationServlet extends HttpServlet {
 		if (ufi.contains(email))
 		{
 			
-			Utilisateur user = ufi.getUser(email);
-			user.setValidate(true);
-			ufi.edit(user);
+			ufi.edit(email,true);
 			function="validationOK";
 			ServiceMail.sendMailCompteActive(email);
 			System.out.println("Email en parametre : "+email);
