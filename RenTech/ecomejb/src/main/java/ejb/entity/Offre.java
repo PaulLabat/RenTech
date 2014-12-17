@@ -32,11 +32,11 @@ public class Offre implements Serializable{
     private Collection<Forum> forums;
 
     public Offre(){
-		serveurPhysiques = new ArrayList<>();
-		serveurVirtuels = new ArrayList<>();
-		gits = new ArrayList<>();
-		siteWebs = new ArrayList<>();
-		forums = new ArrayList<>();
+		serveurPhysiques = new ArrayList<ServeurPhysique>();
+		serveurVirtuels = new ArrayList<ServeurVirtuel>();
+		gits = new ArrayList<Git>();
+		siteWebs = new ArrayList<SiteWeb>();
+		forums = new ArrayList<Forum>();
     }
 
     public Integer getId() {
