@@ -205,6 +205,17 @@
 		</div>
 	</footer>
 
+	<% String email = "";
+	 String function = "";
+	if (request.getSession().getAttribute("function")!=null)
+	function = (String) request.getSession().getAttribute("function") ;
+	if(function.compareTo("validation")==0){
+	
+	email = (String) request.getSession().getAttribute("email");
+	
+	}%>
+	<%=function%>
+	<%=email%>
 	<!-- Div necessaire pour les notifications (pops-up)s -->
 	<div growl></div>
 </body>

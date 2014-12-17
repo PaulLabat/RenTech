@@ -40,7 +40,44 @@ public class ServiceMail {
 
             message.setSubject("Compte crée sur RenTech!!");
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! <BR><BR>"
-            		+ "Vous venez de vous créez un compte sur RenTech.<BR>Merci de votre confiance.<BR><BR>L'équipe RenTech");
+            		+ "Vous venez de vous créez un compte sur RenTech.<BR><BR>"
+            		+ "Veuillez activer votre compte au lien suivant : <BR>"
+            		+ "http://paul-pc:8080/ecom/ValidationServlet?email="+encrypt(User.getMail())+" <BR><BR>"
+            		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
+            Transport.send(message);
+
+            System.out.println("Email sent successfully");
+        }
+        catch (MessagingException e)
+        {
+            e.printStackTrace();
+        }
+    }
+	
+public static void sendMailCompteActive(String email){
+      
+        
+        String toAddress = email;
+
+
+        // Create a mail session
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "localhost");
+        properties.put("mail.smtp.port", "25");
+        properties.put("mail.smtp.username", usermail);
+        properties.put("mail.smtp.password", passwordmail);
+        Session session = Session.getDefaultInstance(properties, null);
+
+        try
+        {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromAddress));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
+
+            message.setSubject("Compte crée sur RenTech!!");
+            message.setText("Bonjour! <BR><BR>"
+            		+ "Vous venez d'activer compte sur RenTech.<BR><BR>"
+            		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
             System.out.println("Email sent successfully");
@@ -159,4 +196,22 @@ public class ServiceMail {
         }
     }
 
+	public static String encrypt(String password){
+        String crypte="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;  
+            crypte=crypte+(char)c; 
+        }
+        return crypte;
+    }
+	
+	public static String decrypt(String password){
+        String aCrypter="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;  
+            aCrypter=aCrypter+(char)c; 
+        }
+        return aCrypter;
+    }
+	
 }
