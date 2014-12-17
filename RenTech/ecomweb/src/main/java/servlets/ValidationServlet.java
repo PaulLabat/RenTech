@@ -34,6 +34,7 @@ public class ValidationServlet extends HttpServlet {
         try {
 			ctx = new InitialContext(System.getProperties());
 			ufi = (UtilisateurFacadeRemote)ctx.lookup("UtilisateurFacade");
+			System.out.println("ufi initialisé");
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,6 +65,9 @@ public class ValidationServlet extends HttpServlet {
 			request.getSession().setAttribute("function", function);
 			
 			
+		}
+		else{
+			System.out.println("La bdd ne contient pas l'user "+email);
 		}
 		response.sendRedirect("index.jsp");
 		
