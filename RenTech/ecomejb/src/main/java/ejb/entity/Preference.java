@@ -27,11 +27,11 @@ public class Preference implements Serializable{
     private Collection<Entreprise> entreprises;
 
     public Preference(){
-        forums = new ArrayList<>();
-        gits = new ArrayList<>();
-        siteWebs = new ArrayList<>();
-        associations = new ArrayList<>();
-        entreprises = new ArrayList<>();
+        forums = new ArrayList<Forum>();
+        gits = new ArrayList<Git>();
+        siteWebs = new ArrayList<SiteWeb>();
+        associations = new ArrayList<Association>();
+        entreprises = new ArrayList<Entreprise>();
     }
 
     public Integer getId() {

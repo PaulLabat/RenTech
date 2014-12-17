@@ -21,7 +21,7 @@ public class Entreprise implements Serializable{
     private Collection<Utilisateur> utilisateurs ;
 
     public Entreprise(){
-        utilisateurs = new ArrayList<>();
+        utilisateurs = new ArrayList<Utilisateur>();
     }
 
     public Integer getId() {

@@ -22,9 +22,9 @@ public class Support implements Serializable{
     private Collection<Forum> forums;
 
     public Support(){
-        gits = new ArrayList<>();
-        siteWebs = new ArrayList<>();
-        forums = new ArrayList<>();
+        gits = new ArrayList<Git>();
+        siteWebs = new ArrayList<SiteWeb>();
+        forums = new ArrayList<Forum>();
     }
 
     public Integer getId() {

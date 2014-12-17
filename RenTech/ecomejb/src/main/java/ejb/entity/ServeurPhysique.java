@@ -27,7 +27,7 @@ public class ServeurPhysique implements Serializable{
     private Collection<ServeurVirtuel> serveurVirtuels;
 
     public ServeurPhysique(){
-        serveurVirtuels = new ArrayList<>();
+        serveurVirtuels = new ArrayList<ServeurVirtuel>();
     }
 
     public Integer getId() {

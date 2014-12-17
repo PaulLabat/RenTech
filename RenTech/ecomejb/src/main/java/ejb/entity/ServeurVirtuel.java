@@ -30,9 +30,9 @@ public class ServeurVirtuel implements Serializable{
     private Collection<Forum> forums;
 
     public ServeurVirtuel(){
-        gits = new ArrayList<>();
-        siteWebs = new ArrayList<>();
-        forums = new ArrayList<>();
+        gits = new ArrayList<Git>();
+        siteWebs = new ArrayList<SiteWeb>();
+        forums = new ArrayList<Forum>();
     }
 
     public Integer getId() {

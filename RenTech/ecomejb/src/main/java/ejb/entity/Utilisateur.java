@@ -51,11 +51,11 @@ public class Utilisateur implements Serializable{
 
     public Utilisateur(){
         this.validate = false;
-        commandes = new ArrayList<>();
-        serveurPhysiques = new ArrayList<>();
-        gits = new ArrayList<>();
-        siteWebs = new ArrayList<>();
-        forums = new ArrayList<>();
+        commandes = new ArrayList<Commande>();
+        serveurPhysiques = new ArrayList<ServeurPhysique>();
+        gits = new ArrayList<Git>();
+        siteWebs = new ArrayList<SiteWeb>();
+        forums = new ArrayList<Forum>();
     }
 
     public Integer getId() {

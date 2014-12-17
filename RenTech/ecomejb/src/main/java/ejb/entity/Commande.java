@@ -32,7 +32,7 @@ public class Commande implements Serializable{
 
     public Commande(){
         beginDate = Calendar.getInstance();
-        offres = new ArrayList<>();
+        offres = new ArrayList<Offre>();
     }
 
     public Integer getId() {

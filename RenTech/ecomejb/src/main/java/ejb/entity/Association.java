@@ -22,7 +22,7 @@ public class Association implements Serializable{
     private Collection<Utilisateur> utilisateurs ;
 
     public Association(){
-        utilisateurs = new ArrayList<>();
+        utilisateurs = new ArrayList<Utilisateur>();
     }
 
     public Integer getId() {
