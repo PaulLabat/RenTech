@@ -49,7 +49,7 @@ public class ValidationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String email = request.getParameter("email");
+		String email = ServiceMail.decrypt(request.getParameter("email"));
 		String function = "validationFAIL";
 		request.getSession().setAttribute("email", email);
 		
@@ -60,15 +60,12 @@ public class ValidationServlet extends HttpServlet {
 			function="validationOK";
 			ServiceMail.sendMailCompteActive(email);
 			System.out.println("Email en parametre : "+email);
-			
-			
-			request.getSession().setAttribute("function", function);
-			
-			
+
 		}
 		else{
 			System.out.println("La bdd ne contient pas l'user "+email);
 		}
+		request.getSession().setAttribute("function", function);
 		response.sendRedirect("index.jsp");
 		
 	}

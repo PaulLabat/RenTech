@@ -26,6 +26,7 @@
 		  NEW : "New",
 		  CHECK : "Check",
 		  ADDRESS : "Address",
+		  ORDER_FORM :"Order form",
 		  COMPLETED_ORDERS : "Completed orders",
 		  CURRENT_ORDERS : "Current orders",
 		  FIRST_NAME : "First name",
@@ -49,6 +50,7 @@
 		  PUBLIC_CLOUD : "Public cloud",
 		  DATA_STORAGE : "Data storage",
 		  REMOVE_ACCOUNT : "   Delete my account",
+		  ERROR_MUST_BE_CONNECTED : "You must be connected!",
 		  ADD_TO_CART : "Add to cart"
 	  });
 	  
@@ -78,6 +80,7 @@
 		  NEW : "Nouveau",
 		  CHECK : "V&eacute;rifier",
 		  ADDRESS : "Adresse",
+		  ORDER_FORM :"Formulaire de commande",
 		  COMPLETED_ORDERS : "Commandes termin&eacute;es",
 		  CURRENT_ORDERS : "Commandes en cours",
 		  FIRST_NAME : "Pr&eacute;nom",
@@ -90,7 +93,7 @@
 		  PRICE : "Prix",
 		  QUANTITY : "Quantit&eacute;",
 		  VOIR_PLUS: "En voir plus >",
-		  PAYEMENT: "Payement",
+		  PAYEMENT: "Paiement",
 		  PANIER_VIDE : "Votre panier est vide!",
 	      PRODUIT_AJOUTE : "Produit ajout&eacute;!",
 	      WEB_HOSTING : "H&eacute;bergement web",
@@ -101,6 +104,7 @@
 		  PUBLIC_CLOUD : "Cloud public",
 		  DATA_STORAGE : "Stockage",
 		  REMOVE_ACCOUNT : "   Supprimer mon compte",
+		  ERROR_MUST_BE_CONNECTED : "Vous devez &ecirc;tre connect&eacute;!",
 		  ADD_TO_CART : "Ajout au panier"
 	  });
 	  

@@ -13,14 +13,14 @@ import ejb.entity.Commande;
 import ejb.entity.Utilisateur;
 
 public class ServiceMail {
-	
-	static String usermail = "no-reply";
-	static String passwordmail = "test";
-	static String fromAddress = "no-reply@rentech.com";
-	
-	public static void sendMailNewUser(Utilisateur User){
-      
-        
+
+    static String usermail = "no-reply";
+    static String passwordmail = "test";
+    static String fromAddress = "no-reply@rentech.com";
+
+    public static void sendMailNewUser(Utilisateur User){
+
+
         String toAddress = User.getMail();
 
 
@@ -40,10 +40,10 @@ public class ServiceMail {
 
             message.setSubject("Compte crée sur RenTech!!");
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! </BR></BR>"
-            		+ "Vous venez de vous créez un compte sur RenTech.</BR></BR>"
-            		+ "Veuillez activer votre compte au lien suivant : <BR>"
-            		+ "http://paul-pc:8080/ecom/ValidationServlet?email="+User.getMail()+" </BR></BR>"
-            		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
+                    + "Vous venez de vous créez un compte sur RenTech.</BR></BR>"
+                    + "Veuillez activer votre compte au lien suivant : <BR>"
+                    + "http://paul-pc:8080/ecom/ValidationServlet?email="+encrypt(User.getMail())+" <BR><BR>"
+                    + "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
             System.out.println("Email sent successfully");
@@ -53,10 +53,10 @@ public class ServiceMail {
             e.printStackTrace();
         }
     }
-	
-public static void sendMailCompteActive(String email){
-      
-        
+
+    public static void sendMailCompteActive(String email){
+
+
         String toAddress = email;
 
 
@@ -76,8 +76,8 @@ public static void sendMailCompteActive(String email){
 
             message.setSubject("Compte crée sur RenTech!!");
             message.setText("Bonjour! </BR></BR>"
-            		+ "Vous venez d'activer compte sur RenTech.</BR></BR>"
-            		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
+                    + "Vous venez d'activer compte sur RenTech.</BR></BR>"
+                    + "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
             System.out.println("Email sent successfully");
@@ -87,8 +87,8 @@ public static void sendMailCompteActive(String email){
             e.printStackTrace();
         }
     }
-	
-	public static void sendMailDeleteUser(Utilisateur User){
+
+    public static void sendMailDeleteUser(Utilisateur User){
 
 
         String fromAddress = "no-reply@rentech.com";
@@ -120,8 +120,8 @@ public static void sendMailCompteActive(String email){
             e.printStackTrace();
         }
     }
-	
-	public static void sendMailModifyUser(Utilisateur User){
+
+    public static void sendMailModifyUser(Utilisateur User){
 
         String toAddress = User.getMail();
 
@@ -142,13 +142,13 @@ public static void sendMailCompteActive(String email){
 
             message.setSubject("Informations modifiées sur RenTech");
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! <BR><BR>"
-            		+ "Vous venez de modifiez vos informations de compte sur RenTech.<BR><BR>"
-            		+ "Vos nouvelles informations sont : <BR><BR>"
-            		+ "Email : "+User.getMail()+"<BR>"
-            		+ "Nom : "+User.getNom()+"<BR>"
-            		+ "Prénom : "+User.getPrenom()+"<BR>"
-            		+ "Adresse : "+User.getAdresseFactu()+"<BR>"
-            		+ "<BR><BR>L'équipe RenTech");
+                    + "Vous venez de modifiez vos informations de compte sur RenTech.<BR><BR>"
+                    + "Vos nouvelles informations sont : <BR><BR>"
+                    + "Email : "+User.getMail()+"<BR>"
+                    + "Nom : "+User.getNom()+"<BR>"
+                    + "Prénom : "+User.getPrenom()+"<BR>"
+                    + "Adresse : "+User.getAdresseFactu()+"<BR>"
+                    + "<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
             System.out.println("Email sent successfully");
@@ -158,8 +158,8 @@ public static void sendMailCompteActive(String email){
             e.printStackTrace();
         }
     }
-	
-	public static void sendMailCommande(Utilisateur User,Commande commande){
+
+    public static void sendMailCommande(Utilisateur User,Commande commande){
 
         String toAddress = User.getMail();
 
@@ -180,12 +180,12 @@ public static void sendMailCompteActive(String email){
 
             message.setSubject("Informations sur votre commande");
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! <BR><BR>"
-            		+ "Vous venez de passer une commande chez RenTech.<BR><BR>"
-            		+ "Informations sur votre commande : <BR><BR>"
-            		+ "ID de la commande : "+commande.getId()+"<BR>"
-            		+ "Adresse de facturation : "+commande.getAdresseFactu()+"<BR><BR>"
-            		+ "Merci pour votre commande !"
-            		+ "<BR><BR>L'équipe RenTech");
+                    + "Vous venez de passer une commande chez RenTech.<BR><BR>"
+                    + "Informations sur votre commande : <BR><BR>"
+                    + "ID de la commande : "+commande.getId()+"<BR>"
+                    + "Adresse de facturation : "+commande.getAdresseFactu()+"<BR><BR>"
+                    + "Merci pour votre commande !"
+                    + "<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
             System.out.println("Email sent successfully");
@@ -194,6 +194,24 @@ public static void sendMailCompteActive(String email){
         {
             e.printStackTrace();
         }
+    }
+
+    public static String encrypt(String password){
+        String crypte="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;
+            crypte=crypte+(char)c;
+        }
+        return crypte;
+    }
+
+    public static String decrypt(String password){
+        String aCrypter="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;
+            aCrypter=aCrypter+(char)c;
+        }
+        return aCrypter;
     }
 
 }

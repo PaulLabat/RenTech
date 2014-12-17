@@ -30,7 +30,7 @@ scotchApp.controller('registerController', function(WS_Service,MySharedService,$
 		console.log("createUserFailExist");
 
 		var messageFail = "You are already registered !";
-		growl.error(messageFail, {ttl: -1});
+		growl.error(messageFail);
 	});	
 
 });
