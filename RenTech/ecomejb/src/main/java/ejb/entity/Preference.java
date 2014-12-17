@@ -2,6 +2,7 @@ package ejb.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -26,7 +27,11 @@ public class Preference implements Serializable{
     private Collection<Entreprise> entreprises;
 
     public Preference(){
-
+        forums = new ArrayList<>();
+        gits = new ArrayList<>();
+        siteWebs = new ArrayList<>();
+        associations = new ArrayList<>();
+        entreprises = new ArrayList<>();
     }
 
     public Integer getId() {

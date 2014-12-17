@@ -3,6 +3,7 @@ package ejb.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -20,7 +21,7 @@ public class Entreprise implements Serializable{
     private Collection<Utilisateur> utilisateurs ;
 
     public Entreprise(){
-
+        utilisateurs = new ArrayList<>();
     }
 
     public Integer getId() {

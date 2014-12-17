@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -26,7 +27,7 @@ public class ServeurPhysique implements Serializable{
     private Collection<ServeurVirtuel> serveurVirtuels;
 
     public ServeurPhysique(){
-
+        serveurVirtuels = new ArrayList<>();
     }
 
     public Integer getId() {

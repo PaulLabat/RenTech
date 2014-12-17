@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -29,7 +30,9 @@ public class ServeurVirtuel implements Serializable{
     private Collection<Forum> forums;
 
     public ServeurVirtuel(){
-
+        gits = new ArrayList<>();
+        siteWebs = new ArrayList<>();
+        forums = new ArrayList<>();
     }
 
     public Integer getId() {

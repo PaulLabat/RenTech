@@ -3,6 +3,7 @@ package ejb.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -21,7 +22,7 @@ public class Association implements Serializable{
     private Collection<Utilisateur> utilisateurs ;
 
     public Association(){
-
+        utilisateurs = new ArrayList<>();
     }
 
     public Integer getId() {

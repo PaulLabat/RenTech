@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class Commande implements Serializable{
 
     public Commande(){
         beginDate = Calendar.getInstance();
+        offres = new ArrayList<>();
     }
 
     public Integer getId() {

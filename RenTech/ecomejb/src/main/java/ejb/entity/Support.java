@@ -2,6 +2,7 @@ package ejb.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -21,7 +22,9 @@ public class Support implements Serializable{
     private Collection<Forum> forums;
 
     public Support(){
-
+        gits = new ArrayList<>();
+        siteWebs = new ArrayList<>();
+        forums = new ArrayList<>();
     }
 
     public Integer getId() {

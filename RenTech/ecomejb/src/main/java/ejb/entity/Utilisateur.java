@@ -6,6 +6,7 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -50,6 +51,11 @@ public class Utilisateur implements Serializable{
 
     public Utilisateur(){
         this.validate = false;
+        commandes = new ArrayList<>();
+        serveurPhysiques = new ArrayList<>();
+        gits = new ArrayList<>();
+        siteWebs = new ArrayList<>();
+        forums = new ArrayList<>();
     }
 
     public Integer getId() {

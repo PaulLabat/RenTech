@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -31,7 +32,11 @@ public class Offre implements Serializable{
     private Collection<Forum> forums;
 
     public Offre(){
-
+		serveurPhysiques = new ArrayList<>();
+		serveurVirtuels = new ArrayList<>();
+		gits = new ArrayList<>();
+		siteWebs = new ArrayList<>();
+		forums = new ArrayList<>();
     }
 
     public Integer getId() {
