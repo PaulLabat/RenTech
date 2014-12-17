@@ -2,6 +2,7 @@ package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
@@ -18,7 +19,7 @@ public class Commande implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @NotNull
     private String adresseFactu;

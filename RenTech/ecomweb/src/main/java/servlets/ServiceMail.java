@@ -42,7 +42,7 @@ public class ServiceMail {
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! <BR><BR>"
             		+ "Vous venez de vous créez un compte sur RenTech.<BR><BR>"
             		+ "Veuillez activer votre compte au lien suivant : <BR>"
-            		+ "http://paul-pc:8080/ecom/ValidationServlet?email="+encrypt(User.getMail())+" <BR><BR>"
+            		+ "http://paul-pc:8080/ecom/ValidationServlet?email="+User.getMail()+" <BR><BR>"
             		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
@@ -194,24 +194,6 @@ public static void sendMailCompteActive(String email){
         {
             e.printStackTrace();
         }
-    }
-
-	public static String encrypt(String password){
-        String crypte="";
-        for (int i=0; i<password.length();i++)  {
-            int c=password.charAt(i)^48;  
-            crypte=crypte+(char)c; 
-        }
-        return crypte;
-    }
-	
-	public static String decrypt(String password){
-        String aCrypter="";
-        for (int i=0; i<password.length();i++)  {
-            int c=password.charAt(i)^48;  
-            aCrypter=aCrypter+(char)c; 
-        }
-        return aCrypter;
     }
 	
 }

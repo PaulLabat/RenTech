@@ -70,17 +70,11 @@ public class ServiceUser {
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail(email);
         utilisateur.setMdp(password);
-        
-        System.out.println("onConnectUser 1");
-        
         StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
         generator.writeStartObject();
         generator.write("fonct", "connectUser");
         //Test si l'utilisateur existe dans la base de données
-        System.out.println("onConnectUser 2");
-
-        System.out.println("UFI initialisé : "+(ufi!=null));
         if (ufi.contains(utilisateur)&&ufi.isValidated(utilisateur.getMail()))
         {
         	generator.write("status", "OK");  
@@ -90,16 +84,13 @@ public class ServiceUser {
         	generator.write("status", "FAIL");
         }
         
-        System.out.println("onConnectUser 3");
         generator.write("email", email);    
         generator.writeEnd();
         generator.close();
       
-        System.out.println("onConnectUser 4");
         try {
             session.getBasicRemote().sendText(writer.toString());
         } catch (Exception ex) {
-        	System.out.println("onConnectUser 5");
             ex.printStackTrace();
         }
     }
@@ -133,10 +124,11 @@ public class ServiceUser {
 			utilisateur.setMail(newEmail);
 			utilisateur.setNom(newName);
 			utilisateur.setPrenom(newFirstName);
-			generator.writeStartObject().write("status", "OK");
-	        generator.writeStartObject().write("newEmail", newEmail);
-	        generator.writeStartObject().write("newName", newName);
-	        generator.writeStartObject().write("newFirstName", newFirstName);
+			generator.writeStartObject().write("status", "OK")
+	        	.write("newEmail", newEmail)
+	        	.write("newName", newName)
+	        	.write("newFirstName", newFirstName)
+				.writeEnd();
 	       
 			ufi.edit(utilisateur);
 			ServiceMail.sendMailModifyUser(utilisateur);
@@ -144,13 +136,13 @@ public class ServiceUser {
 			}
 			else 
 			{
-				generator.writeStartObject().write("status", "FAIL");
+				generator.writeStartObject().write("status", "FAIL")
+				.writeEnd();
 				
 			}
 			//Renvoi des nouvelles infos au site 
 			
 	        
-	        generator.writeStartObject().writeEnd();
 	        generator.close();
 	      	
 	        try {
@@ -178,8 +170,8 @@ public class ServiceUser {
 			{
 				utilisateur.setMdp(newPassword);
 				ufi.edit(utilisateur);
-				generator.writeStartObject().write("status", "OK");
-				generator.writeStartObject().write("newPassword", newPassword);
+				generator.writeStartObject().write("status", "OK")
+						.write("newPassword", newPassword);
 			}
 			else 
 			{
@@ -205,15 +197,26 @@ public class ServiceUser {
 		   
 		   String Email = jsonObject.get("email").getAsString();
 		   Utilisateur user = ufi.getUser(Email);
-		   	Gson gson = new Gson();
-		   	
-			String monUser = gson.toJson(user);
-			System.out.println("User : " + monUser);
+		   if(user.getPrenom()==null)
+		   {
+			   user.setPrenom("");
+		   }
+		   if(user.getAdresseFactu()==null)
+		   {
+			   user.setAdresseFactu("");
+		   }
+		  
+		   System.out.println(user.toString());
 			StringWriter writer = new StringWriter();
 	        JsonGenerator generator = Json.createGenerator(writer);
-	        generator.write("fonct", "getInfosUser");
-	        generator.writeStartObject().write("utilisateur",monUser);
-	        
+	        generator.writeStartObject()
+	        	.write("fonct", "getInfosUser")
+	        	.write("nom", user.getNom())
+	        	.write("prenom", user.getPrenom())
+	        	.write("mail",user.getMail())
+	        	.write("password",user.getMdp())
+	        	.write("adresseFactu",user.getAdresseFactu())
+	        	.writeEnd();
 	        generator.close();
 	      	
 	        try {
@@ -234,8 +237,8 @@ public class ServiceUser {
 			
 			StringWriter writer = new StringWriter();
 	        JsonGenerator generator = Json.createGenerator(writer);
-	        generator.writeStartObject().write("listeUser",myList);
-	        
+	        generator.writeStartObject().write("listeUser",myList)
+	        	.writeEnd();
 	        generator.close();
 	      	
 	        try {

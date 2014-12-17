@@ -18,6 +18,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ejb.bean.CommandeFacadeRemote;
+import ejb.bean.GitFacadeRemote;
+import ejb.bean.OffreFacadeRemote;
 import ejb.bean.UtilisateurFacadeRemote;
  
 /** 
@@ -32,6 +34,8 @@ public class Services {
 	
 	UtilisateurFacadeRemote ufi; 
 	CommandeFacadeRemote cfi; 
+	OffreFacadeRemote ofi;
+	GitFacadeRemote gfi; 
 	InitialContext ctx;
 
     /**
@@ -56,6 +60,8 @@ public class Services {
 			System.out.println("CTX initialisé");
 			ufi = (UtilisateurFacadeRemote)ctx.lookup("UtilisateurFacade");
 			cfi = (CommandeFacadeRemote)ctx.lookup("CommandeFacade");
+			ofi = (OffreFacadeRemote)ctx.lookup("OffreFacade");
+			gfi = (GitFacadeRemote)ctx.lookup("GitFacade");
 			
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
@@ -90,7 +96,7 @@ public class Services {
         
         if (fonct.compareTo("connectUser")==0) ServiceUser.onConnectUser(ufi,session,jsonObject);
         else if (fonct.compareTo("createUser")==0) ServiceUser.onCreateUser(ufi,session,jsonObject);
-        else if (fonct.compareTo("pushCommande")==0) ServiceCommande.onPushCommande(cfi,session,jsonObject);
+        else if (fonct.compareTo("pushCommande")==0) ServiceCommande.onPushCommande(cfi,ofi,gfi,session,jsonObject);
         else if (fonct.compareTo("modifyCommande")==0) ServiceCommande.onModifyCommande(cfi,session,jsonObject);
         else if (fonct.compareTo("changeInfos")==0) ServiceUser.onChangeInfos(ufi,session,jsonObject);
         else if (fonct.compareTo("deleteAccount")==0) ServiceUser.onDeleteAccount(ufi,session,jsonObject);

@@ -2,6 +2,7 @@ package ejb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -14,7 +15,7 @@ import java.util.Collection;
 @Table(name="OFFRE")
 public class Offre implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @NotNull
     private BigDecimal price;
