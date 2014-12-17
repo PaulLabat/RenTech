@@ -16,6 +16,8 @@ public interface UtilisateurFacadeRemote {
 
     Utilisateur edit(Utilisateur utilisateur);
 
+    Utilisateur edit(String email, boolean validate);
+
     boolean remove(Utilisateur utilisateur);
 
     boolean remove(String email);

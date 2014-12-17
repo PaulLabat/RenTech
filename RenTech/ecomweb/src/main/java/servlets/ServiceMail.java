@@ -39,10 +39,10 @@ public class ServiceMail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
 
             message.setSubject("Compte crée sur RenTech!!");
-            message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! <BR><BR>"
-            		+ "Vous venez de vous créez un compte sur RenTech.<BR><BR>"
+            message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! </BR></BR>"
+            		+ "Vous venez de vous créez un compte sur RenTech.</BR></BR>"
             		+ "Veuillez activer votre compte au lien suivant : <BR>"
-            		+ "http://paul-pc:8080/ecom/ValidationServlet?email="+User.getMail()+" <BR><BR>"
+            		+ "http://paul-pc:8080/ecom/ValidationServlet?email="+User.getMail()+" </BR></BR>"
             		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
@@ -75,8 +75,8 @@ public static void sendMailCompteActive(String email){
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
 
             message.setSubject("Compte crée sur RenTech!!");
-            message.setText("Bonjour! <BR><BR>"
-            		+ "Vous venez d'activer compte sur RenTech.<BR><BR>"
+            message.setText("Bonjour! </BR></BR>"
+            		+ "Vous venez d'activer compte sur RenTech.</BR></BR>"
             		+ "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
