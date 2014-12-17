@@ -43,6 +43,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 			u.setMdp(encryptedPassword(utilisateur.getMdp()));
 			u.setNom(utilisateur.getNom());
 			u.setPrenom(utilisateur.getPrenom());
+            u.setHashCodeToValidate(encryptedPassword(utilisateur.getNom()+utilisateur.getMail()));
             u.setValidate(utilisateur.getValidate());
 			entityManager.persist(u);
 		}
@@ -71,7 +72,6 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		u.setNom(utilisateur.getNom());
 		u.setPrenom(utilisateur.getPrenom());
 		u.setValidate(utilisateur.getValidate());
-
 		entityManager.merge(u);
 		entityManager.close();
 
@@ -91,7 +91,7 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 		}
 
 		u.setValidate(validate);
-
+        u.setHashCodeToValidate("1");
 		entityManager.merge(u);
 		entityManager.close();
 
@@ -197,6 +197,22 @@ public class UtilisateurFacadeImpl implements UtilisateurFacadeRemote{
 			return false;
 		}
 	}
+
+    public boolean contains(String email, String code){
+        entityManager = entityManagerFactory.createEntityManager();
+
+        Query query =  entityManager.createQuery("select u from Utilisateur u where u.mail = :mail AND u.hashCodeToValidate = :code");
+        query.setParameter("mail", email);
+        query.setParameter("code", code);
+        try{
+            query.getSingleResult();
+            entityManager.close();
+            return true;
+        }catch(NoResultException e){
+            entityManager.close();
+            return false;
+        }
+    }
 	
 	public boolean isValidated(String email){
 		entityManager = entityManagerFactory.createEntityManager();

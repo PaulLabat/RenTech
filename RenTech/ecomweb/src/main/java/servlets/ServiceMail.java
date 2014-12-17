@@ -1,5 +1,7 @@
 package servlets;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,12 +13,14 @@ import javax.mail.internet.MimeMessage;
 
 import ejb.entity.Commande;
 import ejb.entity.Utilisateur;
+import org.apache.commons.codec.binary.Hex;
 
 public class ServiceMail {
 
     static String usermail = "no-reply";
     static String passwordmail = "test";
     static String fromAddress = "no-reply@rentech.com";
+    static String port = "6667";
 
     public static void sendMailNewUser(Utilisateur User){
 
@@ -27,7 +31,7 @@ public class ServiceMail {
         // Create a mail session
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "localhost");
-        properties.put("mail.smtp.port", "25");
+        properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.username", usermail);
         properties.put("mail.smtp.password", passwordmail);
         Session session = Session.getDefaultInstance(properties, null);
@@ -42,7 +46,7 @@ public class ServiceMail {
             message.setText("Bonjour "+User.getPrenom()+" "+User.getNom()+"! </BR></BR>"
                     + "Vous venez de vous créez un compte sur RenTech.</BR></BR>"
                     + "Veuillez activer votre compte au lien suivant : <BR>"
-                    + "http://paul-pc:8080/ecom/ValidationServlet?email="+encrypt(User.getMail())+" <BR><BR>"
+                    + "http://paul-pc:8080/ecom/ValidationServlet?email="+User.getMail()+"&code="+encryptedPassword(User.getNom()+User.getMail())+" <BR><BR>"
                     + "Merci de votre confiance.<BR><BR>L'équipe RenTech");
             Transport.send(message);
 
@@ -63,7 +67,7 @@ public class ServiceMail {
         // Create a mail session
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "localhost");
-        properties.put("mail.smtp.port", "25");
+        properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.username", usermail);
         properties.put("mail.smtp.password", passwordmail);
         Session session = Session.getDefaultInstance(properties, null);
@@ -98,7 +102,7 @@ public class ServiceMail {
         // Create a mail session
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "localhost");
-        properties.put("mail.smtp.port", "25");
+        properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.username", usermail);
         properties.put("mail.smtp.password", passwordmail);
         Session session = Session.getDefaultInstance(properties, null);
@@ -129,7 +133,7 @@ public class ServiceMail {
         // Create a mail session
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "localhost");
-        properties.put("mail.smtp.port", "25");
+        properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.username", usermail);
         properties.put("mail.smtp.password", passwordmail);
         Session session = Session.getDefaultInstance(properties, null);
@@ -167,7 +171,7 @@ public class ServiceMail {
         // Create a mail session
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "localhost");
-        properties.put("mail.smtp.port", "25");
+        properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.username", usermail);
         properties.put("mail.smtp.password", passwordmail);
         Session session = Session.getDefaultInstance(properties, null);
@@ -196,22 +200,16 @@ public class ServiceMail {
         }
     }
 
-    public static String encrypt(String password){
-        String crypte="";
-        for (int i=0; i<password.length();i++)  {
-            int c=password.charAt(i)^48;
-            crypte=crypte+(char)c;
+    private static String encryptedPassword(String password){
+        String newPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            newPassword = new String(Hex.encodeHex(md.digest(password.getBytes())));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
-        return crypte;
-    }
 
-    public static String decrypt(String password){
-        String aCrypter="";
-        for (int i=0; i<password.length();i++)  {
-            int c=password.charAt(i)^48;
-            aCrypter=aCrypter+(char)c;
-        }
-        return aCrypter;
+        return newPassword;
     }
 
 }

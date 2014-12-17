@@ -49,11 +49,13 @@ public class ValidationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String email = ServiceMail.decrypt(request.getParameter("email"));
+		String email = request.getParameter("email");
+        String code = request.getParameter("code");
 		String function = "validationFAIL";
 		request.getSession().setAttribute("email", email);
+        request.getSession().setAttribute("code",code);
 		
-		if (ufi.contains(email))
+		if (ufi.contains(email,code))
 		{
 			
 			ufi.edit(email,true);

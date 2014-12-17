@@ -30,6 +30,8 @@ public class Utilisateur implements Serializable{
     private String prenom;
     @NotNull
     private Boolean validate;
+    @NotNull
+    private String hashCodeToValidate;
     private String adresseFactu;
     @ManyToOne
     private Entreprise entreprise;
@@ -96,6 +98,18 @@ public class Utilisateur implements Serializable{
 
     public void setValidate(Boolean validate) {
         this.validate = validate;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getHashCodeToValidate() {
+        return hashCodeToValidate;
+    }
+
+    public void setHashCodeToValidate(String hashCodeToValidate) {
+        this.hashCodeToValidate = hashCodeToValidate;
     }
 
     public String getAdresseFactu() {

@@ -16,7 +16,7 @@ public interface UtilisateurFacadeRemote {
 
     Utilisateur edit(Utilisateur utilisateur);
 
-    Utilisateur edit(String email, boolean validate);
+    Utilisateur edit(String email,boolean validate);
 
     boolean remove(Utilisateur utilisateur);
 
@@ -25,6 +25,8 @@ public interface UtilisateurFacadeRemote {
     boolean contains(Utilisateur utilisateur);
 
     boolean contains(String email);
+
+    boolean contains(String email, String code);
     
     public boolean isValidated(String email);
 
