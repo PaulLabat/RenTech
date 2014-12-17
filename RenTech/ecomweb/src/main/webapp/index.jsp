@@ -7,6 +7,8 @@
 	<!-- SCROLLS -->
 	<link rel="stylesheet"
 		href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet"
+		href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
 	<link rel="stylesheet"
 		href="bower_components/components-font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet"
@@ -18,9 +20,6 @@
 		href="bower_components/ocModal/dist/css/ocModal.light.min.css">
 	<link rel="stylesheet"
 		href="bower_components/ocModal/dist/css/ocModal.animations.css">
-	
-	<!-- 	<link rel="stylesheet" href="css/animate.css"> -->
-	<!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
 	
 	<link rel="stylesheet" href="css/header.css" />
 	<link rel="stylesheet" href="css/login.css" />
