@@ -3,69 +3,68 @@
 <html ng-app="scotchApp">
 <head>
 <meta charset="UTF-8" />
+	
+	<!-- SCROLLS -->
+	<link rel="stylesheet"
+		href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="bower_components/components-font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet"
+		href="bower_components/angular-growl-v2/build/angular-growl.css">
+	<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
+	<link rel="stylesheet"
+		href="bower_components/allmighty-autocomplete/style/autocomplete.css">
+	<link rel="stylesheet"
+		href="bower_components/ocModal/dist/css/ocModal.light.min.css">
+	<link rel="stylesheet"
+		href="bower_components/ocModal/dist/css/ocModal.animations.css">
+	
+	<!-- 	<link rel="stylesheet" href="css/animate.css"> -->
+	<!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
+	
+	<link rel="stylesheet" href="css/header.css" />
+	<link rel="stylesheet" href="css/login.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	<link rel="stylesheet" href="css/menus.css" />
+	<link rel="stylesheet" href="css/panier.css" />
+	<link rel="stylesheet" href="css/pageProduit.css" />
+	<link rel="stylesheet" href="css/footer.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	
+	<!-- BOWER -->
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-translate/angular-translate.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+	<script src="bower_components/ngDialog/js/ngDialog.js"></script>
+	<script src="bower_components/angular-breadcrumbs/dist/breadcrumbs.js"></script>
+	<script	src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
+	<script src="bower_components/ocModal/dist/ocModal.js"></script>
 
-<!-- SCROLLS -->
-<link rel="stylesheet"
-	href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="bower_components/components-font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="bower_components/angular-growl-v2/build/angular-growl.css">
-<link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
-<link rel="stylesheet"
-	href="bower_components/allmighty-autocomplete/style/autocomplete.css">
-<link rel="stylesheet"
-	href="bower_components/ocModal/dist/css/ocModal.light.min.css">
-<link rel="stylesheet"
-	href="bower_components/ocModal/dist/css/ocModal.animations.css">
-
-<!-- 	<link rel="stylesheet" href="css/animate.css"> -->
-<!-- 	<link rel="stylesheet" href="css/responsive.css"> -->
-
-<link rel="stylesheet" href="css/header.css" />
-<link rel="stylesheet" href="css/login.css" />
-<link rel="stylesheet" href="css/home.css" />
-<link rel="stylesheet" href="css/menus.css" />
-<link rel="stylesheet" href="css/panier.css" />
-<link rel="stylesheet" href="css/pageProduit.css" />
-<link rel="stylesheet" href="css/footer.css" />
-<link rel="stylesheet" href="css/responsive.css" />
-
-<!-- BOWER -->
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
-<script src="bower_components/ngDialog/js/ngDialog.js"></script>
-<script src="bower_components/angular-breadcrumbs/dist/breadcrumbs.js"></script>
-<script
-	src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
-<script src="bower_components/ocModal/dist/ocModal.js"></script>
-
-<script src="js/script.js"></script>
-
-<!-- Controllers -->
-<script src="js/websockets.js"></script>
-<script src="js/translations.js"></script>
-<script src="js/headerController.js"></script>
-<script src="js/loginController.js"></script>
-<script src="js/registerController.js"></script>
-<script src="js/connectedController.js"></script>
-<script src="js/pageProduitController.js"></script>
-<script src="js/panierController.js"></script>
-<script src="js/searchController.js"></script>
-<script src="js/compteClientController.js"></script>
-<script src="js/changeProfileController.js"></script>
-<script src="js/changePwdController.js"></script>
-<script src="js/CGUController.js"></script>
-<script src="js/createUserSucceedController.js"></script>
-<script src="js/createUserController.js"></script>
-<script src="js/orderFormController.js"></script>
-
-<title>RenTech</title>
+	<script src="js/script.js"></script>
+	
+	<!-- Controllers -->
+	<script src="js/websockets.js"></script>
+	<script src="js/translations.js"></script>
+	<script src="js/headerController.js"></script>
+	<script src="js/loginController.js"></script>
+	<script src="js/registerController.js"></script>
+	<script src="js/connectedController.js"></script>
+	<script src="js/pageProduitController.js"></script>
+	<script src="js/panierController.js"></script>
+	<script src="js/searchController.js"></script>
+	<script src="js/compteClientController.js"></script>
+	<script src="js/changeProfileController.js"></script>
+	<script src="js/changePwdController.js"></script>
+	<script src="js/CGUController.js"></script>
+	<script src="js/createUserSucceedController.js"></script>
+	<script src="js/createUserController.js"></script>
+	<script src="js/orderFormController.js"></script>
+	
+	<title>RenTech</title>
 
 </head>
 <!-- HEADER AND NAVBAR -->
@@ -93,6 +92,9 @@
 									<div class="languages" ng-controller="Ctrl">
 										<button ng-click="changeLanguage('en')" class="ng-scope">
 											<img src="img/United-Kingdom.png" alt="" />
+										</button>
+										<button ng-click="changeLanguage('sp')" class="ng-scope">
+											<img src="img/Spain.png" alt="" />
 										</button>
 										<button ng-click="changeLanguage('fr')" class="ng-scope">
 											<img src="img/France.png" alt="" />
