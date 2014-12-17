@@ -1,6 +1,5 @@
-scotchApp.controller('panierController', function(WS_Service,MySharedService,$scope,$location) {
+scotchApp.controller('panierController', function(WS_Service,MySharedService,$scope,$location,growl) {
 	
-	console.log($location.path());
 	$scope.products = MySharedService.getList();
 	$scope.total = MySharedService.getTotal().toFixed(2);	// 2 decimales
 
@@ -10,15 +9,16 @@ scotchApp.controller('panierController', function(WS_Service,MySharedService,$sc
     }   
     
     $scope.pay = function() {
-    	var t = JSON.stringify(MySharedService.getTotal().toFixed(2));
-    	console.log(t);
-    	var listeGit = MySharedService.getListGit();
-    	console.log(listeGit);
-//    	var listeOffre = {prix : t; git : listeGit};
-//    	console.log(listeOffre);
-//    	var command = {fonct : "pushCommande", adresse: "avenue du general de Gaulle", offre : listeOffre};
+    	if (MySharedService.connected) 	
+	    	$scope.changeView('/orderForm');
     	
-//    	console.log(command);
+    	else
+    		growl.error("ERROR_MUST_BE_CONNECTED");
     }   
+    
+    $scope.changeView = function(view){
+        $location.url(view); // path not hash
+    	console.log("View changed");            
+    } 
     
 });

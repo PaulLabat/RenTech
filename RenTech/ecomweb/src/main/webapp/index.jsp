@@ -63,6 +63,7 @@
 <script src="js/CGUController.js"></script>
 <script src="js/createUserSucceedController.js"></script>
 <script src="js/createUserController.js"></script>
+<script src="js/orderFormController.js"></script>
 
 <title>RenTech</title>
 
