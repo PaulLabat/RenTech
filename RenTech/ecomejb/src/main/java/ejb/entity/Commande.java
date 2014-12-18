@@ -67,7 +67,7 @@ public class Commande implements Serializable{
 
     @Override
     public String toString() {
-        return "id : "+this.id + " date de début : "+toStringDate()+" offre : "+ toStringOffres();
+        return "id : "+this.id + " date de début : "+toStringDate()+" adresse factu : "+adresseFactu +" offre : "+ toStringOffres();
     }
 
     private String toStringOffres(){
