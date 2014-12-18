@@ -98,6 +98,18 @@ public class Offre implements Serializable{
 	public void setServeurVirtuels(Collection<ServeurVirtuel> serveurVirtuels) {
 		this.serveurVirtuels = serveurVirtuels;
 	}
-    
+
+	@Override
+	public String toString(){
+		return "\n id : "+this.id + " Gits : "+toStringGit();
+	}
+
+	private String toStringGit(){
+		String result = "";
+		for(Git g : gits){
+			result = result + "\n"+g.toString();
+		}
+		return  result;
+	}
     
 }

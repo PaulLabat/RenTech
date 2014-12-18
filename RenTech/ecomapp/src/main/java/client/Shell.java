@@ -96,7 +96,7 @@ public class Shell {
                     }
                     dataBase.createUser(name,email,mdp,isValidate);
                     break;
-                case "/generate":
+                case "/generateUser":
                     System.out.println("please enter the number of user that i have to generate for you");
                     try {
                         int nbUser = Integer.parseInt(sc.nextLine());
@@ -131,8 +131,11 @@ public class Shell {
                         System.out.println("this user doesn't exist");
                     }
                     break;
-                case "/list":
-                    System.out.println(dataBase.printTable());
+                case "/listUser":
+                    System.out.println(dataBase.printTableUser());
+                    break;
+                case "/listCommand":
+                    System.out.println(dataBase.printTableCommand());
                     break;
                 default:
                     System.out.println("unknown this command : "+command);
@@ -196,10 +199,11 @@ public class Shell {
         System.out.println("this is the list of command wich can access with a root account");
         System.out.println("/exit ---> return to the user mode\n" +
                 "/create ---> create an user acoount \n" +
-                "/generate ---> generate x user accounts \n" +
+                "/generateUser ---> generate x user accounts \n" +
                 "/generateCommand ---> Generate one command\n"+
                 "/delete ----> delete an user account \n" +
                 "/search ---> see if a user account exist\n" +
-                "/list ---> show the list of user account\n");
+                "/listUser---> show the list of user account\n" +
+                "/listCommand--> show the list of command\n");
     }
 }

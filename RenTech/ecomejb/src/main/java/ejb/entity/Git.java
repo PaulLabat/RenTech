@@ -57,7 +57,7 @@ public class Git implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Git [tailleDisk=" + tailleDisk + ", ram=" + ram
+		return "\nGit [id = "+this.id+ " tailleDisk=" + tailleDisk + ", ram=" + ram
 				+ ", nbreCoeur=" + nbreCoeur + "]";
 	}
     

@@ -143,5 +143,20 @@ public class CommandeFacadeImpl implements CommandeFacadeRemote{
 		return commande;
 	}
 
+	public String printTable(){
+		entityManager = entityManagerFactory.createEntityManager();
+
+		Query myQuery = entityManager.createQuery("select u from Commande u");
+
+		List<Commande> list = myQuery.getResultList();
+		String result ="nb of user : "+list.size() +"\n";
+		for(Commande u : list){
+			result = result + u.toString() +"\n";
+		}
+
+		entityManager.close();
+		return result;
+	}
+
 
 }

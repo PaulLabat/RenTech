@@ -86,8 +86,13 @@ public class DataBaseImpl implements DataBase{
     }
 
     @Override
-    public String printTable(){
+    public String printTableUser(){
         return utilisateurFacadeRemote.printTable();
+    }
+
+    @Override
+    public String printTableCommand(){
+        return commandeFacadeRemote.printTable();
     }
 
     @Override

@@ -25,4 +25,6 @@ public interface CommandeFacadeRemote {
     public List<Commande> getCommandes();
     
     public Commande getCommande(String beginDate);
+
+    public String printTable();
 }

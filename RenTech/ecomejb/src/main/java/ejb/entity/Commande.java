@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -61,5 +63,24 @@ public class Commande implements Serializable{
 
     public void addOffre(Offre e){
         this.offres.add(e);
+    }
+
+    @Override
+    public String toString() {
+        return "id : "+this.id + " date de début : "+toStringDate()+" offre : "+ toStringOffres();
+    }
+
+    private String toStringOffres(){
+        String result = "";
+        for(Offre o : offres){
+            result = result + o.toString();
+        }
+
+        return result;
+    }
+
+    protected String toStringDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(this.beginDate.getTime());
     }
 }
