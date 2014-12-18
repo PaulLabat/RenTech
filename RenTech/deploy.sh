@@ -77,7 +77,7 @@ else
 fi
 
 CreateAdminAccess
-GenerateBDD
+#GenerateBDD
 
 xterm  -e "appclient -jar ecomear/target/ecomearClient.jar" &
 xdg-open "http://$host:8080/ecom/"
