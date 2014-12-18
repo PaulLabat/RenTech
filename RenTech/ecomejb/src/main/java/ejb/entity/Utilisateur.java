@@ -149,6 +149,10 @@ public class Utilisateur implements Serializable{
     public void setCommandes(Collection<Commande> commandes) {
         this.commandes = commandes;
     }
+    
+    public void addCommande(Commande commande){
+    	this.commandes.add(commande);
+    }
 
     public Collection<ServeurPhysique> getServeurPhysiques() {
         return serveurPhysiques;

@@ -19,6 +19,7 @@ import com.google.gson.JsonObject;
 import ejb.bean.CommandeFacadeRemote;
 import ejb.bean.GitFacadeRemote;
 import ejb.bean.OffreFacadeRemote;
+import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
 import ejb.entity.Forum;
 import ejb.entity.Git;
@@ -30,7 +31,7 @@ import ejb.entity.Utilisateur;
 
 public class ServiceCommande {
 	
-static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFacadeRemote gfi,Session session, JsonObject jsonObject) {
+static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFacadeRemote gfi, UtilisateurFacadeRemote ufi,Session session, JsonObject jsonObject) {
 		
 		String email = jsonObject.get("email").getAsString();
 		System.out.println("email récupérée : "+email);
@@ -38,7 +39,9 @@ static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFa
 		System.out.println("Adresse récupérée : "+adresse);
 		Double prix = jsonObject.get("prix").getAsDouble();
 		System.out.println("Adresse récupérée : "+prix);
-	
+		Offre currentOffre = new Offre();
+		Commande currentCommande = new Commande();
+		
 		JsonArray git = jsonObject.get("git").getAsJsonArray();
 		ArrayList<Git> Collectiongits = new ArrayList<Git>();
 		Git current = null;
@@ -54,46 +57,33 @@ static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFa
 			if(!gfi.contains(current))
 			{
 				current = gfi.create(current);
+				currentOffre.addGit(current);
 			}
-			Collectiongits.add(current);
+			
 		}
 		
 		System.out.println(Collectiongits.toString());
-		
-		ArrayList<ServeurPhysique> serveurPhysiques = new ArrayList<ServeurPhysique>();
-		ArrayList<ServeurVirtuel> serveurVirtuels = new ArrayList<ServeurVirtuel>();	
-		ArrayList<SiteWeb> siteWebs = new ArrayList<SiteWeb>();		
-		ArrayList<Forum> forums = new ArrayList<Forum>();
-		
-		Offre currentOffre = new Offre();
+				
 		currentOffre.setPrice(prix);
-		currentOffre.setForums(forums);
-		currentOffre.setGits(Collectiongits);
-		currentOffre.setServeurPhysiques(serveurPhysiques);
-		currentOffre.setServeurVirtuels(serveurVirtuels);
-		currentOffre.setSiteWebs(siteWebs);
+		
 		
 		if(!ofi.contains(currentOffre)){
-			ofi.create(currentOffre);
+			currentOffre = ofi.create(currentOffre);
+			currentCommande.addOffre(currentOffre);
 		}
 		
-		ArrayList<Offre> CollectionOffre = new ArrayList<Offre>();
-		CollectionOffre.add(currentOffre);
-		
-		
-		Commande currentCommande = new Commande();
 		currentCommande.setAdresseFactu(adresse);
-		currentCommande.setOffres(CollectionOffre);
 		
-		Utilisateur user = new Utilisateur();
-		user.setMail(email);
+		Utilisateur user = ufi.getUser(email);
+				
 		
 		StringWriter writer = new StringWriter();
         JsonGenerator generator = Json.createGenerator(writer);
 		if (!cfi.contains(currentCommande))
 		{
 			System.out.println("cfi ne contient pas la commande");
-			cfi.create(currentCommande);
+			currentCommande = cfi.create(currentCommande);
+			user.addCommande(currentCommande);
 			generator.writeStartObject().write("status", "OK")
 				.writeEnd();
     		ServiceMail.sendMailCommande(user, currentCommande);
