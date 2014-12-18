@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Statement;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ejb.bean.UtilisateurFacadeRemote;
-import ejb.entity.Utilisateur;
 
 /**
  * Servlet implementation class AddPanierServlet

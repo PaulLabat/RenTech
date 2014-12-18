@@ -1,19 +1,14 @@
 package servlets;
 
 import java.io.StringWriter;
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import javax.json.Json;
 import javax.json.stream.JsonGenerator;
-import javax.persistence.OneToMany;
 import javax.websocket.Session;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import ejb.bean.CommandeFacadeRemote;
@@ -21,12 +16,8 @@ import ejb.bean.GitFacadeRemote;
 import ejb.bean.OffreFacadeRemote;
 import ejb.bean.UtilisateurFacadeRemote;
 import ejb.entity.Commande;
-import ejb.entity.Forum;
 import ejb.entity.Git;
 import ejb.entity.Offre;
-import ejb.entity.ServeurPhysique;
-import ejb.entity.ServeurVirtuel;
-import ejb.entity.SiteWeb;
 import ejb.entity.Utilisateur;
 
 public class ServiceCommande {
