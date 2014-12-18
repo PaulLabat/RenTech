@@ -19,7 +19,7 @@ public class Offre implements Serializable{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @NotNull
-    private BigDecimal price;
+    private Double price;
     @OneToMany
     private Collection<ServeurPhysique> serveurPhysiques;
     @OneToMany
@@ -43,15 +43,11 @@ public class Offre implements Serializable{
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -71,12 +67,20 @@ public class Offre implements Serializable{
 		this.gits = gits;
 	}
 
+	public void addGit(Git git){
+		this.gits.add(git);
+	}
+
 	public Collection<SiteWeb> getSiteWebs() {
 		return siteWebs;
 	}
 
 	public void setSiteWebs(Collection<SiteWeb> siteWebs) {
 		this.siteWebs = siteWebs;
+	}
+
+	public void addSiteWebs(SiteWeb siteWeb){
+		this.siteWebs.add(siteWeb);
 	}
 
 	public Collection<Forum> getForums() {

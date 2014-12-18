@@ -36,7 +36,7 @@ static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFa
 		System.out.println("email récupérée : "+email);
 		String adresse = jsonObject.get("adresse").getAsString();
 		System.out.println("Adresse récupérée : "+adresse);
-		BigDecimal prix = jsonObject.get("prix").getAsBigDecimal();
+		Double prix = jsonObject.get("prix").getAsDouble();
 		System.out.println("Adresse récupérée : "+prix);
 	
 		JsonArray git = jsonObject.get("git").getAsJsonArray();
@@ -53,7 +53,7 @@ static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFa
 			System.out.println("current git : "+current.toString());
 			if(!gfi.contains(current))
 			{
-				gfi.create(current);
+				current = gfi.create(current);
 			}
 			Collectiongits.add(current);
 		}

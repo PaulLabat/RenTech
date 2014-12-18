@@ -12,7 +12,9 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import ejb.entity.Commande;
+import ejb.entity.Offre;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -31,8 +33,9 @@ public class CommandeFacadeImpl implements CommandeFacadeRemote{
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Commande create(Commande commande){
     	entityManager = entityManagerFactory.createEntityManager();
-    	Query myQuery =  entityManager.createQuery("select c from Commande c where c.adresseFactu = :adresseFactu");
+    	Query myQuery =  entityManager.createQuery("select c from Commande c where c.adresseFactu = :adresseFactu AND c.beginDate = :beginDate");
     	myQuery.setParameter("adresseFactu", commande.getAdresseFactu());
+		myQuery.setParameter("beginDate",commande.getDate());
 		Commande c = null;
 		try{
 			myQuery.getSingleResult();
@@ -50,7 +53,7 @@ public class CommandeFacadeImpl implements CommandeFacadeRemote{
     public Commande edit(Commande commande) {
     	entityManager = entityManagerFactory.createEntityManager();
 
-		Query myQuery =  entityManager.createQuery("select c from Commande c where c.adresseFactu = :adresseFactu AND c.beginDate = :password");
+		Query myQuery =  entityManager.createQuery("select c from Commande c where c.adresseFactu = :adresseFactu AND c.beginDate = :beginDate");
 		myQuery.setParameter("adresseFactu",commande.getAdresseFactu());
 		myQuery.setParameter("beginDate",commande.getDate());
 		Commande c = null;

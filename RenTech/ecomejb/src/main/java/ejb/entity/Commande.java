@@ -58,4 +58,8 @@ public class Commande implements Serializable{
     public void setOffres(Collection<Offre> offres) {
         this.offres = offres;
     }
+
+    public void addOffre(Offre e){
+        this.offres.add(e);
+    }
 }

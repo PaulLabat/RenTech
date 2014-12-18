@@ -1,5 +1,8 @@
 package client;
 
+import ejb.entity.Commande;
+import ejb.entity.Git;
+import ejb.entity.Offre;
 import org.apache.commons.lang.RandomStringUtils;
 
 import java.io.Console;
@@ -103,6 +106,13 @@ public class Shell {
                     }
 
                     break;
+                case "/generateCommand":
+                    try{
+                        generateCommand();
+                    }catch (Exception ex){
+                        System.out.println("failed when you would created a command " +ex);
+                    }
+                    break;
                 case "/delete":
                     System.out.println("please enter the user email");
                     email = sc.nextLine();
@@ -157,6 +167,25 @@ public class Shell {
         }
     }
 
+    private void generateCommand(){
+        String adresse = "93 Avenue Jean Perrot 38000 Grenoble";
+        Git git = new Git();
+        git.setNbreCoeur(1);
+        git.setRam(4);
+        git.setTailleDisk(25);
+        git = dataBase.createGit(git);
+
+        Offre offre = new Offre();
+        offre.addGit(git);
+        offre.setPrice(4.99);
+        offre = dataBase.createOffre(offre);
+
+        Commande commande = new Commande();
+        commande.setAdresseFactu(adresse);
+        commande.addOffre(offre);
+        dataBase.createCommande(commande);
+    }
+
     private void helpUser(){
         System.out.println("this is the list of command wich can access with a user account");
         System.out.println("/exit --> the system will quit");
@@ -168,6 +197,7 @@ public class Shell {
         System.out.println("/exit ---> return to the user mode\n" +
                 "/create ---> create an user acoount \n" +
                 "/generate ---> generate x user accounts \n" +
+                "/generateCommand ---> Generate one command\n"+
                 "/delete ----> delete an user account \n" +
                 "/search ---> see if a user account exist\n" +
                 "/list ---> show the list of user account\n");

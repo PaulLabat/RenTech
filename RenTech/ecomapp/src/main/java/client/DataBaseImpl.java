@@ -1,7 +1,9 @@
 package client;
 
-import ejb.bean.AdminFacadeRemote;
-import ejb.bean.UtilisateurFacadeRemote;
+import ejb.bean.*;
+import ejb.entity.Commande;
+import ejb.entity.Git;
+import ejb.entity.Offre;
 import ejb.entity.Utilisateur;
 
 import javax.naming.InitialContext;
@@ -13,6 +15,9 @@ import javax.naming.NamingException;
 public class DataBaseImpl implements DataBase{
     UtilisateurFacadeRemote utilisateurFacadeRemote;
     AdminFacadeRemote adminFacadeRemote;
+    CommandeFacadeRemote commandeFacadeRemote;
+    GitFacadeRemote gitFacadeRemote;
+    OffreFacadeRemote offreFacadeRemote;
 
     public DataBaseImpl(){
         InitialContext context;
@@ -21,6 +26,9 @@ public class DataBaseImpl implements DataBase{
             context = new InitialContext();
             utilisateurFacadeRemote = (UtilisateurFacadeRemote) context.lookup("UtilisateurFacade");
             adminFacadeRemote = (AdminFacadeRemote) context.lookup("AdminFacade");
+            commandeFacadeRemote = (CommandeFacadeRemote) context.lookup("CommandeFacade");
+            gitFacadeRemote = (GitFacadeRemote) context.lookup("GitFacade");
+            offreFacadeRemote = (OffreFacadeRemote) context.lookup("OffreFacade");
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -45,6 +53,21 @@ public class DataBaseImpl implements DataBase{
         utilisateur.setNom(name);
         utilisateur.setValidate(isValidate);
         utilisateurFacadeRemote.create(utilisateur);
+    }
+
+    @Override
+    public Git createGit(Git git){
+        return gitFacadeRemote.create(git);
+    }
+
+    @Override
+    public Offre createOffre(Offre offre){
+        return offreFacadeRemote.create(offre);
+    }
+
+    @Override
+    public void createCommande(Commande commande){
+        commandeFacadeRemote.create(commande);
     }
 
     @Override

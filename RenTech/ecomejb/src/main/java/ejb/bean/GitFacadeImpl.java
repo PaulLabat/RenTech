@@ -35,7 +35,6 @@ public class GitFacadeImpl implements GitFacadeRemote{
 		myQuery.setParameter("tailleDisk",git.getTailleDisk());
 		myQuery.setParameter("ram",git.getRam());
 		myQuery.setParameter("nbreCoeur",git.getNbreCoeur());
-    	git.toString();
 		Git f = null;
 		try{
 			myQuery.getSingleResult();
