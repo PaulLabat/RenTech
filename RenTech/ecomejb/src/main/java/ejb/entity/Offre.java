@@ -101,7 +101,7 @@ public class Offre implements Serializable{
 
 	@Override
 	public String toString(){
-		return "\n id : "+this.id + " Gits : "+toStringGit();
+		return "\n id : "+this.id + " prix : "+ this.price + "€ Gits : "+toStringGit();
 	}
 
 	private String toStringGit(){
