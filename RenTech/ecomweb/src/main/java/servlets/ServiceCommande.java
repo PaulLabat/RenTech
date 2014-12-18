@@ -83,7 +83,6 @@ static void onPushCommande(CommandeFacadeRemote cfi, OffreFacadeRemote ofi,GitFa
 		{
 			System.out.println("cfi ne contient pas la commande");
 			currentCommande = cfi.create(currentCommande);
-			user.addCommande(currentCommande);
 			generator.writeStartObject().write("status", "OK")
 				.writeEnd();
     		ServiceMail.sendMailCommande(user, currentCommande);
